@@ -1,0 +1,136 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../images/login.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0px;
+    padding: 0px;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin-top: 35%;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    border-radius: 10px;
+    padding: 20px 30px;
+}
+
+h1{
+    text-align: center;
+    font-size: 35px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+p{
+    margin: 3px 0px 0px -5px;
+    font-size: 22px;
+    color: #fff;
+}
+
+.input {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 90%;
+    height: 30px;
+    margin: 20px;
+}
+
+input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: 2px solid rgb(219, 218, 218);
+    border-radius: 30px;
+    font-size: 16px;
+    padding-left: 15px;
+}
+
+input::placeholder{
+    color: #fff;
+}
+
+#user {
+    position: fixed;
+    right: 50px;
+    top: 120px;
+    font-size: 17px;
+    transform: translateY(50%);
+    color: #fff;
+}
+
+#eye{
+    position: fixed;
+    right: 50px;
+    top: 190px;
+    font-size: 18px;
+    transform: translateY(50%);
+    color: #fff;
+}
+
+.remember{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0px;
+    padding: 2px;
+    font-size: 20px;
+}
+
+#check-box{
+    height: 60%;
+    width: 30%;
+    margin: 2px 0 0 0;
+}
+
+.remember a {
+    margin: 4px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 22px;
+}
+
+.remember a:hover {
+    text-decoration: underline;
+}
+
+.wrapper .btn {
+    width: 70%;
+    background-color: white;
+    border: 2px solid rgb(219, 218, 218);
+    font-size: 16px;
+    margin: 10px auto;
+    height: 35px;
+    font-size: 20px;
+    font-family: 'circular';
+    transition: ease-in 0.8ms;
+    border-radius: 40px;
+}
+
+.wrapper .btn:hover{
+    background-color: rgb(0, 0, 0);
+    color: #fff;
+}
+
+.wrapper .register {
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    margin: 10px auto;
+}
+
+.register a {
+    color: #fff;
+    text-decoration: none;
+    transition: ease 0.5ms;
+    margin-left: 5px;
+}
+
+.register a:hover {
+    text-decoration: underline;
+}
