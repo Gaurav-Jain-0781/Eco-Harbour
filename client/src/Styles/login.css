@@ -1,19 +1,22 @@
 body {
+    margin: 0px;
+    padding: 0px;
+}
+
+#login{
     display: flex;
     justify-content: center;
     align-items: center;
     background-image: url('../images/login.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    margin: 0px;
-    padding: 0px;
 }
 
 .wrapper {
     display: flex;
     flex-direction: column;
     width: 300px;
-    margin-top: 35%;
+    margin: 7% auto;
     background: transparent;
     backdrop-filter: blur(20px);
     box-shadow: 0 0 10px rgba(0, 0, 0, .2);
@@ -76,16 +79,10 @@ input::placeholder{
 
 .remember{
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
     margin: 10px 0px;
     padding: 2px;
     font-size: 20px;
-}
-
-#check-box{
-    height: 60%;
-    width: 30%;
-    margin: 2px 0 0 0;
 }
 
 .remember a {

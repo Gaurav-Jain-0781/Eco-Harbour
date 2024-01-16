@@ -1,0 +1,73 @@
+body{
+    margin: 0px;
+    padding: 0px;
+}
+
+nav{
+    width: 100%;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    width: 100%;
+    padding: 10px 20px;
+    z-index: 100;
+    background: #7fc8a9;
+}
+
+.logo {
+    font-size: 2em;
+    color: #359381;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: #359381;
+    padding: 6px 15px;
+    border-radius: 20px;
+    margin: 0 10px;
+    font-weight: 600;
+    font-size: 28px;
+    font-family: "Poppins";
+}
+
+.navigation a:hover,
+.navigation a.active {
+    background: #359381;
+    color: #fff;
+}
+
+.ecoharbour {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    background: #7fc8a9;
+    color: #fff;
+    text-align: center;
+    position: relative;
+}
+
+.eco {
+    width: 100%;
+    height: auto;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 7%;
+
+}
+
+#text {
+    position: absolute;
+    font-size: 3em;
+    color: #333;
+}
