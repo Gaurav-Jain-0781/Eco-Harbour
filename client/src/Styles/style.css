@@ -1,73 +1,139 @@
-body{
-    margin: 0px;
-    padding: 0px;
-}
-
-nav{
-    width: 100%;
-}
-
+/* NavBar */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: sticky;
-    width: 100%;
     padding: 10px 20px;
+    height: 60px;
     z-index: 100;
-    background: #7fc8a9;
+    background: white;
 }
 
 .logo {
-    font-size: 2em;
-    color: #359381;
-    border-radius: 50%;
     height: 100px;
     width: 100px;
+    margin-top: 25px;
 }
 
-.navigation a {
-    text-decoration: none;
-    color: #359381;
-    padding: 6px 15px;
-    border-radius: 20px;
-    margin: 0 10px;
-    font-weight: 600;
-    font-size: 28px;
-    font-family: "Poppins";
-}
-
-.navigation a:hover,
-.navigation a.active {
-    background: #359381;
-    color: #fff;
-}
-
-.ecoharbour {
-    position: relative;
+#nav{
     display: flex;
-    justify-content: center;
     align-items: center;
-    height: 70vh;
-    background: #7fc8a9;
-    color: #fff;
-    text-align: center;
-    position: relative;
+    justify-content: space-between;
+    width: 45%;
 }
 
-.eco {
+#nav ul{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
-    height: auto;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 7%;
+}
+
+#nav ul li{
+    list-style-type: none;
+    border-right: 1px solid white;
+    margin-right: 0px;
+    padding: 0px 20px;
+}
+
+#nav ul li:hover{
+    padding: 0px 20px;
+}
+
+#nav ul li:nth-last-child(1){
+    border-right: none;
+    position: relative;
+    top: 5px;
+}
+
+#nav ul li:nth-last-child(1):hover {
+    border-radius: 50%;
 
 }
 
-#text {
-    position: absolute;
-    font-size: 3em;
-    color: #333;
+#nav ul li a{
+    font-size: 16px;
+    color: #359381;
+    text-decoration: none;
+    font-family: 'Poppins';
+}
+
+#nav ul li a.active,
+#nav ul li a:hover{
+    background-color: #359381;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+#user{
+    font-size: 12px;
+    position: inherit;
+}
+
+.btn{
+    height: 40px;
+    width: 100px;
+    border-radius: 25px;
+    background-color: white;
+    border: 1px solid black;
+    margin: 20px 260px 20px 260px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.btn:hover{
+    background-color: black;
+    color: white;
+}
+
+/* Hero Section*/
+#hero{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0px;
+    height: 87vh;
+    background-color: #7fc8a9;
+}
+
+#hero-image{
+    width: 50%;
+    height: 100%;
+}
+
+#hero-image img{
+    width: 100%;
+    height: 100%;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+#hero-content{
+    width: 50%;
+    margin: 0px 50px;
+    height: 100%;
+}
+
+#hero-content h4{
+    font-size: 40px;
+    font-family: 'Poppins';
+    font-weight: 200;
+    color: whitesmoke;
+    text-align: center;
+    margin: 80px 0px 60px 0px;
+}
+
+#hero-content h1{
+    font-size: 24px;
+    font-family: cursive;
+    font-weight: 100;
+    margin-top: 0px;
+}
+
+#arrow{
+    font-size: 60px;
+    margin-left: 280px;
 }
