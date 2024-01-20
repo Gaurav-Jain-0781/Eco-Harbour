@@ -137,3 +137,141 @@ header {
     font-size: 60px;
     margin-left: 280px;
 }
+
+/* Sign Up*/
+
+#signup{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0px;
+    height: 250px;
+    width: 100%;
+    /* background-image: url('../images/login.jpg'); */
+    background-color: black;
+}
+
+#signup div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 70%;
+}
+
+#signup h3{
+    width: 45%;
+    color: white;
+    font-size: 30px;
+    font-family: 'Poppins';
+    font-weight: 500;
+    margin: auto 20px;
+    padding: 20px;
+    line-height: 50px;
+}
+
+#signup input{
+    width: 50%;
+    height: 23%;
+    background: white;
+    color: black;
+    border: 1px solid black;
+    border-radius: 10px 0px 0px 10px;
+}
+
+#signup input:focus{
+    border: 0px solid;
+    outline: none;
+}
+
+#signup button{
+    margin: 0px;
+    padding: 0px;
+    height: 25%;
+    background-color: #7fc8a9;
+    color: whitesmoke;
+    border-radius: 0px 10px 10px 0px;
+    font-size: 18px;   
+}
+
+#signup button:hover{
+    color: whitesmoke;
+    background-color: black;
+}
+
+/* Footer Section*/
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 2% 4% 0 4%;
+}
+
+footer .col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#footer-image{
+    width:25%;
+    height: 100%;
+}
+
+footer .col img {
+    height: 100%;
+    width: 75%;
+}
+
+footer h4 {
+    font-size: 28px;
+    margin: 10px 0px;
+    font-family: "Noto Serif Lao";
+    font-weight: 700;
+}
+
+footer p {
+    font-size: 12px;
+    margin: 0 0 8px 0;
+    color: rgba(34, 34, 34, 0.548);
+    font-family: "Sono";
+    font-weight: bolder;
+}
+
+footer p strong {
+    color: black;
+}
+
+footer a {
+    font-size: 17px;
+    text-decoration: none;
+    color: #222;
+    margin-bottom: 12px;
+    font-weight: 500;
+    font-family: 'Poppins';
+}
+
+footer a:hover {
+    color: cadetblue;
+}
+
+footer .follow {
+    margin-top: 10px;
+}
+
+footer .follow .socail {
+    color: #465b52;
+    padding-right: 10px;
+    cursor: pointer;
+    font-size: x-large;
+}
+
+footer .follow .socail:hover {
+    color: #222;
+}
+
+footer .copyright {
+    text-align: center;
+    width: 100%;
+    margin-top: 15px;
+}

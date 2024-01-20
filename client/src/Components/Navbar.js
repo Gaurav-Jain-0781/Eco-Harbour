@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaUser } from 'react-icons/fa'
-import logo from '../images/logo.png'
+import logo from '../images/logo2.png'
 
 const Navbar = () => {
   return (
