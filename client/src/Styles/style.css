@@ -3,7 +3,10 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: sticky;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     padding: 10px 20px;
     height: 60px;
     z-index: 100;
@@ -94,8 +97,8 @@ header {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin: 0px;
-    height: 87vh;
+    margin: 70px 0px 0px 0px;
+    height: 90vh;
     background-color: #7fc8a9;
 }
 
@@ -211,16 +214,16 @@ footer .col {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    margin-right: 4%;
 }
 
 #footer-image{
-    width:25%;
-    height: 100%;
+    width:20%;
+    margin-right: 0px;
 }
 
 footer .col img {
-    height: 100%;
-    width: 75%;
+    width: 100%;
 }
 
 footer h4 {
