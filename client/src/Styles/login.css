@@ -16,7 +16,7 @@ body {
     display: flex;
     flex-direction: column;
     width: 300px;
-    margin: 7% auto;
+    margin: 140px auto 48px auto;
     background: transparent;
     backdrop-filter: blur(20px);
     box-shadow: 0 0 10px rgba(0, 0, 0, .2);
@@ -57,6 +57,11 @@ input {
 
 input::placeholder{
     color: #fff;
+}
+
+input:focus{
+    border: 1px solid black;
+    outline: none;
 }
 
 #user {

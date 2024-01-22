@@ -7,6 +7,7 @@ import '../Styles/login.css'
 const LoginPge = () => {
   return (
     <>
+      <Navbar/>
       <Login/>
     </>
   )
