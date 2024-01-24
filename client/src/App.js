@@ -6,7 +6,7 @@ import Login from './Pages/Login';
 const App = () => {
   return (
     <>
-      <Registration/>
+      <Home/>
     </>
   )
 }

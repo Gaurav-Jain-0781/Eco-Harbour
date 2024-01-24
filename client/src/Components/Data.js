@@ -66,3 +66,51 @@ export const Account = [
         url: ''
     }
 ]
+
+export const harbours = [
+    {
+        id: 1,
+        name: "West Coast",
+        no_of_harbours: 5,
+        url: require('../images/harbours/west-coast.jpg'),
+    },
+    {
+        id: 1,
+        name: "East Coast",
+        no_of_harbours: 8,
+        url: require('../images/harbours/east-coast.jpg'),
+    },
+    {
+        id: 1,
+        name: "Union Territories",
+        no_of_harbours: 3,
+        url: require('../images/harbours/union-teritory.jpg'),
+    }
+]
+
+export const Services = [
+    {
+        id :1,
+        name: 'Weather',
+        icon: '',
+        link: '',
+    },
+    {
+        id :1,
+        name: 'Weather',
+        icon: '',
+        link: '',   
+    },
+    {
+        id :1,
+        name: 'Weather',
+        icon: '',
+        link: '',
+    },
+    {
+        id :1,
+        name: 'Weather',
+        icon: '',
+        link: '',   
+    }
+] 
