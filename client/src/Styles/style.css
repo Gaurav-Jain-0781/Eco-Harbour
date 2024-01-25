@@ -199,6 +199,58 @@ header {
     color: #777;
 }
 
+/* Services */
+#services{
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    width: 100%;
+}
+
+#services h1{
+    font-family: 'Sofia';
+    color: #359381;
+}
+
+#service{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    height: 80%;
+    width: 100%;
+}
+
+.service-card{
+    display: inherit;
+    align-items: center;
+    justify-content: space-between;
+    height: 34%;
+    width: 32%;
+    margin: 20px 40px;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px rgba(136, 170, 202, 0.9);
+    transition: transform 0.3s;
+}
+
+.service-card:hover{
+    transform: scale(1.05);
+}
+
+.service-card p{
+    color: #777;
+    font-size: 35px;
+    font-family: 'Kalam';
+    font-style: oblique;
+    padding: 10px;
+}
+
+.service-card svg{
+    font-size: 40px;
+    margin-right: 20px;
+}
+
 /* Sign Up*/
 #signup{
     display: flex;

@@ -1,4 +1,5 @@
-import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa"
+import { FaFacebook, FaInstagram, FaTwitter, FaCloudShowersHeavy, FaFish, FaLeaf } from "react-icons/fa"
+import { GiHarborDock } from "react-icons/gi";
 
 export const Socails = [
     {
@@ -90,27 +91,27 @@ export const harbours = [
 
 export const Services = [
     {
-        id :1,
-        name: 'Weather',
-        icon: '',
+        id: 1,
+        name: 'Discover Possibilities',
+        icon: <FaCloudShowersHeavy/>,
         link: '',
     },
     {
-        id :1,
-        name: 'Weather',
-        icon: '',
+        id: 2,
+        name: 'Catch Availability',
+        icon: <FaFish/>,
         link: '',   
     },
     {
-        id :1,
-        name: 'Weather',
-        icon: '',
+        id: 3,
+        name: 'Harbour Watch',
+        icon: <GiHarborDock/>,
         link: '',
     },
     {
-        id :1,
-        name: 'Weather',
-        icon: '',
+        id: 4,
+        name: 'Eco Perks',
+        icon: <FaLeaf/>,
         link: '',   
     }
 ] 

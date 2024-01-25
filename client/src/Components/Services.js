@@ -5,12 +5,13 @@ const Harbour_Services = () => {
   return (
     <section id='services'>
         <h1>Services We Gladly Offer</h1>
-        <div className='service'>
+        <div id='service'>
         {
             Services.map((service) => {
                 return (
-                    <div class="card">
-                        {service.name}
+                    <div class="service-card">
+                        <p>{service.name}</p>
+                        {service.icon}
                     </div>
                 )
             })
