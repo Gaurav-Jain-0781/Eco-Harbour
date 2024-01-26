@@ -105,10 +105,10 @@ input:focus{
     width: 70%;
     background-color: white;
     border: 2px solid rgb(219, 218, 218);
-    font-size: 16px;
     margin: 10px auto;
     height: 35px;
-    font-size: 20px;
+    font-size: 30px;
+    padding-top: 3px;
     font-family: 'circular';
     transition: ease-in 0.8ms;
     border-radius: 40px;

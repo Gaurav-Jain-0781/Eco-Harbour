@@ -71,11 +71,6 @@ header {
     border-radius: 20px;
 }
 
-#user{
-    font-size: 12px;
-    position: inherit;
-}
-
 .btn{
     height: 40px;
     width: 100px;
@@ -238,7 +233,15 @@ header {
     transform: scale(1.05);
 }
 
-.service-card p{
+.service-card a{
+    text-decoration: none;
+    width: 100%;
+}
+
+.service-card a p{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     color: #777;
     font-size: 35px;
     font-family: 'Kalam';

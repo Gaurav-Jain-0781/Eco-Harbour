@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import logo from '../images/logo2.png'
 import {Socails, About, Account} from './Data'
 
@@ -6,7 +7,7 @@ const Footer = () => {
   return (
     <footer>
         <div className='col' id='footer-image'>
-            <img src={logo} alt="Eco-Harbour Tracker"/>
+            <Link to='/'><img src={logo} alt="Eco-Harbour Tracker"/></Link>
         </div>
         <div className="col">
             <h4>Contact</h4>

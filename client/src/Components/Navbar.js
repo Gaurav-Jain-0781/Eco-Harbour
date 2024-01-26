@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { FaUser } from 'react-icons/fa'
 import logo from '../images/logo2.png'
 
@@ -6,15 +7,15 @@ const Navbar = () => {
   return (
       <header>
         <div id='logo'> 
-          <img className='logo' src={logo}></img>
+          <Link to='/'><img className='logo' src={logo}></img></Link>
         </div>
         <div id='nav'>
           <ul>
-            <li><a href="#" class="active">Home</a></li>
-            <li><a href="services">Services</a></li>
-            <li><a href="about">About</a></li>
-            <li><a href='contact.html'>Contact Us</a></li>
-            <li><a href="contact" style={{fontSize:22}}><FaUser/></a></li>
+            <li><Link to='/' class="active">Home</Link></li>
+            <li><Link to='/services'>Services</Link></li>
+            <li><Link to='/about'>About</Link></li>
+            <li><Link to='/contact-us'>Contact Us</Link></li>
+            <li><Link to='/' style={{fontSize: '22px'}}><FaUser/></Link></li>
           </ul>
         </div>
       </header>

@@ -49,7 +49,7 @@ export const Account = [
     {
         id: 1, 
         text: 'Sign In',
-        url: ''
+        url: '/login'
     },
     {
         id: 2, 
@@ -94,24 +94,24 @@ export const Services = [
         id: 1,
         name: 'Discover Possibilities',
         icon: <FaCloudShowersHeavy/>,
-        link: '',
+        link: '/services',
     },
     {
         id: 2,
         name: 'Catch Availability',
         icon: <FaFish/>,
-        link: '',   
+        link: '/services',   
     },
     {
         id: 3,
         name: 'Harbour Watch',
         icon: <GiHarborDock/>,
-        link: '',
+        link: '/services',
     },
     {
         id: 4,
         name: 'Eco Perks',
         icon: <FaLeaf/>,
-        link: '',   
+        link: '/services',   
     }
 ] 
