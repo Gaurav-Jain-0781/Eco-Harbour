@@ -11,8 +11,8 @@ const Footer = () => {
         </div>
         <div className="col">
             <h4>Contact</h4>
-            <p><strong>Address : </strong>SCF NO. 781, First Floor, Ban Walo</p>
-            <p>Ka Gate, Chaura Rasta, Jaipur , Rajasthan</p>
+            <p><strong>Address : </strong>Room No. 002, First Floor, Block 2</p>
+            <p>Christ University, Bangalore, Karnataka</p>
             <p><strong>Phone : </strong>+91 9610078190</p>  
             <p><strong>Hours : </strong>10:00 A.M. TO 10:00 P.M.    Mon - Sat</p>  
             <div className="follow">
