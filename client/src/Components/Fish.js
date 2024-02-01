@@ -6,10 +6,8 @@ const Fish = () => {
 
     useEffect(() => {
         const getfishes = async () => {
-            const {data} = await axios.get('/fish');
-            console.log(data)
+            const {data} = await axios.get('/fish/single-fish');
             setFishes(data);
-            console.log(fishes)
         };
         getfishes() ;
     }, []);

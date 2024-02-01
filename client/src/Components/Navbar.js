@@ -13,9 +13,9 @@ const Navbar = () => {
           <ul>
             <li><Link to='/' class="active">Home</Link></li>
             <li><Link to='/services'>Services</Link></li>
-            <li><Link to='/about'>About</Link></li>
+            <li><Link to='/forum'>Forum</Link></li>
             <li><Link to='/contact-us'>Contact Us</Link></li>
-            <li><Link to='/' style={{fontSize: '22px'}}><FaUser/></Link></li>
+            <li><Link to='/login' style={{fontSize: '22px'}}><FaUser/></Link></li>
           </ul>
         </div>
       </header>

@@ -115,3 +115,12 @@ export const Services = [
         link: '/services',   
     }
 ] 
+
+export const forum = [
+    {
+        "user_id": "65b485b180ddbc7bdcad7288", 
+        "title": "Exploring Hidden Harbours",
+        "content": "I recently embarked on a quest to discover hidden harbours in my area",
+        "image": "/images/habour.jpg"
+    }
+]
