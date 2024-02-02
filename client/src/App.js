@@ -5,7 +5,6 @@ import Home from './Pages/Home';
 import Service from './Pages/Service';
 import Forum from './Pages/Forum';
 import About from './Pages/About';
-import Login from './Components/login';
 import Registration from './Pages/Registration';
 import Error from './Components/Error';
 
@@ -23,7 +22,7 @@ const App = () => {
         <Route path='/services' element={<Service login={login} tooglelogin={tooglelogin}/>}></Route>
         <Route path='/forum' element={<Forum login={login} tooglelogin={tooglelogin}/>}></Route>
         <Route path='/about' element={<About login={login} tooglelogin={tooglelogin}/>}></Route>
-        <Route path='/regitration' element={<Registration login={login} tooglelogin={tooglelogin}/>}></Route>
+        <Route path='/regitration' element={<Registration/>}></Route>
         <Route path='*' element={<Error/>}></Route>
       </Routes>
     </Router>

@@ -1,52 +1,33 @@
 /* Registration Page*/
-body {
-    /* background: url('../../public/images/home.jpg'); 
-    background-size: cover; */
-    background-repeat: no-repeat;
-    height: 100vh;
-}
-
 .container {
-    background-color: rgba(255, 255, 255, 0.242);
-    padding: 100px;
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 500px;
-    margin: 0 auto;
+    width: 60rem;
+    height: 30rem;
+    margin: 6rem auto;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+
+.reg{
+    width: 60%;
+    height: 100%;
+    padding-left: 20px;
+}
+
+.reg h1{
+    margin: 40px;
+}
+
+.input-box span{
+    font-size: 18px;
+    font-family: 'Source Serif 4';
 }
 
 .input-box input {
-    width: 300px;
-    height: 40px;
-}
-
-.container div p {
-    padding-bottom: 1px;
-
-}
-
-.user-details .input-box {
-    margin-bottom: 10px;
-    font-size: larger;
-    font-family: 'Times New Roman', Times, serif;
-
-}
-
-.button {
-    margin-top: 10px;
-    background-color: #0a8fe2;
-
-
-    border: none;
-    color: rgb(255, 255, 255);
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-}
-
-.container p h1 {
-    font-family: 'Times New Roman', Times, serif
+    width: 50%;
+    height: 30px;
+    margin: 10px;
 }
