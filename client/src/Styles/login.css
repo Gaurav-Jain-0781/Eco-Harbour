@@ -1,48 +1,50 @@
-body {
-    margin: 0px;
-    padding: 0px;
-}
-
 #login{
     display: flex;
+    position: fixed;
+    top: 6rem;
+    right: 15rem;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    background-image: url("../../public/images/login.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+    z-index: 1;
+    height: 30rem;
+    width: 55rem;
+    margin: 0px;
+    border: 1px solid black;
+    border-radius: 20px;
 }
 
 .wrapper {
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    margin: 140px auto 48px auto;
-    background: transparent;
-    backdrop-filter: blur(20px);
-    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
-    border-radius: 10px;
-    padding: 20px 30px;
+    width: 55%;
+    height: 100%;
+}
+
+.wrapper img{
+    width: 100%;
+    height: 30rem;
+    border-radius: 20px;
 }
 
 h1{
     text-align: center;
     font-size: 35px;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Source Serif 4';
+    margin: 55px;
 }
 
 p{
     margin: 3px 0px 0px -5px;
     font-size: 22px;
-    color: #fff;
+    font-family: 'Karule';
 }
 
 .input {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    width: 90%;
+    width: 70%;
     height: 30px;
-    margin: 20px;
+    margin: 20px auto;
 }
 
 input {
@@ -55,10 +57,6 @@ input {
     padding-left: 15px;
 }
 
-input::placeholder{
-    color: #fff;
-}
-
 input:focus{
     border: 1px solid black;
     outline: none;
@@ -66,73 +64,59 @@ input:focus{
 
 #user {
     position: fixed;
-    right: 50px;
-    top: 120px;
+    right: 20rem;
+    top: 41%;
     font-size: 17px;
     transform: translateY(50%);
-    color: #fff;
 }
 
 #eye{
     position: fixed;
-    right: 50px;
-    top: 190px;
+    right: 20rem;
+    top: 49%;
     font-size: 18px;
     transform: translateY(50%);
-    color: #fff;
 }
 
 .remember{
-    display: flex;
-    justify-content: end;
-    margin: 10px 0px;
-    padding: 2px;
-    font-size: 20px;
+    margin: 10px auto;
+    text-align: right;
 }
 
 .remember a {
-    margin: 4px;
+    margin: 65px;
     text-decoration: none;
-    color: #fff;
-    font-size: 22px;
+    font-size: 20px;
+    color: black;
 }
 
-.remember a:hover {
-    text-decoration: underline;
-}
-
-.wrapper .btn {
-    width: 70%;
+.btn {
+    width: 50%;
     background-color: white;
     border: 2px solid rgb(219, 218, 218);
-    margin: 10px auto;
-    height: 35px;
+    margin: 1rem 6rem;
+    height: 40px;
     font-size: 30px;
-    padding-top: 3px;
-    font-family: 'circular';
+    padding: 6px;
+    font-family: 'Karule';
     transition: ease-in 0.8ms;
     border-radius: 40px;
 }
 
-.wrapper .btn:hover{
+.btn:hover{
     background-color: rgb(0, 0, 0);
     color: #fff;
 }
 
-.wrapper .register {
-    color: #fff;
+.register {
     font-size: 18px;
     text-align: center;
     margin: 10px auto;
 }
 
 .register a {
-    color: #fff;
+    color: black;
     text-decoration: none;
     transition: ease 0.5ms;
     margin-left: 5px;
-}
-
-.register a:hover {
-    text-decoration: underline;
 }

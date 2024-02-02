@@ -6,9 +6,12 @@ const Login = () => {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState(false);
 
-  return (
+    return (
     <div id='login'>
         <div className='wrapper'>
+            <img src='/images/login.jpg' alt='login image'></img>
+        </div>
+        <div style={{width: '45%', height: '100%'}}>
             <h1>Login</h1>
             <div className="input">
                 <input type="text" placeholder="Username" required onChange={(e) => setEmail(e.target.value)}/>

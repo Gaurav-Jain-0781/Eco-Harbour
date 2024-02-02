@@ -1,9 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { FaUser } from 'react-icons/fa'
-// import logo from '/images/logo2.png'
 
-const Navbar = () => {
+const Navbar = ({login, tooglelogin}) => {
   return (
       <header>
         <div id='logo'> 
@@ -11,11 +10,11 @@ const Navbar = () => {
         </div>
         <div id='nav'>
           <ul>
-            <li><strong><Link to='/' class="active">Home</Link></strong></li>
+            <li><strong><Link to='/' className="active">Home</Link></strong></li>
             <li><strong><Link to='/services'>Services</Link></strong></li>
             <li><strong><Link to='/forum'>Forum</Link></strong></li>
-            <li><strong><Link to='/contact-us'>Contact Us</Link></strong></li>
-            <li><strong><Link to='/login' style={{fontSize: '22px'}}><FaUser/></Link></strong></li>
+            <li><strong><Link to='/about'>Contact Us</Link></strong></li>
+            <li><button><FaUser onClick={tooglelogin}/></button></li>
           </ul>
         </div>
       </header>

@@ -1,3 +1,12 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.blur{
+    filter: blur(5px);
+}
+
 /* NavBar */
 header {
     display: flex;
@@ -50,13 +59,23 @@ header {
 
 #nav ul li:nth-last-child(1){
     border-right: none;
-    position: relative;
-    top: 5px;
 }
 
-#nav ul li:nth-last-child(1):hover {
-    border-radius: 50%;
+#nav ul li button{
+    position: relative;
+    top: 3px;
+    font-size: 22px;
+    background-color: #7fc8a9; 
+    color: #359381;
+    border: none;
+    padding: 3px;
+    height: 30px;
+    width: 30px;
+}
 
+#nav ul li button:hover {
+    border-radius: 50%;
+    background-color: white;
 }
 
 #nav ul li a{
@@ -97,10 +116,8 @@ header {
     align-items: center;
     margin: 5rem 0rem 0rem 0rem;
     height: 90vh;
-    background-image: url('../../public/images/forum.jpg');
-    /* background-size: 1350px 530px; */
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-image: url('../../public/images/home.jpg');
+    background-size: 85rem 45rem;
 }
 
 #hero-image{
@@ -120,14 +137,20 @@ header {
     font-weight: 200;
     color: whitesmoke;
     text-align: center;
-    margin: 80px 0px 60px 0px;
+    margin: 40px 0px 30px 0px;
 }
 
 #hero-content h1{
     font-size: 24px;
     font-family: cursive;
     font-weight: 100;
-    margin-top: 0px;
+    margin: 0px 35px;
+}
+
+#hero-content a button{
+    width: 30%;
+    margin: 3rem 15rem;
+    opacity: .4;
 }
 
 #arrow{
@@ -256,13 +279,13 @@ header {
 /* Sign Up*/
 #signup{
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin: 20px 0px;
+    margin: 50px 0px 20px 0px;
     height: 250px;
     width: 100%;
     background-image: url('../../public/images/login.jpg');
-    background-color: black;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #signup div{
@@ -300,12 +323,14 @@ header {
 
 #signup button{
     margin: 0px;
-    padding: 0px;
-    height: 25%;
+    width: 25%;
+    padding: 10px;
+    height: 40px;
     background-color: #7fc8a9;
     color: whitesmoke;
     border-radius: 0px 10px 10px 0px;
-    font-size: 18px;   
+    font-size: 26px;
+    border: none;
 }
 
 #signup button:hover{
