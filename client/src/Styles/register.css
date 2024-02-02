@@ -1,6 +1,10 @@
 /* Registration Page*/
 body {
+<<<<<<< HEAD
     /* background: url('/images/registration.jpg'); */
+=======
+    background: url('../images/registration.jpg'); 
+>>>>>>> 36710a19970738704ee93d46ceb1a00d2a51b649
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
