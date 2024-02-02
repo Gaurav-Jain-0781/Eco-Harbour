@@ -9,24 +9,14 @@ const Register = () => {
             </div>
             <div className="user-details" >
                 <div className="input-box">
-                    <span className="details" details>Full Name</span>
+                    <span className="details" details>First Name</span>
                     <br/>
                     <input type="text" placeholder="Enter your name" required />
-                </div>
-                <div className="input-box">
-                    <span className="details" >Username</span>
-                    <br/>
-                    <input type="text" placeholder="Enter your username" required />
                 </div>
                 <div className="input-box">
                     <span className="details" >Email</span>
                     <br/>
                     <input type="email" placeholder="Enter your Email" required />
-                </div>
-                <div className="input-box">
-                    <span className="details">Phone Number</span>
-                    <br/>
-                    <input type="number" placeholder="Enter your number" required />
                 </div>
                 <div className="input-box">
                     <span className="details">Password</span>
