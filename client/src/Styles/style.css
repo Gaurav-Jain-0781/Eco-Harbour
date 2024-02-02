@@ -10,13 +10,16 @@ header {
     padding: 10px 20px;
     height: 60px;
     z-index: 100;
-    background: white;
+    background: #7fc8a9;
 }
 
 .logo {
     height: 100px;
     width: 100px;
     margin-top: 25px;
+    border: 2px solid #7fc8a9;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
 }
 
 #nav{
@@ -92,21 +95,17 @@ header {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin: 70px 0px 0px 0px;
+    margin: 5rem 0rem 0rem 0rem;
     height: 90vh;
-    background-color: #7fc8a9;
+    background-image: url('../../public/images/forum.jpg');
+    /* background-size: 1350px 530px; */
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #hero-image{
     width: 50%;
     height: 100%;
-}
-
-#hero-image img{
-    width: 100%;
-    height: 100%;
-    border-top-right-radius: 50px;
-    border-bottom-right-radius: 50px;
 }
 
 #hero-content{
@@ -147,7 +146,7 @@ header {
 
 #harbour h1{
     font-size: 40px;
-    font-family: 'Sofia';
+    font-family: 'Source Serif 4';
     color: #359381;
     margin: 10px;
 }
@@ -187,7 +186,7 @@ header {
 
 #harbour p{
     font-size: 22px;
-    font-family: '';
+    font-family: 'Kurale';
     font-weight: 500;
     font-style: italic;
     margin: 10px;
@@ -203,7 +202,7 @@ header {
 }
 
 #services h1{
-    font-family: 'Sofia';
+    font-family: 'Source Serif 4';
     color: #359381;
 }
 
@@ -244,7 +243,7 @@ header {
     justify-content: space-between;
     color: #777;
     font-size: 35px;
-    font-family: 'Kalam';
+    font-family: 'Kurale';
     font-style: oblique;
     padding: 10px;
 }
@@ -262,7 +261,7 @@ header {
     margin: 20px 0px;
     height: 250px;
     width: 100%;
-    /* background-image: url('../images/login.jpg'); */
+    background-image: url('../../public/images/login.jpg');
     background-color: black;
 }
 
@@ -334,7 +333,14 @@ footer .col {
     margin-right: 0px;
 }
 
-footer .col img {
+footer .footer-logo {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 0px;
+}
+
+footer .footer-logo img{
+    height: 205px;
     width: 100%;
 }
 
@@ -346,10 +352,10 @@ footer h4 {
 }
 
 footer p {
-    font-size: 12px;
+    font-size: 13px;
     margin: 0 0 8px 0;
     color: rgba(34, 34, 34, 0.548);
-    font-family: "Sono";
+    font-family: "Kurale";
     font-weight: bolder;
 }
 
@@ -363,26 +369,11 @@ footer a {
     color: #222;
     margin-bottom: 12px;
     font-weight: 500;
-    font-family: 'Poppins';
+    font-family: 'Source Serif 4';
 }
 
 footer a:hover {
     color: cadetblue;
-}
-
-footer .follow {
-    margin-top: 10px;
-}
-
-footer .follow .socail {
-    color: #465b52;
-    padding-right: 10px;
-    cursor: pointer;
-    font-size: x-large;
-}
-
-footer .follow .socail:hover {
-    color: #222;
 }
 
 footer .copyright {

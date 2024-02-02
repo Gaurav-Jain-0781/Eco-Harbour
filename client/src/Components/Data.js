@@ -1,26 +1,5 @@
-import { FaFacebook, FaInstagram, FaTwitter, FaCloudShowersHeavy, FaFish, FaLeaf } from "react-icons/fa"
+import { FaCloudShowersHeavy, FaFish, FaLeaf } from "react-icons/fa"
 import { GiHarborDock } from "react-icons/gi";
-
-export const Socails = [
-    {
-        id : 1,
-        url : 'https://www.facebook.com/profile.php?id=100090643534344&locale=sw_KE',
-        icon : <FaFacebook/>,
-        text : 'FaceBook' 
-    },
-    {
-        id : 2,
-        url : 'https://www.instagram.com/findyourkicksindia',
-        icon : <FaInstagram/>,
-        text : 'Instagram' 
-    },
-    {
-        id : 3,
-        url : 'https://twitter.com/findyourkicks',
-        icon : <FaTwitter/>, 
-        text: 'Twitter'
-    }
-]
 
 export const About = [
     {
@@ -73,19 +52,19 @@ export const harbours = [
         id: 1,
         name: "West Coast",
         no_of_harbours: 5,
-        url: require('../images/harbours/west-coast.jpg'),
+        url: "/images/harbours/west-coast.jpg",
     },
     {
         id: 1,
         name: "East Coast",
         no_of_harbours: 8,
-        url: require('../images/harbours/east-coast.jpg'),
+        url: "/images/harbours/east-coast.jpg",
     },
     {
         id: 1,
         name: "Union Territories",
         no_of_harbours: 3,
-        url: require('../images/harbours/union-teritory.jpg'),
+        url: "/images/harbours/union-teritory.jpg",
     }
 ]
 

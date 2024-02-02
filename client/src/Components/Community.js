@@ -7,13 +7,6 @@ const Community = () => {
   return (
     <section id='community'>
       <div>
-        {data.map((article) => {
-          return (
-            <div>
-              <img src={article.image} />
-            </div>
-          )}
-        )}
       </div>
     </section>
   )

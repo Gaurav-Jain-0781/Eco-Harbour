@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import {FaEye, FaEyeSlash, FaUser} from 'react-icons/fa';
 
 const Login = () => {
@@ -22,7 +23,7 @@ const Login = () => {
             </div>
             <button type="submit" className="btn">Login</button>
             <div className="register">
-                <p>Dont have an account ?<a href="#">Create One</a></p>
+                <p>Dont have an account ?<Link to="/regitration">Create One</Link></p>
             </div>
         </div>
     </div>

@@ -7,7 +7,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('../images/login.jpg');
+    background-image: url("../../public/images/login.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }

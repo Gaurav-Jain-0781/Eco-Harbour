@@ -1,6 +1,6 @@
 /* Registration Page*/
 body {
-    /* background: url('../images/registration.jpg'); */
+    /* background: url('/images/registration.jpg'); */
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
