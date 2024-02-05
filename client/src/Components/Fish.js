@@ -5,11 +5,11 @@ const Fish = () => {
     const [fishes, setFishes] = useState([])
 
     useEffect(() => {
-        const getfishes = async () => {
-            const {data} = await axios.get('/fish/single-fish');
+        const fetchfishes = async () => {
+            const {data} = await axios.get('/fish');
             setFishes(data);
         };
-        getfishes() ;
+        fetchfishes() ;
     }, []);
 
   return (
@@ -21,8 +21,8 @@ const Fish = () => {
                 <p>{fish["Scientific Name"]}</p>
                 <p>{fish.catch_limit}</p>
             </div>
-        )
-      })}
+        )}
+      )}
     </div>
   )
 }
