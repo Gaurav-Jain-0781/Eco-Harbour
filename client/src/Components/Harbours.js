@@ -9,7 +9,7 @@ const Harbours = () => {
         {
             harbours.map((harbour) => {
                 return (
-                    <div class="card">
+                    <div className="card">
                         <img src={harbour.url} alt={harbour.name}/>
                         <div>
                             <h2>{harbour.name}</h2>

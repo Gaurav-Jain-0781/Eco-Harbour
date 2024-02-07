@@ -6,7 +6,10 @@ const Community = () => {
   
   return (
     <section id='community'>
-      <div>
+      <div class="head">
+            <img src="/images/forum.png"/>
+            <h2>Let's start a new community ! </h2>
+            <button>Join Now</button>
       </div>
     </section>
   )
