@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './Pages/Home';
 import Service from './Pages/Service';
 import Forum from './Pages/Forum';
+import Post from './Pages/Post.js'
 import About from './Pages/About';
 import Registration from './Pages/Registration';
 import Error from './Components/Error';
@@ -21,6 +22,7 @@ const App = () => {
         <Route path='/' element={<Home login={login} tooglelogin={tooglelogin}/>}></Route>
         <Route path='/services' element={<Service login={login} tooglelogin={tooglelogin}/>}></Route>
         <Route path='/forum' element={<Forum login={login} tooglelogin={tooglelogin}/>}></Route>
+        <Route path='/forum/post' element={<Post/>}></Route>
         <Route path='/about' element={<About login={login} tooglelogin={tooglelogin}/>}></Route>
         <Route path='/regitration' element={<Registration/>}></Route>
         <Route path='*' element={<Error/>}></Route>

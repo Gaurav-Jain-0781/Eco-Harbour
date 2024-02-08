@@ -1,13 +1,30 @@
-#page-header{
+#community{
     width: 100%;
-    height: 12rem;
-    background-size: cover;
-    background-repeat: no-repeat;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+#page-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 40vh;
+    width: 100%;
     margin-top: 5rem;
+    background: #7fc8a9;
+}
+
+#page-header img{
+    height: 15rem;
+    width: 35rem;
+    margin: 0px 20px 5px 120px;
 }
 
 #page-header h2{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins';
     font-size: 2rem;
     color: #fff;
     margin: 0rem 3rem;
@@ -15,11 +32,84 @@
     padding: 1rem 0rem;
 }
 
-#page-header p{
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 1.5rem;
+#page-header button {
+    width: 30%;
+    border: none;
+    padding: 8px;
+    margin: 2rem 12rem;
+}
+
+#page-header button:hover {
+    background-color: #25664a;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+#page-header button a{
+    text-decoration: none;
     color: black;
-    text-align: right;
-    padding: 1rem 0rem;
-    margin: 0rem 3rem;
+}
+
+#post{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 2rem 0rem;
+}
+
+.post-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 85%;
+    height: 7rem;
+    border-radius: 20px;
+    box-shadow: 5px 10px 18px rgba(136, 170, 202, 0.9);
+    transition: transform 0.3s;
+    padding: 10px 20px;
+    margin: 1rem 0rem;
+}
+
+.post-content{
+    width: 70%;
+}
+
+.post-name{
+    height: 7rem;
+    width: 7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: antiquewhite;
+    border-radius: 100%;
+    font-size: 5rem;
+}
+
+.forum-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.forum-form label {
+    font-weight: bold;
+}
+
+.forum-form textarea {
+    width: 80%;
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.forum-form button {
+    width: 15%;
+    font-size: 22px;
+    cursor: pointer;
 }

@@ -1,17 +1,12 @@
 import mongoose from "mongoose";
 
 const fishSchema = new mongoose.Schema({
-    user: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: "admin",
-    },
     local_name: {
         type: String,
         required: true,
     },
     scientific_name: {
-        type: string,
+        type: String,
         required: true,
     },
     seasonal_availability: {
