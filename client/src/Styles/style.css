@@ -100,8 +100,10 @@ header {
     background-color: white;
     border: 1px solid black;
     margin: 20px 260px 20px 260px;
-    padding: 10px;
-    font-size: 16px;
+    padding: 6px;
+    font-size: 22px;
+    font-family: 'Karule';
+    transition: ease-in 0.8ms;
 }
 
 .btn:hover{
@@ -312,24 +314,21 @@ header {
     height: 23%;
     background: white;
     color: black;
-    border: 1px solid black;
+    border: none;
     border-radius: 10px 0px 0px 10px;
 }
 
 #signup input:focus{
-    border: 0px solid;
+    border: none;
     outline: none;
 }
 
 #signup button{
     margin: 0px;
     width: 25%;
-    padding: 10px;
-    height: 40px;
     background-color: #7fc8a9;
     color: whitesmoke;
     border-radius: 0px 10px 10px 0px;
-    font-size: 26px;
     border: none;
 }
 
