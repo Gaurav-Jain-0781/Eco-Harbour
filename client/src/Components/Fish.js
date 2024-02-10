@@ -17,8 +17,8 @@ const Fish = () => {
       {fishes.map((fish) => {
         return (
             <div>
-                <p>{fish["Local Name"]}</p>
-                <p>{fish["Scientific Name"]}</p>
+                <p>{fish.local_name}</p>
+                <p>{fish.scientific_name}</p>
                 <p>{fish.catch_limit}</p>
             </div>
         )}
