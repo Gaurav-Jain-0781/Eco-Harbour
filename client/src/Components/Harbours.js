@@ -1,5 +1,6 @@
 import React from 'react'
-import { harbours } from './Data'
+import { harbours, Services } from './Data'
+import { Link } from 'react-router-dom'
 
 const Harbours = () => {
   return (
@@ -15,6 +16,27 @@ const Harbours = () => {
                             <h2>{harbour.name}</h2>
                             <p>No. of Harbours:{harbour.no_of_harbours}</p>
                         </div>
+                    </div>
+                )
+            })
+        }
+        </div>
+    </section>
+  )
+}
+
+export const HarbourServices = () => {
+  return (
+    <section id='services'>
+        <h1>Services We Gladly Offer</h1>
+        <div id='service'>
+        {
+            Services.map((service) => {
+                return (
+                    <div class="service-card">
+                        <Link to={service.link}>
+                            <p>{service.name} {service.icon}</p>
+                        </Link>
                     </div>
                 )
             })

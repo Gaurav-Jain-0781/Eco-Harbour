@@ -1,10 +1,10 @@
 import express from 'express'
 import dotenv from 'dotenv'
-import fishes from './Data/Fishes.js';
+import connectDB from './Config/db.js';
+import fishRoutes from './routes/fishRoutes.js'
+import {notFound, errorHandler} from './middleware/errorMiddleware.js'
 
 dotenv.config()
-
-import connectDB from './Config/db.js';
 connectDB()
 
 const port = process.env.PORT || 5000;
@@ -14,14 +14,10 @@ app.get('/', (req, res) => {
     res.send("Server Running");
 })
 
-app.get('/fish', (req, res) => {
-    res.json(fishes);
-})
+app.use('/fish', fishRoutes)
 
-app.get('/fish/single-fish', (req, res) => {
-    const f = fishes.find((fish) => fish["Local Name"] === "areolated-cod")
-    res.json(f);
-})
+app.use(notFound)
+app.use(errorHandler)
 
 app.listen(port, () => {
     console.log(`Server Running on port ${port}`)

@@ -89,13 +89,12 @@
     align-items: center;
     background-color: antiquewhite;
     border-radius: 100%;
-    font-size: 3rem;
+    font-size: 4rem;
     margin: 2rem;
 }
 
 #post .post-item .post-content h2{
     color: #7fc8a9;
-    font-size: 22px;
     font-family: 'Karule';
     font-style: italic;
     text-align: left;
@@ -114,7 +113,7 @@
     background-color: white;
     border: none;
     padding-left: 25px;
-    font-size: 17px;
+    font-size: 22px;
     font-family: 'Karule';
     color: grey;
     cursor: pointer;

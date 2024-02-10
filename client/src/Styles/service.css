@@ -1,0 +1,34 @@
+#landing {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 25px;
+    background-color: #7fc8a9;
+    color: #fff;
+    height: 30vh;
+    text-align: right;
+    margin-top: 5rem;
+}
+
+#landing img {
+    position: absolute;
+    top: 0rem;
+    left: 7rem;
+    height: 17rem;
+    width: 28rem;
+    z-index: 999;
+}
+
+#landing h2{
+    margin-left: 40rem;
+    font-family: 'Poppins';
+    font-size: 3rem;
+    padding: 10px;
+    text-align: right;
+}
+
+#landing p{
+    font-size: 2rem;
+    padding: 10px;
+}

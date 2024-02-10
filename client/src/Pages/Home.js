@@ -4,8 +4,7 @@ import Login from '../Components/login'
 import Hero from '../Components/Hero'
 import SignUp from '../Components/SignUp'
 import Footer from '../Components/Footer'
-import Harbours from '../Components/Harbours'
-import Harbour_Services from '../Components/Services'
+import Harbours, { HarbourServices } from '../Components/Harbours'
 
 import '../Styles/style.css'
 import '../Styles/login.css'
@@ -14,10 +13,10 @@ const Home = ({login, tooglelogin}) => {
   return (
     <>
       <Navbar login={login} tooglelogin={tooglelogin}/>
-      <div className={login ? 'blur' : ''}>
+      <div className={login ? 'blur' : 'none'}>
         <Hero/>
         <Harbours/>
-        <Harbour_Services/>
+        <HarbourServices/>
         <SignUp/>
         <Footer/>
       </div>

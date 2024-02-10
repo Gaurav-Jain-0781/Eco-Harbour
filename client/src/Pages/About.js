@@ -9,7 +9,7 @@ const About = ({login, tooglelogin}) => {
   return (
     <>
         <Navbar login={login} tooglelogin={tooglelogin}/>
-        <div className={login ? 'blur' : ''}>
+        <div className={login ? 'blur' : 'none'}>
             <SignUp/>
             <Footer/>
         </div>
