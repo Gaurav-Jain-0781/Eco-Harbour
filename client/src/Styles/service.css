@@ -32,3 +32,63 @@
     font-size: 2rem;
     padding: 10px;
 }
+
+#service{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2rem;
+    width: 95%;
+}
+
+#service h2{
+    font-size: 2rem;
+    font-family: 'Source Serif 4';
+    color: #7fc8a9;
+}
+
+#service form{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    width: 80%;
+    height: 3rem;
+}
+
+#service div{
+    height: 45px;
+}
+
+#service label{
+    font-size: 2rem;
+    font-family: 'Karule';
+    padding: 10px;
+}
+
+#service input{
+    width: 65%;
+    height: 2rem;
+}
+
+#service svg{
+    font-size: 17px;
+    margin-right: 12px;
+    margin-top: 2px;
+}
+
+#service button{
+    margin: 0px 0px 0px 30px;
+    height: 35px;
+    width: 80%;
+    padding: 5px;
+    background-color: #7fc8a9;
+    color: black;
+}
+
+#service button:hover{
+    background-color: #25664a;
+    cursor: pointer;
+}

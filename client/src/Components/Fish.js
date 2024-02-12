@@ -1,22 +1,24 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 
-const Fish = () => {
-    const [fishes, setFishes] = useState([])
+const Fish = ({details}) => {
+    const [fishes, setFishes] = useState(Array.isArray(details) ? details : [])
+    console.log(fishes);
 
-    useEffect(() => {
-        const fetchfishes = async () => {
-            const {data} = await axios.get('/fish');
-            setFishes(data);
-        };
-        fetchfishes() ;
-    }, []);
+    // useEffect(() => {
+    //     const fetchfishes = async () => {
+    //         const {data} = await axios.get('/fish');
+    //         setFishes(data);
+    //     };
+    //     fetchfishes() ;
+    // }, []);
 
   return (
     <div>
       {fishes.map((fish) => {
+        console.log(fish)
         return (
-            <div>
+            <div key={fish.id}>
                 <p>{fish.local_name}</p>
                 <p>{fish.scientific_name}</p>
                 <p>{fish.catch_limit}</p>

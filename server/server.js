@@ -2,6 +2,7 @@ import express from 'express'
 import dotenv from 'dotenv'
 import connectDB from './Config/db.js';
 import fishRoutes from './routes/fishRoutes.js'
+import harbourRoutes from './routes/harbourRoutes.js'
 import {notFound, errorHandler} from './middleware/errorMiddleware.js'
 
 dotenv.config()
@@ -15,6 +16,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/fish', fishRoutes)
+app.use('/harbour', harbourRoutes)
 
 app.use(notFound)
 app.use(errorHandler)

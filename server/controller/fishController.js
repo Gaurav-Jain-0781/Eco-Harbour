@@ -7,7 +7,7 @@ const getFishes = aysncHandler(async (req, res) => {
 })
 
 const getFishById = aysncHandler(async (req, res) => {
-    const single_fish = Fish.findById(req.params.id)
+    const single_fish = await Fish.findById(req.params.id)
 
     if(single_fish){
         return res.json(single_fish)
@@ -18,4 +18,16 @@ const getFishById = aysncHandler(async (req, res) => {
     }
 })
 
-export { getFishes, getFishById }
+const getFishByName = aysncHandler(async (req, res) => {
+    const fish = await Fish.find({"local_name" : req.params.name})
+    
+    if(fish){
+        return res.json(fish)
+    }
+    else{
+        res.status(404)
+        throw new Error("Fish Not Found")
+    }
+})
+
+export { getFishes, getFishById, getFishByName }
