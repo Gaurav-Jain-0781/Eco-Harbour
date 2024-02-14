@@ -33,22 +33,23 @@
     padding: 10px;
 }
 
-#service{
+#servicepage{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin: 2rem;
+    margin: 1rem 2rem;
     width: 95%;
 }
 
-#service h2{
-    font-size: 2rem;
+#servicepage h2{
+    font-size: 1.5rem;
     font-family: 'Source Serif 4';
     color: #7fc8a9;
+    padding: 0.5rem;
 }
 
-#service form{
+#servicepage form{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -58,28 +59,28 @@
     height: 3rem;
 }
 
-#service div{
+#servicepage div{
     height: 45px;
 }
 
-#service label{
-    font-size: 2rem;
+#servicepage label{
+    font-size: 1.5rem;
     font-family: 'Karule';
     padding: 10px;
 }
 
-#service input{
+#servicepage input{
     width: 65%;
     height: 2rem;
 }
 
-#service svg{
+#servicepage svg{
     font-size: 17px;
     margin-right: 12px;
     margin-top: 2px;
 }
 
-#service button{
+#servicepage button{
     margin: 0px 0px 0px 30px;
     height: 35px;
     width: 80%;
@@ -88,7 +89,18 @@
     color: black;
 }
 
-#service button:hover{
+#servicepage button:hover{
     background-color: #25664a;
     cursor: pointer;
+}
+
+#servicepage span{
+    margin: 1rem;
+    font-size: 1rem;
+    font-family: 'Karule';
+    color: rgb(232 30 30);
+    background-color: #ff000047;
+    padding: 10px 30px;
+    border-radius: 50px;
+    transition: opcaity 0.5 ease-in-out;
 }

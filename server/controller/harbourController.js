@@ -18,4 +18,16 @@ const getHarbourById = asyncHandler(async(req, res) => {
     }
 })
 
-export { getHarbour, getHarbourById } 
+const getHarbourByName = asyncHandler(async (req, res) => {
+    const harbour = await Harbour.find({"name" : req.params.name})
+
+    if(harbour){
+        res.json(harbour)
+    }
+    else{
+        res.status = 404;
+        throw new Error("Harbour Not Found ")
+    }
+})
+
+export { getHarbour, getHarbourById, getHarbourByName } 

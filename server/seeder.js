@@ -9,7 +9,7 @@ import Harbour from './Models/harbourModel.js'
 import Admin from './Models/adminModel.js'
 
 import users from './data/User.js'
-import fishes from './Data/Fishes.js' 
+import fishes from './Data/Fish.js' 
 import forum from './Data/Forum.js'
 import mra from './Data/MRA.js'
 import harbour from './Data/Harbours.js'

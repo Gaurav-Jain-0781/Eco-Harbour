@@ -101,7 +101,7 @@ header {
     border: 1px solid black;
     margin: 20px 260px 20px 260px;
     padding: 6px;
-    font-size: 30px;
+    font-size: 20px;
     font-family: 'Karule';
     transition: ease-in 0.8ms;
 }
