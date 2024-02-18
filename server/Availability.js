@@ -13,7 +13,6 @@ const sheetName = workbook.SheetNames[1];
 const worksheet = workbook.Sheets[sheetName];
 
 const data = xlsx.utils.sheet_to_json(worksheet);
-Abundance.deleteMany({})
 
 data.forEach(async (row) => {
     try {
@@ -34,5 +33,3 @@ data.forEach(async (row) => {
         console.error(`Error inserting data: ${error.message}`);       
     }
 });
-
-process.exit()

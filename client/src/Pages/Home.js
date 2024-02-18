@@ -4,7 +4,7 @@ import Login from '../Components/login'
 import Hero from '../Components/Hero'
 import SignUp from '../Components/SignUp'
 import Footer from '../Components/Footer'
-import Harbours, { HarbourServices } from '../Components/Harbours'
+import Explore, { Perks } from '../Components/Explore'
 
 import '../Styles/style.css'
 import '../Styles/login.css'
@@ -15,8 +15,8 @@ const Home = ({login, tooglelogin}) => {
       <Navbar login={login} tooglelogin={tooglelogin}/>
       <div className={login ? 'blur' : 'none'}>
         <Hero/>
-        <Harbours/>
-        <HarbourServices/>
+        <Explore/>
+        <Perks/>
         <SignUp/>
         <Footer/>
       </div>

@@ -1,23 +1,23 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
+import { MdExplore } from 'react-icons/md'
+import { FaShip } from 'react-icons/fa';
 
-const Fish = ({search}) => {
-    const [fishes, setFishes] = useState(Array.isArray(search) ? search : [])
-    
-    useEffect(() => {
-      setFishes(search ?? [])
-    }, [search])
+const Fish = ({fish}) => {
+  if(!fish){
+    return null;
+  }
 
   return (
-    <div>
-      {fishes.map((fish) => {
-        return (
-            <div key={fish.id}>
-                <p>{fish.local_name}</p>
-                <p>{fish.scientific_name}</p>
-                <p>{fish.catch_limit}</p>
-            </div>
-        )}
-      )}
+    <div className="pro" key={fish.id}>
+      <img src={fish.image_url} alt={fish.name} />
+      <div className='des'>
+        <h4>{fish.local_name.toUpperCase()}</h4>
+        <p>Category : {fish.category.toUpperCase()}</p>
+        <div style={{width: '100%'}}>
+          <button className='btn'>Sail <FaShip/></button>
+          <button className='btn'>Explore <MdExplore/></button>
+        </div>
+      </div>      
     </div>
   )
 }

@@ -59,12 +59,8 @@
     height: 3rem;
 }
 
-#servicepage div{
-    height: 45px;
-}
-
 #servicepage label{
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-family: 'Karule';
     padding: 10px;
 }
@@ -94,13 +90,89 @@
     cursor: pointer;
 }
 
-#servicepage span{
+#error{
     margin: 1rem;
-    font-size: 1rem;
+    font-size: 20px;
     font-family: 'Karule';
     color: rgb(232 30 30);
     background-color: #ff000047;
     padding: 10px 30px;
     border-radius: 50px;
     transition: opcaity 0.5 ease-in-out;
+}
+
+#product {
+    text-align: center;
+    margin: 10px;
+}
+
+#product .product_container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#product h2 {
+    color: #088178;
+    font-size: 26px;
+}
+
+#product h4{
+    color: #088178;
+    font-family: 'Source Serif 4';
+    font-size: 18px;
+    text-align: start;
+}
+
+#product p {
+    font-size: 14px;
+    font-family: 'Source Serif 4';
+    text-align: start;
+    padding: 10px 0px;
+    margin: 0px;
+}
+
+#product .pro{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 15rem;
+    padding: 10px 12px;
+    border: 0px solid #949999;
+    border-radius: 20px;
+    box-shadow: 0px 0px 2px 4px rgba(148, 153, 153, 0.589);
+    margin: 12px;
+    transition: 0.3s ease;
+    height: 53vh;
+}
+
+#product .pro:hover {
+    box-shadow: 0px 0px 10px 5px rgba(148, 153, 153, 0.733);
+}
+
+#product .pro .des{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+#product .pro img{
+    height: 12rem;
+    width: 100%;
+    border-radius: 15px;
+}
+
+#product .pro button{
+    margin: 5px 11px 5px 1px;
+    width: 45%;
+}
+
+#product .pro button svg{
+    font-size: 25px;
+    vertical-align: middle;
+    margin: 0px;
+    color: #fff;
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import { harbours, Services } from './Data'
 import { Link } from 'react-router-dom'
 
-const Harbours = () => {
+const Explore = () => {
   return (
     <section id='harbour'>
         <h1>Let's Explore</h1>
@@ -25,7 +25,7 @@ const Harbours = () => {
   )
 }
 
-export const HarbourServices = () => {
+export const Perks = () => {
   return (
     <section id='services'>
         <h1>Services We Gladly Offer</h1>
@@ -46,4 +46,4 @@ export const HarbourServices = () => {
   )
 }
 
-export default Harbours
+export default Explore
