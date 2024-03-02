@@ -26,7 +26,7 @@
 }
 
 .reg{
-    width: 60%;
+    width: 70%;
     height: 100%;
     padding-left: 20px;
 }
@@ -35,17 +35,54 @@
     margin: 40px;
 }
 
-.input-box span{
-    font-size: 18px;
-    font-family: 'Source Serif 4';
+.reg form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
+}   
+
+#form-content{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
 }
 
-.input-box input {
-    width: 50%;
+#form-label{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: flex-start;
+    width: 95%;
+}
+
+#form-label label{
+    font-size: 18px;
+    margin: 15px;
+    font-family: 'Source Serif 4';
+    width: 95%;
+}
+
+#form-input input {
+    width: 90%;
     height: 30px;
     margin: 10px;
 }
 
-.input-box input::placeholder{
-    color: black;
+#form-input input::placeholder{
+    color: #fff;
+}
+
+.reg form input[type='submit']{
+    margin: 15px auto;
+}
+
+.reg p{
+    font-size: 28px;
+}
+
+.register{
+    margin: 0px;
 }

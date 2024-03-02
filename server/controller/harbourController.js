@@ -30,4 +30,18 @@ const getHarbourByName = asyncHandler(async (req, res) => {
     }
 })
 
-export { getHarbour, getHarbourById, getHarbourByName } 
+const getHarbourByState = asyncHandler(async (req, res) => {
+    const state = req.params.state
+
+    const response = await Harbour.find({"location" : state})
+
+    if(response){
+        res.json(response)
+    }
+    else{
+        res.status(404)
+        throw new Error("Error in Harbour Search")
+    }
+})
+
+export { getHarbour, getHarbourById, getHarbourByName, getHarbourByState } 

@@ -11,22 +11,20 @@ const Register = () => {
             <div className='reg'>
                 <h1>  Registration Form</h1>
                 <form action="#">
-                    <div className="input-box">
-                        <span className="details" details>First Name</span>
-                        <input type="text" placeholder="Enter your name" required />
-                    </div>
-                    <div className="input-box">
-                        <span className="details" >Email</span>
-                        <input type="email" placeholder="Enter your Email" required />
-                    </div>
-                    <div className="input-box">
-                        <span className="details">Password</span>
-                        <input type="password" placeholder="Enter your password" required />
-                    </div>
-                    <div className="input-box">
-                        <span className="details">Confirm Password</span>
-                        <input type="text" placeholder="Confirm your password" required />
-                    </div>
+                    <div id='form-content'>
+                        <div id='form-label'>
+                            <label>First Name</label>
+                            <label>Email</label>
+                            <label>Password</label>
+                            <label>Confirm Password</label>
+                        </div>
+                        <div id='form-input'>
+                            <input type="text" placeholder="Enter your name" required />
+                            <input type="email" placeholder="Enter your Email" required />
+                            <input type="password" placeholder="Enter your password" required />
+                            <input type="text" placeholder="Confirm your password" required />
+                        </div>
+                    </div>                    
                     <input type="submit" value="Register" className="btn"/>
                 </form>
                 <div className="register">

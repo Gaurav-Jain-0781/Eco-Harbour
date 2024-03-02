@@ -3,7 +3,7 @@ import { getAbundanceByState, getAbundanceByFishId } from '../controller/abundan
 
 const router = express.Router()
 
-router.route('/:state').get(getAbundanceByState)
-router.route('/:fishId').get(getAbundanceByFishId)
+router.route('/state/:state').get(getAbundanceByState)
+router.route('/fish/:fishId').get(getAbundanceByFishId)
 
 export default router

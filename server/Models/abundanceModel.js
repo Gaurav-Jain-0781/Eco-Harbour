@@ -4,6 +4,7 @@ const abundanceSchema = new mongoose.Schema({
     fishId: {
         type: mongoose.Schema.Types.ObjectId, 
         required: true,
+        ref: "Fish",
     },
     state: {
         type: String, 

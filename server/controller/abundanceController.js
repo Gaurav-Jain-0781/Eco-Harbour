@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import aysncHandler from "../middleware/asyncHandler.js";
 import Abundance from '../Models/abundanceModel.js'
 
@@ -14,11 +15,9 @@ const getAbundanceByState = aysncHandler(async (req, res) => {
 })
 
 const getAbundanceByFishId = aysncHandler(async (req, res) => {
-    const id = req.params.fishId
+    const reqFishId = new mongoose.Types.ObjectId(req.params.fishId)
 
-    console.log("id" , id)
-
-    const response = await Abundance.find({"fishId" : req.params.fishId}) 
+    const response = await Abundance.find({"fishId": reqFishId}) 
 
     if(response){
         return res.json(response)
