@@ -499,33 +499,33 @@ const harbour = [
         "name": "Blair",
         "longitude": "92.7333",
         "latitude": "11.6667",
-        "location": "Andaman and Nicobar Islands",
+        "location": "Andaman and Nicobar",
         "district": "none",
-        "image": "/images/harbour/Andaman and Nicobar Islands/harbour4.png"
+        "image": "/images/harbour/Andaman and Nicobar/harbour4.png"
     },
     {
         "name": "Neil Island",
         "longitude": "93",
         "latitude": "11.75",
-        "location": "Andaman and Nicobar Islands",
+        "location": "Andaman and Nicobar",
         "district": "none",
-        "image": "/images/harbour/Andaman and Nicobar Islands/harbour5.png"
+        "image": "/images/harbour/Andaman and Nicobar/harbour5.png"
     },
     {
         "name": "Havelock",
         "longitude": "93.25",
         "latitude": "11.8333",
-        "location": "Andaman and Nicobar Islands",
+        "location": "Andaman and Nicobar",
         "district": "none",
-        "image": "/images/harbour/Andaman and Nicobar Islands/harbour6.png"
+        "image": "/images/harbour/Andaman and Nicobar/harbour6.png"
     },
     {
         "name": "Diglipur",
         "longitude": "93.5",
         "latitude": "13.75",
-        "location": "Andaman and Nicobar Islands",
+        "location": "Andaman and Nicobar",
         "district": "none",
-        "image": "/images/harbour/Andaman and Nicobar Islands/harbour7.png"
+        "image": "/images/harbour/Andaman and Nicobar/harbour7.png"
     },
     {
         "name": "Kavaratti",

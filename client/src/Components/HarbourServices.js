@@ -20,27 +20,36 @@ const HarbourServices = () => {
 
       try {
         const { data } = await axios.get(`/abundance/fish/${fishId}`);
-        const state = data[0].state
+
+        const highAbundance = data.filter((item) => item.abundance === "high")
+        const mediumAbundance = data.filter((item) =>  item.abundance === "medium")
+        const lowAbundance = data.filter((item) => item.abundance === "low")
         
         const states = []
-        for(let i = 0; i < data.length; i++){
-          states.push(data[i].state)
-        }
+        
+        highAbundance.map((item) => states.push(item.state))
+        mediumAbundance.map((item) => states.push(item.state))
+        lowAbundance.map((item) => states.push(item.state))
 
-        try {
-          const { data } = await axios.get(`/harbour/state/${state}`)
-          setSearchFish(data)
-
-        } catch (error) {
-          throw new Error("Error in Harbour Search", error)
-        }
+        const harbour_records = states.map(async (state) => {
+          try {
+            const { data } = await axios.get(`/harbour/state/${state}`)
+            return data
+          } catch (error) {
+            console.log("Error in Harbour Search")
+          }
+        })
+        
+        const harboursArrays = await Promise.all(harbour_records);
+        const harbours = [].concat(...harboursArrays);
+        setSearchFish(harbours)
 
       } catch (error) {
-        throw new Error ("Error in Abundance Search ", error) 
+        console.log("Error in Abundance Search ") 
       }
       
     } catch(error) { 
-      throw new Error("Error in Fish search", error)
+      console.log("Error in Fish search")
     }
   }
 
