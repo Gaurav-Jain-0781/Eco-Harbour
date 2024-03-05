@@ -14,10 +14,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    score: {
-        type: Number, 
-        default: 0,
-    },
     email: {
         type: String,
         required: true,
@@ -27,6 +23,19 @@ const userSchema = new mongoose.Schema({
         type: Number, 
         required: true,
     },
+    status: {
+        type: String, 
+        required: true,
+        default: 'Active'
+    },
+    score: {
+        type: Number, 
+        default: 0,
+    },
+    isAdmin: {
+        type: Boolean, 
+        default: false,
+    }
 },{
         timestamps: true,
 })
@@ -34,6 +43,15 @@ const userSchema = new mongoose.Schema({
 userSchema.methods.matchPassword = async function(enteredPassword) {
     return await bcrypt.compare(enteredPassword, this.password)
 }
+
+userSchema.pre('save', async function (next) {
+    if(!this.isModified('password')) {
+        next()
+    }
+    
+    const salt = await bcrypt.genSalt(10)
+    this.password = await bcrypt.hash(this.password, salt)
+})
 
 const Users = mongoose.model("Users", userSchema)
 

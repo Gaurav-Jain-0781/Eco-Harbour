@@ -1,6 +1,6 @@
-import aysncHandler from '../middleware/asyncHandler.js'
 import asyncHandler from '../middleware/asyncHandler.js'
 import Users from '../Models/userModel.js'
+import generateToken from '../utils/generateTokens.js'
 
 const authUser = asyncHandler (async (req, res) => {
     const { email, password } = req.body
@@ -8,7 +8,9 @@ const authUser = asyncHandler (async (req, res) => {
     const user = await Users.findOne({email})
 
     if(user && (await user.matchPassword(password))) {
-        res.send({
+        generateToken(res, user._id)
+        
+        res.json({
             _id: user._id,
             first_name : user.first_name, 
             user_name: user.user_name,
@@ -23,19 +25,93 @@ const authUser = asyncHandler (async (req, res) => {
 })
 
 const registerUser = asyncHandler(async (req, res) => {
-    res.send("Registration Done")
+    const { first_name, user_name, password, email, contact_no } = req.body;
+
+    const userExist = await Users.findOne({ email })
+
+    if(userExist){
+        res.status(400);
+        throw new Error("User already Exist")
+    }
+    
+    const user = await Users.create({
+        first_name,
+        user_name,  
+        password, 
+        email, 
+        contact_no
+    });
+
+    if(user){
+        generateToken(res, user._id)
+
+        res.status(201)
+        res.json({
+            _id: user._id, 
+            first_name: user.first_name, 
+            email: user.email,
+        })
+    }
+    else{
+        res.status(400)
+        throw new Error ("Invalid User Data")
+    }
+
 })
 
 const logoutUser = asyncHandler(async (req, res) => {
-    res.send("User Logout")
+    res.cookie('jwt', '', {
+        httpOnly: true, 
+        expires: new Date(0)
+    });
+
+    res.status(200)
+    res.json({
+        message: "Logout Successfull"
+    })
 })
 
 const getUserProfile = asyncHandler(async (req, res) => {
-    res.send("User Profile")
+    const user = await Users.findById( req.user._id )
+
+    if(user){
+        res.status(200)
+        res.json({
+            _id: user._id, 
+            first_name: user.first_name, 
+            email: user.email
+        })
+    }
+    else{
+        res.status(404)
+        throw new Error("No User Found")
+    }
 })
 
 const updateUserProfile = asyncHandler(async (req, res) => {
-    res.send("Update Profile")
+    const user = await Users.findById(req.user._id)
+
+    if(user) {
+        user.first_name = req.body.first_name || user.first_name
+        user.user_name = req.body.user_name || user.user_name
+
+        if(req.body.password){
+            user.password = req.body.password
+        }
+
+        const updateUser = await user.save()
+
+        res.status(200)
+        res.json({
+            _id: user._id, 
+            first_name: user.first_name, 
+            email: user.email
+        })
+    }
+    else{
+        res.status(400)
+        throw new Error("No User Found")
+    }   
 })
 
 const getUsers = asyncHandler(async (req, res) => {

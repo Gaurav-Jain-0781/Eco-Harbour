@@ -30,6 +30,6 @@ data.forEach(async (row) => {
         await newAbundance.save();
         
     } catch (error) {
-        console.error(`Error inserting data: ${error.message}`);       
+        console.error(`Error inserting data: ${error}`);       
     }
 });
