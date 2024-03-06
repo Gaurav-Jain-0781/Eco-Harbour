@@ -7,6 +7,7 @@ import Forum from './Pages/Forum';
 import Post from './Pages/Post.js'
 import About from './Pages/About';
 import Registration from './Pages/Registration';
+import LoginPage from './Pages/LoginPage';
 import Error from './Components/Error';
 
 const App = () => {
@@ -19,12 +20,13 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<Home login={login} tooglelogin={tooglelogin}/>}></Route>
-        <Route path='/services' element={<Service login={login} tooglelogin={tooglelogin}/>}></Route>
-        <Route path='/forum' element={<Forum login={login} tooglelogin={tooglelogin}/>}></Route>
+        <Route path='/' element={<Home login={login} />}></Route>
+        <Route path='/services' element={<Service login={login} />}></Route>
+        <Route path='/forum' element={<Forum login={login} />}></Route>
         <Route path='/forum/post' element={<Post/>}></Route>
-        <Route path='/about' element={<About login={login} tooglelogin={tooglelogin}/>}></Route>
-        <Route path='/regitration' element={<Registration/>}></Route>
+        <Route path='/about' element={<About login={login} />}></Route>
+        <Route path='/regitration' element={<Registration login={login}/>}></Route>
+        <Route path='/login' element={<LoginPage login={login} tooglelogin={tooglelogin}/>}></Route>
         <Route path='*' element={<Error/>}></Route>
       </Routes>
     </Router>

@@ -10,7 +10,7 @@ const Explore = () => {
         {
             harbours.map((harbour) => {
                 return (
-                    <div className="card">
+                    <div className="card" key={harbour.id}>
                         <img src={harbour.url} alt={harbour.name}/>
                         <div>
                             <h2>{harbour.name}</h2>
@@ -33,7 +33,7 @@ export const Perks = () => {
         {
             Services.map((service) => {
                 return (
-                    <div class="service-card">
+                    <div className="service-card" key={service.id}>
                         <Link to={service.link}>
                             <p>{service.name} {service.icon}</p>
                         </Link>

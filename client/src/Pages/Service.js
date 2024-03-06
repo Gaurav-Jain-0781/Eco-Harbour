@@ -1,7 +1,5 @@
 import React from 'react'
-
 import Navbar from '../Components/Navbar'
-import Login from '../Components/login'
 import HarbourService, { ServiceHeader } from '../Components/HarbourServices'
 import Fish from '../Components/Fish'
 import SignUp from '../Components/SignUp'
@@ -13,14 +11,11 @@ const Service = ({login, tooglelogin}) => {
   return (
     <>
       <Navbar login={login} tooglelogin={tooglelogin}/>
-      <div className={login ? 'blur' : 'none'}>
-        <ServiceHeader/>
-        <HarbourService/>
-        <Fish/>
-        <SignUp/>
-        <Footer/>
-      </div>
-      {login ? <Login/> : ''}
+      <ServiceHeader/>
+      <HarbourService/>
+      <Fish/>
+      <SignUp/>
+      <Footer/>
     </>
   )
 }

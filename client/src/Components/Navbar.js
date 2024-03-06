@@ -14,7 +14,11 @@ const Navbar = ({login, tooglelogin}) => {
             <li><strong><Link to='/services'>Services</Link></strong></li>
             <li><strong><Link to='/forum'>Forum</Link></strong></li>
             <li><strong><Link to='/about'>Contact Us</Link></strong></li>
-            <li><button><FaUser onClick={tooglelogin}/></button></li>
+            <li>
+              <Link to={login ? '/dashboard' : '/login'}>
+                {login ? '' : <FaUser onClick={tooglelogin}/>}
+              </Link>
+            </li>
           </ul>
         </div>
       </header>

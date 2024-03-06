@@ -55,13 +55,13 @@ export const harbours = [
         url: "/images/harbours/west-coast.jpg",
     },
     {
-        id: 1,
+        id: 2,
         name: "East Coast",
         no_of_harbours: 8,
         url: "/images/harbours/east-coast.jpg",
     },
     {
-        id: 1,
+        id: 3,
         name: "Union Territories",
         no_of_harbours: 3,
         url: "/images/harbours/union-teritory.jpg",

@@ -1,6 +1,5 @@
 import React from 'react'
 import Navbar from '../Components/Navbar'
-import Login from '../Components/login'
 import Hero from '../Components/Hero'
 import SignUp from '../Components/SignUp'
 import Footer from '../Components/Footer'
@@ -13,14 +12,11 @@ const Home = ({login, tooglelogin}) => {
   return (
     <>
       <Navbar login={login} tooglelogin={tooglelogin}/>
-      <div className={login ? 'blur' : 'none'}>
-        <Hero/>
-        <Explore/>
-        <Perks/>
-        <SignUp/>
-        <Footer/>
-      </div>
-      {login ? <Login/> : ''}
+      <Hero/>
+      <Explore/>
+      <Perks/>
+      <SignUp/>
+      <Footer/>
     </>
   )
 }

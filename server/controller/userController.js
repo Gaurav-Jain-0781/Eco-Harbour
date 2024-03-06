@@ -20,8 +20,6 @@ const authUser = asyncHandler (async (req, res) => {
         res.status(401)
         throw new Error('Invalid Email or Password')
     }
-
-    res.send("Authentic User")
 })
 
 const registerUser = asyncHandler(async (req, res) => {
@@ -56,7 +54,6 @@ const registerUser = asyncHandler(async (req, res) => {
         res.status(400)
         throw new Error ("Invalid User Data")
     }
-
 })
 
 const logoutUser = asyncHandler(async (req, res) => {
