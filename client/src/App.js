@@ -8,6 +8,7 @@ import Post from './Pages/Post.js'
 import About from './Pages/About';
 import Registration from './Pages/Registration';
 import LoginPage from './Pages/LoginPage';
+import DashBoardPage from './Pages/DashBoardPage'
 import Error from './Components/Error';
 
 const App = () => {
@@ -27,6 +28,7 @@ const App = () => {
         <Route path='/about' element={<About login={login} />}></Route>
         <Route path='/regitration' element={<Registration login={login}/>}></Route>
         <Route path='/login' element={<LoginPage login={login} tooglelogin={tooglelogin}/>}></Route>
+        <Route path='/dashboard' element={<DashBoardPage />}></Route>
         <Route path='*' element={<Error/>}></Route>
       </Routes>
     </Router>

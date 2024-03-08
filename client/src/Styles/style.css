@@ -50,7 +50,7 @@ header {
     list-style-type: none;
     border-right: 1px solid white;
     margin-right: 0px;
-    padding: 0px 20px;
+    padding: 0px 28px;
 }
 
 #nav ul li:hover{
@@ -58,7 +58,22 @@ header {
 }
 
 #nav ul li:nth-last-child(1){
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-right: none;
+    background-color: black;
+    border-radius: 50px;
+    height: 55px;
+    width: 0px;
+}
+
+#nav ul li:nth-last-child(1) a {
+    display: contents;
+    height: 40px;
+    width: 0px;
+    font-size: 20px;
+    color: #fff;
 }
 
 #nav ul li button{
