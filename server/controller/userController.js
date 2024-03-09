@@ -23,7 +23,7 @@ const authUser = asyncHandler (async (req, res) => {
 })
 
 const registerUser = asyncHandler(async (req, res) => {
-    const { first_name, user_name, password, email, contact_no } = req.body;
+    const { user_name, password, email } = req.body;
 
     const userExist = await Users.findOne({ email })
 
@@ -32,12 +32,14 @@ const registerUser = asyncHandler(async (req, res) => {
         throw new Error("User already Exist")
     }
     
+    const split_name = user_name.split(' ')
+    const first_name = split_name[0]
+
     const user = await Users.create({
         first_name,
         user_name,  
         password, 
-        email, 
-        contact_no
+        email
     });
 
     if(user){

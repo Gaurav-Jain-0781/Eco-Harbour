@@ -9,14 +9,28 @@ const Navbar = ({login, tooglelogin}) => {
 
   const checkLogin = async () => {
     console.log("before", loggedIn)
-    const { data } = await axios.get('/user/profile')
-    
-    if(data._id){
-      setLoggedIn(true)
-      setUser(data)
-      console.log(user)
-    }
-    console.log(loggedIn)
+    try {
+
+      const { data } = await axios.get('/user/profile')
+      
+      if(data._id){
+        setLoggedIn(true)
+        setUser(data)
+        console.log(user)
+      }
+      console.log(loggedIn)
+
+    } catch (error) {
+      
+      if (error.response && error.response.status === 404) {
+        console.log("No user found");
+      } else if (error.message === "Request failed with status code 401") {
+        console.log("User not logged in");
+      } else {
+        console.error("Error fetching user profile:", error.message);
+      }
+
+    } 
   } 
 
   useEffect(() => {
@@ -25,7 +39,7 @@ const Navbar = ({login, tooglelogin}) => {
 
   return (
       <header>
-        <div id='logo'> 
+        <div> 
           <Link to='/'><img className='logo' src="/images/logo2.png" alt='logo'></img></Link>
         </div>
         <div id='nav'>

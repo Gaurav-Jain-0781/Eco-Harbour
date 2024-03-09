@@ -1,7 +1,70 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
+import axios from 'axios'
+
+import 'react-toastify/dist/ReactToastify.css'
 
 const Register = () => {
+    const validateName = (name) => {
+        const nameRegex = /^[a-zA-Z'-]{2,30}( [a-zA-Z'-]{2,30})?$/;
+        if(nameRegex.test(name)){
+            return true
+        }
+        return false
+    }
+
+    const validateEmail = (email) => {
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if(emailRegex.test(email)){
+            return true
+        }
+        return false
+    }
+
+    const validatePassword = (password) => {
+        return password.length >= 5  
+    }
+
+    const navigate = useNavigate()
+
+    const handelSubmit = async (e) => {
+        e.preventDefault()
+
+        const user_name = document.forms["register"].name.value;
+        const email = document.forms["register"].email.value;
+        const password = document.forms["register"].password.value;
+        const cpassword = document.forms["register"].cpassword.value;
+     
+        if(user_name && email && password && cpassword && (password === cpassword)){
+            const user = {
+                user_name, 
+                email, 
+                password
+            }
+            
+            try {
+                const { data } = await axios.post('/user/', user)
+                
+                if(data._id){
+                    toast.success("Registration successful")
+                    navigate('/login')
+                }
+                else{
+                    toast.success("Registration Failed")
+                }
+
+            } catch (error) {
+                console.log("error", error)
+            }
+        }
+        else{
+            toast.error("Please complete all fields.")
+            console.log("name", user_name, "email", email, "password", password, cpassword)
+        }
+    }
+
+
   return (
     <>
         <div className='registration'> 
@@ -9,8 +72,8 @@ const Register = () => {
         </div> 
         <div className="container">
             <div className='reg'>
-                <h1>  Registration Form</h1>
-                <form action="#">
+                <h1>Join us Today</h1>
+                <form name="register">
                     <div id='form-content'>
                         <div id='form-label'>
                             <label>First Name</label>
@@ -19,20 +82,22 @@ const Register = () => {
                             <label>Confirm Password</label>
                         </div>
                         <div id='form-input'>
-                            <input type="text" placeholder="Enter your name" required />
-                            <input type="email" placeholder="Enter your Email" required />
-                            <input type="password" placeholder="Enter your password" required />
-                            <input type="text" placeholder="Confirm your password" required />
+                            <input type="text" placeholder="Enter your name" required name='name'/>
+                            <input type="email" placeholder="Enter your Email" required name='email'/>
+                            <input type="password" placeholder="Enter your password" required name='password'/>
+                            <input type="text" placeholder="Confirm your password" required name='cpassword'/>
                         </div>
                     </div>                    
-                    <input type="submit" value="Register" className="btn"/>
+                    <button type="submit" className="btn" style={{width: '120px', margin: '20px'}} onClick={handelSubmit}>
+                        Register
+                    </button>
                 </form>
                 <div className="register">
-                    <p>Already have an account ?<Link to="/">Login</Link></p>
+                    <p>Already have an account ?<Link to="/login">Login</Link></p>
                 </div>
             </div>
             <div className='wrapper'>
-                <img src='/images/registration.jpg' alt='registration image'></img>
+                <img src='/images/registration.jpg' alt='registration'></img>
             </div>
         </div>
     </>

@@ -142,3 +142,60 @@ export const forum = [
     "likes": 20
   }
 ]
+
+export const aboutPageSections = [
+    {
+        "id": 1, 
+        "title": "Vision", 
+        "content": "Our vision is to create a sustainable world where humanity lives in harmony with nature. We strive to protect the environment, conserve resources, and promote eco-friendly practices.", 
+        "image_url": "/images/about/vision.png"
+    }, 
+    {
+        "id": 2, 
+        "title": "Mission", 
+        "content": "Our mission is to inspire and empower people worldwide to take action for the well-being of the planet. Through education, advocacy, and community engagement, we aim to drive positive change and foster a sustainable future for generations to come.", 
+        "image_url": "/images/about/mission.png"
+    }, 
+    {
+        "id": 3, 
+        "title": "Our Team", 
+        "content": "We are a diverse team of experts, activists, and volunteers united by our commitment to environmental stewardship. Together, we collaborate on innovative projects, campaigns, and initiatives to address pressing environmental challenges and create meaningful impact.", 
+        "image_url": "/images/about/team.png"
+    }, 
+    {
+        "id": 4, 
+        "title": "Goals", 
+        "content": "We aim to engage a diverse audience of individuals interested in sustainable fishing. Empowering informed choices and also encourage users to adopt sustainable methods and advocate for healthy marine ecosystems. By working towards these objectives, we aim to contribute to a healthier planet for all.", 
+        "image_url": "/images/about/goals.png"
+    },     
+]
+
+export const FAQ = [
+    {
+        "id": 1, 
+    }
+]
+
+export const founders = [
+    {
+        "id": 1, 
+        "name": "Gaurav Jain", 
+        "phone_no": "9610078190", 
+        "email": "gauravjain0781@gmail.com" ,
+        "image_url": "", 
+    }, 
+    {
+        "id": 2, 
+        "name": "Greeshma Girish", 
+        "phone_no": "9610078190", 
+        "email": "greeshamgirish@gmail.com" ,
+        "image_url": "", 
+    }, 
+    {
+        "id": 3, 
+        "name": "Navaneeth Kishore", 
+        "phone_no": "9610078190", 
+        "email": "navaneeth23@gmail.com" ,
+        "image_url": "", 
+    }
+]

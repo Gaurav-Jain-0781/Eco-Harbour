@@ -34,31 +34,33 @@ const Login = ({ login, tooglelogin }) => {
     }
 
     return (
-    <div id='login'>
-        <div className='wrapper'>
-            <img src='/images/login.jpg' alt='login'/>
+        <div id='login-wrapper'>
+            <div id='login'>
+                <div className='wrapper'>
+                    <img src='/images/login.jpg' alt='login'/>
+                </div>
+                <div style={{width: '45%', height: '100%'}}>
+                    <form onSubmit={handleSubmit} name="login">
+                        <h1>Login</h1>
+                        <div className="input">
+                            <input type="text" placeholder="Username" onChange={(e) => setEmail(e.target.value)} value={email}/>
+                            <i id="user"><FaUser/></i>
+                        </div>
+                        <div className="input">
+                            <input type={eye ? "text" : "password"} placeholder="Password" onChange={(e) => setPassword(e.target.value)} value={password}/>
+                            <i id="eye" onClick={() => setEye(!eye)}>{eye ? <FaEyeSlash/>: <FaEye/>}</i>
+                        </div>
+                        <div className="remember">
+                            <a href="#">Forgot Password ?</a>
+                        </div>
+                        <button type="submit" className="btn">Login</button>
+                        <div className="register">
+                            <p>Dont have an account ?<Link to="/regitration">Create One</Link></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div style={{width: '45%', height: '100%'}}>
-            <form onSubmit={handleSubmit} name="login">
-                <h1>Login</h1>
-                <div className="input">
-                    <input type="text" placeholder="Username" onChange={(e) => setEmail(e.target.value)} value={email}/>
-                    <i id="user"><FaUser/></i>
-                </div>
-                <div className="input">
-                    <input type={eye ? "text" : "password"} placeholder="Password" onChange={(e) => setPassword(e.target.value)} value={password}/>
-                    <i id="eye" onClick={() => setEye(!eye)}>{eye ? <FaEyeSlash/>: <FaEye/>}</i>
-                </div>
-                <div className="remember">
-                    <a href="#">Forgot Password ?</a>
-                </div>
-                <button type="submit" className="btn">Login</button>
-                <div className="register">
-                    <p>Dont have an account ?<Link to="/regitration">Create One</Link></p>
-                </div>
-            </form>
-        </div>
-    </div>
   )
 }
 

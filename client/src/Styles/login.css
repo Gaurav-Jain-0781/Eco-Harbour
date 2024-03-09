@@ -1,3 +1,22 @@
+#login-wrapper{
+    background-image: url('../../public/images/home.jpg');
+    height: 100vh;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+    
+#login-wrapper::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(3px);
+}
+
 #login{
     display: flex;
     position: fixed;
@@ -12,6 +31,7 @@
     margin: 0px;
     border: 1px solid black;
     border-radius: 20px;
+    backdrop-filter: none;
 }
 
 .wrapper {

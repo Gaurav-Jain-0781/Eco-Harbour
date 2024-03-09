@@ -1,0 +1,196 @@
+#about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    background-color: #7fc8a9;
+    color: #fff;
+    text-align: right;
+    height: 50vh;
+}
+
+#about img {
+    position: relative;
+    background-color: #7fc8a9;
+    width: 350px;
+    height: 300px;
+    z-index: 999;
+}
+
+#about h2{
+    font-size: 4rem;
+    padding: 20px;
+    margin: 10px;
+    font-style: 'Source Serif 4';
+}
+
+#about-section{
+    margin: 40px 20px;
+}
+
+#about-section section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    background-color: #f0f8ff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#about-section section img {
+    height: 270px;
+    width: 30%;
+    border-radius: 25px;
+}
+
+.section-text {
+    width: 60%;
+    padding: 10px;
+}
+
+.section-text h2{
+    font-size: 24px;
+    font-family: 'Source Serif 4';
+    padding: 10px;
+}
+
+.section-text p{
+    font-size: 20px;
+    font-family: 'Poppins';
+    padding: 10px;
+    margin: 0px;
+}
+
+.accordion {
+    background-color: #7fc8a9;
+    color: #fff;
+    cursor: pointer;
+    padding: 15px 30px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.accordion:hover,
+.active {
+    background-color: #7fc8a9;
+
+}
+
+.panel {
+    padding: 0 18px;
+    background-color: #fff;
+    display: none;
+    overflow: hidden;
+}
+
+#form {
+    display: flex;
+    align-items: center;
+    margin: 60px 35px;
+    border: 1px solid #e1e1e1;
+    padding: 10px 50px 6px 50px;
+}
+
+#form form {
+    width: 65%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 0px 10px;
+}
+
+#form form span {
+    font-family: Comfortaa;
+    color: #3AAFA9;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+#form form h2 {
+    font-family: "Roboto Mono";
+    font-size: 30px;
+    line-height: 40px;
+    margin-bottom: 16px;
+}
+
+#form form input {
+    padding: 12px 15px;
+    margin-bottom: 25px;
+    width: 90%;
+    height: 15px;
+    outline: none;
+    border: 1px solid #949999;
+}
+
+#form form textarea {
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    outline: none;
+    border: 1px solid #949999;
+}
+
+#form form button {
+    width: 15%;
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+    background-color: #3AAFA9;
+    outline: none;
+    border-radius: 5px;
+    border: 0px;
+    font-family: "Sono";
+    padding: 10px 20px;
+}
+
+#form form button:hover {
+    cursor: pointer;
+    background-color: black;
+    color: white;
+}
+
+#people {
+    margin: 10px 40px;
+}
+
+#people .contact-person {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+#people img {
+    border-radius: 100%;
+    height: 7rem;
+    width: 7rem;
+    object-fit: cover;
+}
+
+#people .contact-person .des {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+}
+
+#people .des h3 {
+    margin-bottom: 5px;
+    font-size: 19px;
+    font-family: "Roboto Mono";
+    font-weight: 700;
+}
+
+#people .des p {
+    margin: 0px;
+    font-size: 12px;
+    font-family: "Sono";
+    line-height: 22px;
+    color: rgba(34, 34, 34, 0.548);
+}
