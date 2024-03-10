@@ -145,7 +145,7 @@ const HarbourServices = () => {
       {error && <span id='error'>Please Fill in one of the Field</span>}
     
 
-      {searchFish.length > 0 ? 
+      {(searchFish.length > 0) && (
         <section id='product'>
           <h2>Prefered Harbours </h2>
           <div className='product_container'>
@@ -154,10 +154,9 @@ const HarbourServices = () => {
             })}
           </div>
         </section>
-      : ''
-      }
+      )}
 
-      {searchHarbour.length > 0 ? 
+      {(searchHarbour.length > 0) && (
         <section id='product'>
           <h2>Prefered Fishes </h2>
           <div className='product_container'>
@@ -166,8 +165,7 @@ const HarbourServices = () => {
             })}
           </div>
         </section>
-        : ''
-      }
+      )}
 
     </section>
   )

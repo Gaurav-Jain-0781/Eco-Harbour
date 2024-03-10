@@ -9,6 +9,7 @@ import About from './Pages/About';
 import Registration from './Pages/Registration';
 import LoginPage from './Pages/LoginPage';
 import DashBoardPage from './Pages/DashBoardPage'
+import SingleHarbourPage from './Pages/SingleHarbourPage'
 import Error from './Components/Error';
 
 const App = () => {
@@ -29,6 +30,7 @@ const App = () => {
         <Route path='/regitration' element={<Registration login={login}/>}></Route>
         <Route path='/login' element={<LoginPage login={login} tooglelogin={tooglelogin}/>}></Route>
         <Route path='/dashboard' element={<DashBoardPage />}></Route>
+        <Route path='/single-harbour/:id' element={<SingleHarbourPage/>}></Route>
         <Route path='*' element={<Error/>}></Route>
       </Routes>
     </Router>
