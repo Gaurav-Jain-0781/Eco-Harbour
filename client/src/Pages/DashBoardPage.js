@@ -1,9 +1,14 @@
 import React from 'react'
-import DashBoard from '../Components/DashBoard'
+import Navbar from '../Components/Navbar'
+import DashBoard , { Sidebar } from '../Components/DashBoard'
+
+import '../Styles/dashboard.css'
 
 const DashBoardPage = () => {
     return (
         <>
+            <Navbar/>
+            <Sidebar/>
             <DashBoard/>
         </>
     )

@@ -55,12 +55,21 @@ const Register = () => {
                 }
 
             } catch (error) {
-                console.log("error", error)
+                
+                if(error.response.data.message === 'User already Exist'){
+                    toast.error("Email Already Exist")
+                }
+                else if (error.response.data.message === 'Invalid User Data'){
+                    toast.error("Invalid Data")
+                }
+                else{
+                    toast.error("Registration Failed")
+                }
+
             }
         }
         else{
             toast.error("Please complete all fields.")
-            console.log("name", user_name, "email", email, "password", password, cpassword)
         }
     }
 
