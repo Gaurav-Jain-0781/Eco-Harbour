@@ -413,3 +413,15 @@ footer .copyright {
     width: 100%;
     margin-top: 15px;
 }
+
+/* Spinner */
+#spinner{
+    text-align: center;
+}
+
+#spinner img{
+    height: 10rem;
+    width: 14rem;
+    border-radius: 25px;
+    margin: 20px;
+}

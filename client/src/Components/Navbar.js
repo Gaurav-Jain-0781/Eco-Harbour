@@ -8,7 +8,7 @@ const Navbar = ({login, tooglelogin}) => {
   const [user, setUser] = useState({})
 
   const checkLogin = async () => {
-    console.log("before", loggedIn)
+    
     try {
 
       const { data } = await axios.get('/user/profile')
@@ -16,9 +16,7 @@ const Navbar = ({login, tooglelogin}) => {
       if(data._id){
         setLoggedIn(true)
         setUser(data)
-        console.log(user)
       }
-      console.log(loggedIn)
 
     } catch (error) {
       

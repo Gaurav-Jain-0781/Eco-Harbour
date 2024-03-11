@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Spinner from './Spinner';
+import Rating from './Rating';
 import { FaShip } from 'react-icons/fa';
 
 import '../Styles/harbour.css'
@@ -17,9 +18,9 @@ const SingleHarbour = () => {
         const { data } = await axios.get(`/harbour/${id}`);
         console.log(data)
         setHarbour(data);
-        setLoading(false)
       } catch (error) {
         console.log(error.message);
+      } finally {
         setLoading(false)
       }
     };
@@ -41,7 +42,7 @@ const SingleHarbour = () => {
               <h3>{harbour.name}</h3>
               <h6>State : {harbour.location}</h6>
               <p>District : {harbour.district}</p>
-              <p>Rating : </p>
+              <p>Rating : <Rating rating={harbour.rating}/></p>
               <span>{harbour.description}</span>
               <button className='btn'>Sail <FaShip/></button>
           </div>

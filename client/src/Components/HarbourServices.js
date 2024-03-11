@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Fish from './Fish'
 import Harbour from './Harbour'
+import Spinner from './Spinner'
 import { FaSearch } from 'react-icons/fa'
 import axios from 'axios'
 
@@ -10,10 +11,13 @@ const HarbourServices = () => {
   const [searchFish, setSearchFish] = useState([])
   const [searchHarbour, setSearchHarbour] = useState([])
   const [error, setError] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const fishSearch = async () => {
     setSearchFish([])
     setSearchHarbour([])
+    setLoading(true)
+    
     try {
       const { data } = await axios.get(`/fish/search/${fishName}`)
       const fishId = data[0]._id;
@@ -42,6 +46,7 @@ const HarbourServices = () => {
         
         const harboursArrays = await Promise.all(harbour_records);
         const harbours = [].concat(...harboursArrays);
+        
         setSearchFish(harbours)
 
       } catch (error) {
@@ -50,12 +55,16 @@ const HarbourServices = () => {
       
     } catch(error) { 
       console.log("Error in Fish search")
+    } finally {
+      setLoading(false)
     }
   }
 
   const harbourSearch = async () => {
     setSearchFish([])
     setSearchHarbour([])
+    setLoading(true)
+
     try {
       const { data: harbour} = await axios.get(`/harbour/search/${harbourName}`)
       const state = harbour[0].location;
@@ -92,6 +101,7 @@ const HarbourServices = () => {
         })
 
         const fishObjects = await Promise.all(promises);
+        
         setSearchHarbour(fishObjects);
 
       } catch (error) {
@@ -100,6 +110,8 @@ const HarbourServices = () => {
 
     } catch(error) { 
       console.log("Error in Harbour search")
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -144,6 +156,7 @@ const HarbourServices = () => {
 
       {error && <span id='error'>Please Fill in one of the Field</span>}
     
+      {loading && <Spinner/>}
 
       {(searchFish.length > 0) && (
         <section id='product'>

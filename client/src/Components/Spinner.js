@@ -2,7 +2,7 @@ import React from 'react'
 
 const Spinner = () => {
   return (
-    <div style={{textAlign: 'cenetr'}}>
+    <div id='spinner'>
       <img src='/images/loading.gif' alt='spinner'/>
     </div>
   )
