@@ -8,7 +8,6 @@ const DashBoardPage = () => {
     return (
         <>
             <Navbar/>
-            <Sidebar/>
             <DashBoard/>
         </>
     )

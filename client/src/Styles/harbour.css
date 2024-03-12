@@ -28,18 +28,21 @@
     padding-top: 20px;
     font-family: 'Poppins';
     color: #3AAFA9;
+    text-transform: capitalize;
 }
 
 .harbour-des h6 {
     font-size: 18px;
     font-family: "Source Serif 4";
     margin: 10px 0px;
+    text-transform: capitalize;
 }
 
 .harbour-des p {
     font-size: 24px;
     font-family: "";
     margin: 20px 0px;
+    text-transform: capitalize;
 }
 
 .harbour-des span {

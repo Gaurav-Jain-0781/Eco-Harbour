@@ -199,3 +199,87 @@ export const founders = [
         "image_url": "", 
     }
 ]
+
+export const PreferedHarbour = [
+    {
+        "_id" : "65ef09cb2ec7d0e63b8764da",
+        "name": "Thoppumpady", 
+        "longitude": "76.02113",
+        "latitude": "11.9862",
+        "location": "Kerela",
+        "district": "Kochi",
+        "image": "/images/harbour/Kerela/harbour1.png",
+        "rating": 4
+    }, 
+    {
+        "_id": "65ef09cb2ec7d0e63b876505",
+        "name": "Visakhapatnam",
+        "longitude": "83.3333",
+        "latitude": "17.75",
+        "location": "Andhra Pradesh",
+        "district": "Visakhapatnam",
+        "image": "/images/harbour/Andhra Pradesh/harbour5.png",
+        "rating": 2,
+    }, 
+    {
+        "_id": "65ef09cb2ec7d0e63b87650c",
+        "name": "Mallipatnam",
+        "longitude": "80.75",
+        "latitude": "14.25",
+        "location": "Tamil Nadu",
+        "district": "Thanjavur",
+        "image": "/images/harbour/Tamil Nadu/harbour2.png",
+        "rating": 1,
+    },
+    {
+        "_id": "65ef09cb2ec7d0e63b8764f0",
+        "name": "Veraval",
+        "longitude": "72.25",
+        "latitude": "21.5",
+        "location": "Gujarat",
+        "district": "Gir Somnath",
+        "image": "/images/harbour/Gujarat/harbour4.png",
+        "rating": 4,
+    }
+]
+
+export const PreferedFish = [ 
+    {
+        "_id": "65ef09cb2ec7d0e63b87649c",
+        "local_name": "sardines",
+        "scientific_name": "Sardinella longiceps",
+        "seasonal_availability": "February to May",
+        "catch_limit": "70,000",
+        "category": "bony-fish",
+        "image_url": "/images/fishes/bony-fish/sardines.png",
+    }, 
+    {
+        "_id": "65ef09cb2ec7d0e63b8764a5",
+        "local_name": "seer fish",
+        "scientific_name": "Scomberomorus guttatus",
+        "seasonal_availability": "October to December",
+        "catch_limit": "6,000",
+        "category": "bony-fish",
+        "image_url": "/images/fishes/bony-fish/seer-fish-spotted-spanish-mackeral.png",
+    }, 
+    {
+        "_id": "65ef09cb2ec7d0e63b876440",
+        "local_name": "Tuna",
+        "scientific_name": "Thunnus obesus",
+        "seasonal_availability": "October to January",
+        "catch_limit": "42,000",
+        "category": "bony-fish",
+        "image_url": "/images/fishes/bony-fish/big-eye-tuna.png",
+        "__v": 0
+    }, 
+    {
+        "_id": "65ef09cb2ec7d0e63b876491",
+        "local_name": "pink shrimp",
+        "scientific_name": "Metapenaeus dobsoni",
+        "seasonal_availability": "July to October",
+        "catch_limit": "No specific limit",
+        "category": "shrimp-and-prawns",
+        "image_url": "/images/fishes/shrimp-and-prawns/pink-shrimp.png",
+        "__v": 0
+    }
+]

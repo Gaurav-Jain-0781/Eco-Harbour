@@ -6,7 +6,7 @@ import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 const Login = ({ login, tooglelogin }) => {
-    const [email, setEmail] = useState('');
+    const [user_name, setUserName] = useState('');
     const [password, setPassword] = useState('');
     const [eye, setEye] = useState(false);
 
@@ -16,10 +16,9 @@ const Login = ({ login, tooglelogin }) => {
         e.preventDefault()
 
         try{
-            console.log("login befor click", login)
             
             const response = await axios.post('user/auth', {
-                email, 
+                user_name, 
                 password
             })
             
@@ -53,7 +52,7 @@ const Login = ({ login, tooglelogin }) => {
                     <form onSubmit={handleSubmit} name="login">
                         <h1>Login</h1>
                         <div className="input">
-                            <input type="text" placeholder="Username" onChange={(e) => setEmail(e.target.value)} value={email}/>
+                            <input type="text" placeholder="Username" onChange={(e) => setUserName(e.target.value)} value={user_name}/>
                             <i id="user"><FaUser/></i>
                         </div>
                         <div className="input">

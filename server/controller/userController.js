@@ -3,9 +3,9 @@ import Users from '../Models/userModel.js'
 import generateToken from '../utils/generateTokens.js'
 
 const authUser = asyncHandler (async (req, res) => {
-    const { email, password } = req.body
+    const { user_name, password } = req.body
 
-    const user = await Users.findOne({email})
+    const user = await Users.findOne({user_name})
 
     if(user && (await user.matchPassword(password))) {
         generateToken(res, user._id)
@@ -23,13 +23,13 @@ const authUser = asyncHandler (async (req, res) => {
 })
 
 const registerUser = asyncHandler(async (req, res) => {
-    const { user_name, password, email } = req.body;
+    const { user_name, password, contact_no } = req.body;
 
-    const userExist = await Users.findOne({ email })
+    const userExist = await Users.findOne({ contact_no })
 
     if(userExist){
         res.status(400);
-        throw new Error("User already Exist")
+        throw new Error("Mobile No. already Exist")
     }
     
     const split_name = user_name.split(' ')
@@ -39,7 +39,7 @@ const registerUser = asyncHandler(async (req, res) => {
         first_name,
         user_name,  
         password, 
-        email
+        contact_no
     });
 
     if(user){
@@ -49,7 +49,7 @@ const registerUser = asyncHandler(async (req, res) => {
         res.json({
             _id: user._id, 
             first_name: user.first_name, 
-            email: user.email,
+            contact_no: user.contact_no,
         })
     }
     else{

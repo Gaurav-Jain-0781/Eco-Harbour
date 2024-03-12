@@ -3,9 +3,12 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Spinner from './Spinner';
 import Rating from './Rating';
+import { PreferedHarbour } from './Data'
+import Harbours from './Harbour';
 import { FaShip } from 'react-icons/fa';
 
 import '../Styles/harbour.css'
+import '../Styles/service.css'
 
 const SingleHarbour = () => {
   const { id } = useParams()
@@ -50,5 +53,20 @@ const SingleHarbour = () => {
     </>
   )
 }
+
+export const PreferedHarbours = () =>{
+  return (
+    <>
+      <section id='product'>
+          <h2>Famous Harbours </h2>
+          <div className='product_container'>
+            {PreferedHarbour.map((harbour) => {
+              return <Harbours key={harbour.id} harbour={harbour}/>
+            })}
+          </div>
+      </section>
+    </>
+  )
+}  
 
 export default SingleHarbour

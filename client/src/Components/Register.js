@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import axios from 'axios'
+import { FaEye, FaEyeSlash } from 'react-icons/fa'
 
 import 'react-toastify/dist/ReactToastify.css'
 
 const Register = () => {
+    const [password, setPassword] = useState(false)
+
     const validateName = (name) => {
         const nameRegex = /^[a-zA-Z'-]{2,30}( [a-zA-Z'-]{2,30})?$/;
         if(nameRegex.test(name)){
@@ -32,14 +35,15 @@ const Register = () => {
         e.preventDefault()
 
         const user_name = document.forms["register"].name.value;
-        const email = document.forms["register"].email.value;
+        const contact_no = document.forms["register"].phone.value;
+        console.log(contact_no)
         const password = document.forms["register"].password.value;
         const cpassword = document.forms["register"].cpassword.value;
      
-        if(user_name && email && password && cpassword && (password === cpassword)){
+        if(user_name && contact_no && password && cpassword && (password === cpassword)){
             const user = {
                 user_name, 
-                email, 
+                contact_no, 
                 password
             }
             
@@ -52,18 +56,20 @@ const Register = () => {
                 }
                 else{
                     toast.success("Registration Failed")
+                    console.log(data)
                 }
 
             } catch (error) {
                 
-                if(error.response.data.message === 'User already Exist'){
-                    toast.error("Email Already Exist")
+                if(error.response.data.message === 'Mobile No. already Exist'){
+                    toast.error("Mobile No. Already Exist")
                 }
                 else if (error.response.data.message === 'Invalid User Data'){
                     toast.error("Invalid Data")
                 }
                 else{
                     toast.error("Registration Failed")
+                    console.log(error)
                 }
 
             }
@@ -91,10 +97,19 @@ const Register = () => {
                             <label>Confirm Password</label>
                         </div>
                         <div id='form-input'>
-                            <input type="text" placeholder="Enter your name" required name='name'/>
-                            <input type="email" placeholder="Enter your Email" required name='email'/>
-                            <input type="password" placeholder="Enter your password" required name='password'/>
-                            <input type="text" placeholder="Confirm your password" required name='cpassword'/>
+                            <div>
+                                <input type="text" placeholder="Enter your Name" required name='name'/>
+                            </div>
+                            <div>
+                                <input type="text" placeholder="Enter your Mobile No." required name='phone'/>
+                            </div>
+                            <div style={{display: 'flex'}}>
+                                <input type={password ? 'text' : 'password'} placeholder="Enter your Password" required name='password'/>
+                                <i id='eye-reg' onClick={() => setPassword(!password)}>{password ? <FaEyeSlash/> : <FaEye/> }</i>
+                            </div>
+                            <div>
+                                <input type="password" placeholder="Confirm your Password" required name='cpassword'/>
+                            </div>                                
                         </div>
                     </div>                    
                     <button type="submit" className="btn" style={{width: '120px', margin: '20px'}} onClick={handelSubmit}>
