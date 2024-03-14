@@ -92,7 +92,7 @@ const Register = () => {
                     <div id='form-content'>
                         <div id='form-label'>
                             <label>First Name</label>
-                            <label>Email</label>
+                            <label>Mobile No.</label>
                             <label>Password</label>
                             <label>Confirm Password</label>
                         </div>

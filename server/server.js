@@ -6,6 +6,7 @@ import fishRoutes from './routes/fishRoutes.js'
 import harbourRoutes from './routes/harbourRoutes.js'
 import abundanceRoutes from './routes/abundanceRoutes.js'
 import userRoutes from './routes/userRoutes.js'
+import postRoutes from './routes/forumRoutes.js'
 import {notFound, errorHandler} from './middleware/errorMiddleware.js'
 
 dotenv.config()
@@ -29,6 +30,7 @@ app.use('/fish', fishRoutes)
 app.use('/harbour', harbourRoutes)
 app.use('/abundance', abundanceRoutes)
 app.use('/user', userRoutes)
+app.use('/post', postRoutes)
 
 app.use(notFound)
 app.use(errorHandler)

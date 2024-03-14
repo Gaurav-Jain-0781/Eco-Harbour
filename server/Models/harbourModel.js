@@ -28,6 +28,9 @@ const harbourSchema = new mongoose.Schema({
     rating: {
         type: Number, 
         default: 0,
+    },
+    description: {
+        type: String, 
     }
 })
 

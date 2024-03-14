@@ -19,15 +19,13 @@ const forumSchema = new mongoose.Schema({
         required: true,
         default: "Fising and Education"
     },
-    views: {
-        type: Number,
-        required: true,
-        default: 0
-    },
     likes: {
-        type: Number,
-        required: true,
-        default: 0
+        type: [String],
+        default: []
+    },
+    views: {
+        type: [String],
+        default: []
     }
 }, {
     timestamps: true,

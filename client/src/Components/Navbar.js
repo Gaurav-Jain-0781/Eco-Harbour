@@ -14,6 +14,7 @@ const Navbar = ({login, tooglelogin}) => {
       const { data } = await axios.get('/user/profile')
       
       if(data._id){
+        console.log(data)
         setLoggedIn(true)
         setUser(data)
       }
