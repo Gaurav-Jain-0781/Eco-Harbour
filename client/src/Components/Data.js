@@ -202,50 +202,50 @@ export const founders = [
 
 export const PreferedHarbour = [
     {
-        "_id" : "65ef09cb2ec7d0e63b8764da",
+        "_id" : "65f281371271deb6f48290b8",
         "name": "Thoppumpady", 
         "longitude": "76.02113",
         "latitude": "11.9862",
         "location": "Kerela",
         "district": "Kochi",
-        "image": "/images/harbour/Kerela/harbour1.png",
+        "image": "/images/harbour/harbour1.png",
         "rating": 4
     }, 
     {
-        "_id": "65ef09cb2ec7d0e63b876505",
+        "_id": "65f281371271deb6f48290e3",
         "name": "Visakhapatnam",
         "longitude": "83.3333",
         "latitude": "17.75",
         "location": "Andhra Pradesh",
         "district": "Visakhapatnam",
-        "image": "/images/harbour/Andhra Pradesh/harbour5.png",
+        "image": "/images/harbour/harbour5.png",
         "rating": 2,
     }, 
     {
-        "_id": "65ef09cb2ec7d0e63b87650c",
+        "_id": "65f281371271deb6f48290ea",
         "name": "Mallipatnam",
         "longitude": "80.75",
         "latitude": "14.25",
         "location": "Tamil Nadu",
         "district": "Thanjavur",
-        "image": "/images/harbour/Tamil Nadu/harbour2.png",
+        "image": "/images/harbour/harbour2.png",
         "rating": 1,
     },
     {
-        "_id": "65ef09cb2ec7d0e63b8764f0",
+        "_id": "65f281371271deb6f48290ce",
         "name": "Veraval",
         "longitude": "72.25",
         "latitude": "21.5",
         "location": "Gujarat",
         "district": "Gir Somnath",
-        "image": "/images/harbour/Gujarat/harbour4.png",
+        "image": "/images/harbour/harbour4.png",
         "rating": 4,
     }
 ]
 
 export const PreferedFish = [ 
     {
-        "_id": "65ef09cb2ec7d0e63b87649c",
+        "_id": "65f281361271deb6f482907a",
         "local_name": "sardines",
         "scientific_name": "Sardinella longiceps",
         "seasonal_availability": "February to May",
@@ -254,7 +254,7 @@ export const PreferedFish = [
         "image_url": "/images/fishes/bony-fish/sardines.png",
     }, 
     {
-        "_id": "65ef09cb2ec7d0e63b8764a5",
+        "_id": "65f281361271deb6f4829083",
         "local_name": "seer fish",
         "scientific_name": "Scomberomorus guttatus",
         "seasonal_availability": "October to December",
@@ -263,7 +263,7 @@ export const PreferedFish = [
         "image_url": "/images/fishes/bony-fish/seer-fish-spotted-spanish-mackeral.png",
     }, 
     {
-        "_id": "65ef09cb2ec7d0e63b876440",
+        "_id": "65f281361271deb6f482901e",
         "local_name": "Tuna",
         "scientific_name": "Thunnus obesus",
         "seasonal_availability": "October to January",
@@ -273,7 +273,7 @@ export const PreferedFish = [
         "__v": 0
     }, 
     {
-        "_id": "65ef09cb2ec7d0e63b876491",
+        "_id": "65f281361271deb6f482906f",
         "local_name": "pink shrimp",
         "scientific_name": "Metapenaeus dobsoni",
         "seasonal_availability": "July to October",

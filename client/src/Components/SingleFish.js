@@ -54,7 +54,7 @@ const SingleFish = () => {
 
 export const PreferedFishes = () => {
     return (
-        <>
+        <section id='servicepage'>
             <section id='product'>
                 <h2>Famous Fishes </h2>
                 <div className='product_container'>
@@ -63,7 +63,7 @@ export const PreferedFishes = () => {
                     })}
                 </div>
             </section>
-        </>
+        </section>
     )
 }
 

@@ -46,7 +46,7 @@ const SingleHarbour = () => {
               <h6>State : {harbour.location}</h6>
               <p>District : {harbour.district}</p>
               <p>Rating : <Rating rating={harbour.rating}/></p>
-              <span>{harbour.description}</span>
+              <span>{harbour.description}</span><br/>
               <button className='btn'>Sail <FaShip/></button>
           </div>
       </section>
@@ -56,7 +56,7 @@ const SingleHarbour = () => {
 
 export const PreferedHarbours = () =>{
   return (
-    <>
+    <section id='servicepage'>
       <section id='product'>
           <h2>Famous Harbours </h2>
           <div className='product_container'>
@@ -65,7 +65,7 @@ export const PreferedHarbours = () =>{
             })}
           </div>
       </section>
-    </>
+    </section>
   )
 }  
 

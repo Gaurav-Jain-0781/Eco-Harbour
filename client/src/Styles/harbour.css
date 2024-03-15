@@ -1,20 +1,23 @@
 #harbour-details {
     display: flex;
     justify-content: space-around;
-    margin: 115px 70px 70px 70px;
+    margin: 115px 70px 30px 70px;
 }
 
 #harbour-details .harbour-image {
     display: flex;
     width: 55%;
+    height: 60vh;
     border-radius: 10px;
 }
 
 #harbour-details .harbour-image img {
     border-radius: 10px;
-    margin: 5px;
+    margin: auto;
     cursor: pointer;
     width: 75%;
+    height: 60vh;
+    border: 1px solid black;
 }
 
 #harbour-details .harbour-des {
@@ -54,7 +57,7 @@
 
 .harbour-des button{
     background-color: #7fc8a9;
-    margin: 0px;
+    margin: 15px 0px;
 }
 
 .harbour-des svg{
