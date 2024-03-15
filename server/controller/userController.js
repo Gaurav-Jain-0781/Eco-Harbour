@@ -78,8 +78,13 @@ const getUserProfile = asyncHandler(async (req, res) => {
         res.json({
             _id: user._id, 
             first_name: user.first_name, 
-            email: user.email
-        })
+            user_name: user.user_name,
+            email: user.email,
+            password: user.password, 
+            status: user.status, 
+            contact_no: user.contact_no, 
+            score: user.score
+        })  
     }
     else{
         res.status(404)
