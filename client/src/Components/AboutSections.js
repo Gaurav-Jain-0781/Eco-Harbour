@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
+import axios from 'axios'
 import { aboutPageSections, founders } from './Data'
+import { toast } from 'react-toastify'
 
 const AboutSections = () => {
   return (
@@ -22,7 +24,7 @@ const AboutSections = () => {
 export const AboutHeader = () =>{
     return (
         <div id='about'>
-            <img src="images/about.png"/>
+            <img src="images/about.png" alt='about'/>
             <h2>Know more About Us</h2>
         </div>
 
@@ -30,15 +32,61 @@ export const AboutHeader = () =>{
 }
 
 export const AboutForm = () => {
+    const [ formData, setFormData ] = useState({
+        name: '',
+        email: '',
+        subject: '',
+        feedback: ''
+    });
+
+    const handelSubmit = async (e) => {
+        e.preventDefault()
+
+        const name = document.forms["feedback"].name.value
+        const email = document.forms["feedback"].email.value
+        const subject = document.forms["feedback"].subject.value
+        const feedback = document.forms["feedback"].feedback.value
+
+        try {
+            const response = await axios.post('/feedback/', {
+                name, 
+                email, 
+                subject, 
+                feedback
+            })
+
+            toast.success("Feedback Posted")
+            setFormData({
+                name: '',
+                email: '',
+                subject: '',
+                feedback: ''
+            });
+        } catch (error) {
+            if(error.response.data.message === "Feedback Failed") {
+                toast.error("Feedback Failed")
+            } 
+            else {
+                console.log(error)
+                toast.error("Feedback Failed")
+            }   
+        }
+    }
+
+    const handelChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    }
+
   return (
     <section id="form">
-        <form action=""> 
+        <form onSubmit={handelSubmit} name="feedback"> 
             <span>Leave a Message</span>
             <h2>We love to hear from you</h2>
-            <input type="text" placeholder="Your Name"/>
-            <input type="email" placeholder="E-mail"/>
-            <input type="text" placeholder="Subject"/>
-            <textarea placeholder="Your Message" rows="5" col="5"></textarea>
+            <input type="text" placeholder="Your Name" name="name" value={formData.name} onChange={handelChange}/>
+            <input type="email" placeholder="E-mail" name="email" value={formData.email} onChange={handelChange}/>
+            <input type="text" placeholder="Subject" name="subject" value={formData.subject} onChange={handelChange}/>
+            <textarea placeholder="Your Message" rows="5" cols="5" name="feedback" id="feedback" value={formData.feedback} onChange={handelChange}></textarea>
             <button>Submit</button>
         </form>
         <div id="people">

@@ -14,7 +14,7 @@ const Explore = () => {
                         <img src={harbour.url} alt={harbour.name}/>
                         <div>
                             <h2>{harbour.name}</h2>
-                            <p>No. of Harbours:{harbour.no_of_harbours}</p>
+                            <p>No. of Harbours: {harbour.no_of_harbours}</p>
                         </div>
                     </div>
                 )
