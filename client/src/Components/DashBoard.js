@@ -3,11 +3,13 @@ import axios from 'axios'
 import Spinner from './Spinner'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import { FaUser, FaGift, FaChartPie } from 'react-icons/fa'
+import { FaUser, FaGift, FaChartPie, FaStar, FaShip } from 'react-icons/fa'
 import { MdLogout, MdDashboard  } from "react-icons/md";
+import { GoGoal } from 'react-icons/go'
 
 const DashBoard = () => {
   const [ user, setUser ] = useState({})
+  const [editable, setEditable] = useState(false)
   const [ activeTab, setActiveTab ] = useState('dashboard')
   const navigate = useNavigate()
   
@@ -35,6 +37,40 @@ const DashBoard = () => {
       console.error('Logout error:', error);
       toast.error('Logout failed');
     }
+  }
+
+  const update = async (e) => {
+    e.preventDefault()
+
+    const user_name = document.forms['update'].user_name.value
+    const first_name = document.forms['update'].first_name.value
+    const email = document.forms['update'].email.value
+    const contact_no = document.forms['update'].contact_no.value
+
+    try {
+      const response = await axios.put('/user/profile', {
+        user_name, first_name, email, contact_no
+      })      
+      toast.success("Profile Updated Successfully")
+      setEditable(false)
+    } catch (error) {
+      console.log(error)
+      toast.error("Error in Profile Updation")
+    }
+  }
+
+  const handelChange = (e) => {
+    e.preventDefault()
+
+    const { name, value } = e.target
+    setUser(prevUser => ({
+      ...prevUser, 
+      [name]: value
+    }))
+  }
+
+  const handelEdit = () => {
+    setEditable(true)
   }
 
   const toogleTab = (tab) => {
@@ -77,14 +113,43 @@ const DashBoard = () => {
         {user ? (
           <>
             <h1>Welcome back, {user.first_name ? user.first_name.toUpperCase() : ''} 👋</h1>
-            <div className="dashBoard-card">
-              <h2>User Information</h2>
-              <p> {user._id} </p>
-              <p> {user.email} </p>
-              <p> {user.first_name} </p>
-              <p> {user.status} </p>
-              <p> {user.score} </p>
-              <p> {user.contact_no} </p>
+            <div className='dashBoard-card'>
+              <div className='box' style={{backgroundColor: '#5454ffb5'}}>
+                <div className='box-icon'>
+                  <FaShip/>
+                </div>
+                <div className='box-content'>
+                  <h2> {} </h2>
+                  <p>Sails</p>
+                </div>
+              </div>
+              <div className='box' style={{backgroundColor: '#ff4040c9'}}>
+                <div className='box-icon'>
+                  <FaStar/>
+                </div>
+                <div className='box-content'>
+                  <h2>  {user.status} </h2>
+                  <p> Status </p>
+                </div>
+              </div>
+              <div className='box' style={{backgroundColor: '#f351e4c7'}}>
+                <div className='box-icon'>
+                  <FaStar/>
+                </div>
+                <div className='box-content'>
+                  <h2> {} </h2>
+                  <p> Points </p>
+                </div>
+              </div>
+              <div className='box' style={{backgroundColor: '#30f164cc'}}>
+                <div className='box-icon'>
+                  <GoGoal/>
+                </div>
+                <div className='box-content'>
+                  <h2> {} </h2>
+                  <p> Rewards Claimed </p>
+                </div>
+              </div>
             </div>
             <div className="card">
               <h2>Recent Sails</h2>
@@ -97,14 +162,35 @@ const DashBoard = () => {
       </div>
 
       <div className="content" id="userInfoContent" style={{ display: activeTab === 'userInfo' ? 'flex' : 'none' }}>
-        <div className="card">
-          <h2>User Information</h2>
-          <p>Username: John Doe</p>
-          <p>Email: john@example.com</p>
-          <p>Mobile: 1234567890</p>
-          <p>Place: Your Place</p>
-          <p>Harbours: List of Harbours</p>
-        </div>
+        <h1>Manage Profile <FaUser/></h1>
+        <form name='update' onSubmit={update}>
+          <div style={{display: 'flex'}}>
+            <div id='labels'>
+              <div className='input-label'>
+                <label> First Name : </label>
+              </div>
+              <div className='input-label'>
+                <label> User Name : </label>
+              </div>
+              <div className='input-label'>
+                <label> Password : </label>
+              </div>
+              <div className='input-label'>
+                <label> Contact No : </label>
+              </div>
+            </div>
+            <div id='fields'>
+              <input type='text' placeholder='User Name' value={user.user_name} disabled={!editable} name='user_name' onChange={handelChange}/>
+              <input type='text' placeholder='First Name' value={user.first_name} disabled={!editable} name='first_name' onChange={handelChange}/>
+              <input type='email' placeholder='Email' value={user.email} disabled={!editable} name='email' onChange={handelChange}/>
+              <input type='Contact No.' placeholder='Contact No.' value={user.contact_no} disabled={!editable} name='contact_no' onChange={handelChange}/>
+            </div>
+          </div>
+          <div>
+            {!editable && <button className='btn' onClick={handelEdit}>Edit</button>}
+            {editable && <button className='btn' type="submit">Save</button>}
+          </div>
+        </form>
       </div>
 
       <div className="content" id="analyticsContent" style={{ display: activeTab === 'analytics' ? 'flex' : 'none' }}>

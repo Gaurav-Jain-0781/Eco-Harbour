@@ -98,6 +98,8 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     if(user) {
         user.first_name = req.body.first_name || user.first_name
         user.user_name = req.body.user_name || user.user_name
+        user.email = req.body.email || user.email
+        user.contact_no = req.body.contact_no || user.contact_no
 
         if(req.body.password){
             user.password = req.body.password
@@ -109,7 +111,12 @@ const updateUserProfile = asyncHandler(async (req, res) => {
         res.json({
             _id: user._id, 
             first_name: user.first_name, 
-            email: user.email
+            user_name: user.user_name,
+            email: user.email,
+            password: user.password, 
+            status: user.status, 
+            contact_no: user.contact_no, 
+            score: user.score
         })
     }
     else{

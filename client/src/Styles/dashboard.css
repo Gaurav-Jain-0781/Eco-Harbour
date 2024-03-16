@@ -78,15 +78,19 @@
 }
 
 .content h1{
-    margin: 5px;
+    margin: 15px;
+}
+
+.content svg {
+    vertical-align: middle;
 }
 
 .dashBoard-card {
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    margin: 20px;
 }
 
 .dashBoard-card h2 {
@@ -95,6 +99,82 @@
 
 .dashBoard-card p {
     margin-bottom: 10px;
+}
+
+.box {
+    display: flex;
+    height: 100px;
+    width: 180px;
+    border-radius: 20px;
+    color: white;
+    text-align: center;
+    align-items: center;
+    font-size: 30px;
+}
+
+.box-icon {
+    width: 40%;
+    font-size: 3rem;
+}
+
+.box-content {
+    width: 50%;
+}
+
+.box-content h2{
+    font-size: 24px;
+    padding: 10px;
+}
+
+.box-content p{
+    font-size: 22px;
+    padding: 5px;
+    margin: 0px;
+}
+
+.card {
+    width: 300px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 5px 10px 18px rgba(136, 170, 202, 0.9);
+    transition: transform 0.3s;
+    margin: 20px;
+    padding: 10px;
+}
+
+.content form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#labels, #fields {
+    width: 15%;
+    font-size: 22px;
+    font-family: 'Poppins';
+    margin: 10px;
+    padding: 10px;
+}
+
+#labels .input-label {
+    line-height: 47px;
+    margin: 10px;
+}
+
+#fields {
+    width: 60%;
+}
+
+#fields input{
+    width: 60%;
+    margin: 10px;
+    height: 35px;
+} 
+
+#userInfoContent button{
+    margin: 20px;
+    background-color: #35967b;
 }
 
 .analytics {
