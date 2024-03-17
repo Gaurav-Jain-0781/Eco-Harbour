@@ -163,7 +163,7 @@ const HarbourServices = () => {
           <h2>Prefered Harbours </h2>
           <div className='product_container'>
             {searchFish.map((harbour) => {
-              return <Harbour key={harbour.id} harbour={harbour}/>
+              return <Harbour key={harbour._id} harbour={harbour}/>
             })}
           </div>
         </section>
@@ -174,7 +174,7 @@ const HarbourServices = () => {
           <h2>Prefered Fishes </h2>
           <div className='product_container'>
             {searchHarbour.map((fish) => {
-              return <Fish key={fish.id} fish={fish}/>
+              return <Fish key={fish._id} fish={fish}/>
             })}
           </div>
         </section>

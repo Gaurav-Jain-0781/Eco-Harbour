@@ -8,19 +8,14 @@ const Navbar = ({login, tooglelogin}) => {
   const [user, setUser] = useState({})
 
   const checkLogin = async () => {
-    
     try {
-
       const { data } = await axios.get('/user/profile')
       
       if(data._id){
-        console.log(data)
         setLoggedIn(true)
         setUser(data)
       }
-
     } catch (error) {
-      
       if (error.response && error.response.status === 404) {
         console.log("No user found");
       } else if (error.message === "Request failed with status code 401") {
@@ -28,7 +23,6 @@ const Navbar = ({login, tooglelogin}) => {
       } else {
         console.error("Error fetching user profile:", error.message);
       }
-
     } 
   } 
 

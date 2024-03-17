@@ -16,17 +16,13 @@ const Login = ({ login, tooglelogin }) => {
         e.preventDefault()
 
         try{
-            
             const response = await axios.post('user/auth', {
                 user_name, 
                 password
             })
-            
             toast.success('Login Successful !')
             navigate('/')
-        
-        } catch (error){
-            
+        } catch (error){            
             if(error.response.data.message === 'Invalid Email or Password'){
                 toast.error("Invalid Email or Password")
             }
@@ -34,7 +30,6 @@ const Login = ({ login, tooglelogin }) => {
                 toast.error("Login Failed")
                 console.log("Login Failed", error)
             }
-            
         }
     }
 

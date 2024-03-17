@@ -176,7 +176,7 @@ const DashBoard = () => {
                 <label> Password : </label>
               </div>
               <div className='input-label'>
-                <label> Contact No : </label>
+                <label> Contact No : </label>git
               </div>
             </div>
             <div id='fields'>

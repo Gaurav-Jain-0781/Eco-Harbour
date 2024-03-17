@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+import { PreferedHarbour } from './Data'
+import { FaShip, FaFileUpload } from 'react-icons/fa';
+import { toast } from 'react-toastify'
+import Harbours from './Harbour';
 import axios from 'axios';
 import Spinner from './Spinner';
 import Rating from './Rating';
-import { PreferedHarbour } from './Data'
-import Harbours from './Harbour';
-import { FaShip } from 'react-icons/fa';
 
 import '../Styles/harbour.css'
 import '../Styles/service.css'
@@ -14,12 +15,16 @@ const SingleHarbour = () => {
   const { id } = useParams()
   const [harbour, setHarbour] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [latitude, setLatitude] = useState();
+  const [longitude, setLongitude] = useState();
+  const [sail, setSail] = useState(false);
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     const getHarbour = async () => {
       try {
         const { data } = await axios.get(`/harbour/${id}`);
-        console.log(data)
         setHarbour(data);
       } catch (error) {
         console.log(error.message);
@@ -28,8 +33,57 @@ const SingleHarbour = () => {
       }
     };
 
+    const getCordinates = () => {
+      if(navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            setLatitude(position.coords.latitude)
+            setLongitude(position.coords.longitude)
+          }, 
+          (error) => {
+            console.log(error)
+          }
+        )
+      }
+      else{
+        console.log("Navigator geolocation not Supported")
+      }
+    }
+
     getHarbour();
+    getCordinates()
   }, [id]);
+
+  const markSail = async () => {
+    try{
+      const { data } = await axios.get('/user/profile')
+      if( data._id){
+        const user_id = data._id
+        try{
+          const response = await axios.post('/record/', {
+            user_id, 
+            longitude, 
+            latitude
+          })  
+          setSail(true)
+          toast.success("Sail Marked")
+        } catch (error) {
+          console.log(error)
+        }
+      }
+      else{
+        toast.warning("Please Login Before Sail")
+        navigate('/login')
+      }
+    } catch (error) {
+      if(error.response.data.message === "Error in Sail"){
+        toast.error("Error in Sail")
+      }
+      else{
+        console.log(error)
+      }
+    }
+  }
 
   if(loading){
     return <Spinner/>
@@ -47,7 +101,8 @@ const SingleHarbour = () => {
               <p>District : {harbour.district}</p>
               <p>Rating : <Rating rating={harbour.rating}/></p>
               <span>{harbour.description}</span><br/>
-              <button className='btn'>Sail <FaShip/></button>
+              {sail || <button className='btn' onClick={markSail}> Mark Sail <FaShip/></button> }
+              {sail && <button className='btn'><Link to={'/dashboard'}>Upload Proof <FaFileUpload/></Link></button>}
           </div>
       </section>
     </>
@@ -61,7 +116,7 @@ export const PreferedHarbours = () =>{
           <h2>Famous Harbours </h2>
           <div className='product_container'>
             {PreferedHarbour.map((harbour) => {
-              return <Harbours key={harbour.id} harbour={harbour}/>
+              return <Harbours key={harbour._id} harbour={harbour}/>
             })}
           </div>
       </section>

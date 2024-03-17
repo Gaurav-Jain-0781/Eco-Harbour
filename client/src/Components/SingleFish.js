@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { FaShip } from 'react-icons/fa'
+import { Link, useParams } from 'react-router-dom'
+import { FaShip, FaFileUpload } from 'react-icons/fa'
+import { PreferedFish } from './Data' 
 import Spinner from './Spinner'
 import axios from 'axios'
-import { PreferedFish } from './Data' 
 import Fish from './Fish'
+import { toast } from 'react-toastify'
 
 const SingleFish = () => {
     const { id } = useParams()
     const [loading, setLoading] = useState(true)
     const [fish, setFish] = useState({})
+    const [latitude, setLatitude] = useState()
+    const [longitude, setLongitude] = useState()
+    const [sail, setSail] = useState(false)
 
     useEffect(() => {
         const getFish = async() => {
@@ -25,8 +29,57 @@ const SingleFish = () => {
             }
         }
 
+        const getCordinates = () => {
+            if(navigator.geolocation){
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        setLatitude(position.coords.latitude)
+                        setLongitude(position.coords.longitude)
+                    }, 
+                    (error) => {
+                        console.log(error)
+                    }
+                )
+            }
+            else{
+                console.log("Navigator Geolocation Error")
+            }
+        }
+
         getFish()
+        getCordinates()
     }, [id])
+
+    const markSail = async() => {
+        try{
+            const { data } = await axios.get('/user/profile')
+            if(data._id) {
+                const user_id = data._id
+                try {
+                    const response = await axios.post('/record/', {
+                        user_id, 
+                        longitude, 
+                        latitude
+                    })
+                    setSail(true)
+                    toast.success("Sail Marked")
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+            else{
+                toast.warning("Please Login Before Sail")
+            }
+        } catch (error) {
+            if(error.response.data.message === "Error in Sail"){
+                toast.error("Error in Sail")
+            }
+            else{
+                console.log(error)
+            }
+        }
+    }
+
 
     if(loading){
         return <Spinner/>
@@ -45,7 +98,8 @@ const SingleFish = () => {
               <p>Catch Limit : {fish.catch_limit}</p>
               <p>Seasonal Availability : {fish.seasonal_availability}</p>
               <span>{fish.description}</span>
-              <button className='btn'>Sail <FaShip/></button>
+              {sail || <button className='btn' onClick={markSail}> Mark Sail <FaShip/></button> }
+              {sail && <button className='btn'><Link to={'/dashboard'}>Upload Proof <FaFileUpload/></Link></button>}
           </div>
       </section>
     </>

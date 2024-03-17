@@ -112,6 +112,7 @@ header {
     font-size: 30px;
     font-family: 'Karule';
     transition: ease-in 0.8ms;
+    cursor: pointer;
 }
 
 .btn:hover{

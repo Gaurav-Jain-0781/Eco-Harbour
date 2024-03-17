@@ -2,8 +2,6 @@ import React from 'react'
 import { FaStar, } from 'react-icons/fa'
 
 const Rating = ({rating}) => {
-  console.log(rating)
-
   return (
     <>
       {rating >= 1 && <FaStar style={{color: 'gold'}}/>}

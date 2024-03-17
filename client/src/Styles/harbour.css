@@ -22,13 +22,11 @@
 
 #harbour-details .harbour-des {
     width: 50%;
-    padding-top: 15px;
     padding-right: 30px;
 }
 
 .harbour-des h3 {
     font-size: 3rem;
-    padding-top: 20px;
     font-family: 'Poppins';
     color: #3AAFA9;
     text-transform: capitalize;
@@ -58,6 +56,19 @@
 .harbour-des button{
     background-color: #7fc8a9;
     margin: 15px 0px;
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+}
+
+.harbour-des button a{
+    text-decoration: none;
+    color: black;
+}
+
+.harbour-des button a:hover{
+    color: white
 }
 
 .harbour-des svg{
