@@ -3,27 +3,34 @@ import axios from 'axios'
 import Spinner from './Spinner'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import { FaUser, FaGift, FaChartPie, FaStar, FaShip } from 'react-icons/fa'
+import { FaUser, FaGift, FaChartPie, FaStar, FaShip, FaCheckCircle, FaFileImage, FaTrash } from 'react-icons/fa'
 import { MdLogout, MdDashboard  } from "react-icons/md";
 import { GoGoal } from 'react-icons/go'
 
 const DashBoard = () => {
   const [ user, setUser ] = useState({})
-  const [editable, setEditable] = useState(false)
+  const [ editable, setEditable ] = useState(false)
   const [ activeTab, setActiveTab ] = useState('dashboard')
+  const [ sail, setSail ] = useState(0)
+  const [ image, setImage ] = useState(null)
+
   const navigate = useNavigate()
   
   useEffect(() => {
-    const getUser = async() => {
+    const fetchData = async () => {
       try {
-        const { data } = await axios.get('/user/profile')
-        setUser(data)
+        const { data } = await axios.get('/user/profile');
+        setUser(data);
+
+        const { data: sail } = await axios.get(`/record/${data._id}`);
+        setSail(sail);
       } catch (error) {
-        console.log(error)
+        console.error('Error fetching data:', error);
       }
-    }
-    getUser()
-  }, [user])
+    };
+
+    fetchData(); 
+  }, []);
 
   const handelClick = async() => {
     try {
@@ -67,6 +74,55 @@ const DashBoard = () => {
       ...prevUser, 
       [name]: value
     }))
+  }
+
+  const handleFileChange = (e) => {
+    setImage(e.target.files[0])
+  }
+
+  const handleSubmit = async(e) => {
+    e.preventDefault()
+    console.log("image", image)
+    const formData = new FormData();
+    formData.append('image', image);
+    
+    for (var key of formData.entries()) {
+        console.log(key[0] + ', ' + key[1]);
+    }
+
+    console.log(formData.get("image"))
+
+    const data = {
+      'content': formData.get("image")
+    }
+
+    console.log("image", data)
+
+    try {
+      const response = await axios.post('/record/upload', data, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+      console.log("response", response)
+      toast.success('Image uploaded successfully!');
+    } catch (error) {
+      console.error('Error uploading image:', error);
+      toast.error('Failed to upload image.');
+    }
+  }
+
+  const deleteSail = async (id) => {
+    try{
+      const response = await axios.delete(`/record/delete/${id}`);
+      toast.success("Sail Deleted")
+
+      const { data: sail } = await axios.get(`/record/${user._id}`);
+      setSail(sail);
+    } catch (error) {
+      console.log(error)
+      toast.error("Error in Sail Deletion")
+    }
   }
 
   const handelEdit = () => {
@@ -119,16 +175,16 @@ const DashBoard = () => {
                   <FaShip/>
                 </div>
                 <div className='box-content'>
-                  <h2> {} </h2>
+                  <h2> {sail.length} </h2>
                   <p>Sails</p>
                 </div>
               </div>
               <div className='box' style={{backgroundColor: '#ff4040c9'}}>
                 <div className='box-icon'>
-                  <FaStar/>
+                  <FaCheckCircle/>
                 </div>
                 <div className='box-content'>
-                  <h2>  {user.status} </h2>
+                  <h2 style={{padding: '0px', fontSize: '50px'}}>  {user.status} </h2>
                   <p> Status </p>
                 </div>
               </div>
@@ -137,7 +193,7 @@ const DashBoard = () => {
                   <FaStar/>
                 </div>
                 <div className='box-content'>
-                  <h2> {} </h2>
+                  <h2> {user.score} </h2>
                   <p> Points </p>
                 </div>
               </div>
@@ -151,9 +207,47 @@ const DashBoard = () => {
                 </div>
               </div>
             </div>
-            <div className="card">
+            <div id='sails'>
               <h2>Recent Sails</h2>
-              <p>No recent activity.</p>
+              {sail.length > 0 ? (
+                <>
+                  <table>
+                    <tr>
+                      <th>S.No</th>
+                      <th>Harbour</th>
+                      <th>Date</th>
+                      <th>Upload Proof</th>
+                      <th>Delete Record</th>
+                    </tr>
+                    <tbody>
+                      {sail.map((s) => {
+                        return (
+                          <tr>
+                            <td> # </td>
+                            <td>Harbour Name</td>
+                            <td>{s.updatedAt.slice(0, 10)}</td>
+                            <td>{s.image === "" ? (
+                              <form onSubmit={handleSubmit}>
+                                <div id="file">
+                                  <input type="file" onChange={handleFileChange} name='image'/>
+                                  <button type="submit" className='btn'>Upload Image <FaFileImage/></button>
+                                </div>
+                              </form>
+                            ) : (
+                              <p className='proof'> Proof Uploaded </p>
+                            )}</td>
+                            <td>
+                              <button className="btn delete" onClick={() => deleteSail(s._id)}>Delete Sail <FaTrash/> </button>
+                            </td>
+                          </tr>
+                        )
+                      })}
+                    </tbody>
+                  </table>
+                </>
+              ) : (
+                <p>No recent activity.</p>
+              )}
             </div>
           </>
         ) : (
@@ -176,7 +270,7 @@ const DashBoard = () => {
                 <label> Password : </label>
               </div>
               <div className='input-label'>
-                <label> Contact No : </label>git
+                <label> Contact No : </label>
               </div>
             </div>
             <div id='fields'>

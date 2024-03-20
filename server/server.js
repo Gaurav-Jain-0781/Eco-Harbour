@@ -9,7 +9,9 @@ import userRoutes from './routes/userRoutes.js'
 import postRoutes from './routes/forumRoutes.js'
 import feedbackRoutes from './routes/feedbackRoutes.js'
 import recordRoutes from './routes/recordRoutes.js'
+
 import {notFound, errorHandler} from './middleware/errorMiddleware.js'
+import upload from './middleware/multerMiddleware.js'
 
 dotenv.config()
 connectDB()
@@ -23,6 +25,9 @@ app.use(express.urlencoded({ extended: true}))
 
 // Cookie Parser Middleware
 app.use(cookieParser())
+
+// Multer Images Access
+app.use(express.static('public'));
 
 app.get('/', (req, res) => {
     res.send("Server Running");
@@ -38,6 +43,7 @@ app.use('/record', recordRoutes)
 
 app.use(notFound)
 app.use(errorHandler)
+app.use('/record/upload', upload)
 
 app.listen(port, () => {
     console.log(`Server Running on port ${port}`)
