@@ -9,6 +9,7 @@ import userRoutes from './routes/userRoutes.js'
 import postRoutes from './routes/forumRoutes.js'
 import feedbackRoutes from './routes/feedbackRoutes.js'
 import recordRoutes from './routes/recordRoutes.js'
+import rewardRoutes from './routes/rewardRoutes.js'
 
 import {notFound, errorHandler} from './middleware/errorMiddleware.js'
 
@@ -39,6 +40,7 @@ app.use('/user', userRoutes)
 app.use('/post', postRoutes)
 app.use('/feedback', feedbackRoutes)
 app.use('/record', recordRoutes)
+app.use('/reward', rewardRoutes)
 
 app.use(notFound)
 app.use(errorHandler)

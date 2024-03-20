@@ -13,6 +13,7 @@ const DashBoard = () => {
   const [ activeTab, setActiveTab ] = useState('dashboard')
   const [ sail, setSail ] = useState(0)
   const [ image, setImage ] = useState(null)
+  const [ reward, setReward ] = useState([])
 
   const navigate = useNavigate()
   
@@ -24,6 +25,9 @@ const DashBoard = () => {
 
         const { data: sail } = await axios.get(`/record/${data._id}`);
         setSail(sail);
+
+        const { data: rewardData} = await axios.get('/reward')
+        setReward(rewardData)
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -113,6 +117,38 @@ const DashBoard = () => {
     } catch (error) {
       console.log(error)
       toast.error("Error in Sail Deletion")
+    }
+  }
+
+  const handelClaim = async (rewardId, points) => {
+    
+    try {
+      const { data } = await axios.get(`reward/${rewardId}`)
+      const points = data.points
+
+      if(user.score < points){
+        toast.error("Insufficient Points")
+      }
+      else{
+        const user_id = user._id
+        const data = { user_id, rewardId}
+        
+        await axios.post('/reward/update', data)
+        toast.success("Reward Claimed")
+
+        const response = await axios.post(`/user/reduceScore/${user_id}`, {
+          user_id,
+          points
+        })
+
+        const { data: refreshedUserData } = await axios.get(`/user/profile`);
+        setUser(refreshedUserData);
+
+        const { data: refreshedRewards } = await axios.get('/reward');
+        setReward(refreshedRewards);
+      }
+    } catch (error) {
+      console.log(error)
     }
   }
 
@@ -302,9 +338,38 @@ const DashBoard = () => {
       </div>
 
       <div className="content" id="rewardsContent" style={{ display: activeTab === 'rewards' ? 'flex' : 'none' }}>
-        <div className="card">
-          <h2>Rewarrds</h2>
-        </div>
+          <div className="reward-card">
+            {reward.map((r) => {
+              return ( 
+                <div className="rcard" key={r._id}>
+                    <div className="rcard-image">
+                      <img src={r.image_url} alt={r.name}/>
+                    </div>
+                    <div className="rcard-content">
+                        <h2>{r.name}</h2>
+                        <p>{r.description}</p>
+                        <span className='points'>
+                          Points : 
+                            <span style={{ fontSize: 'xxx-large', color: user.score < r.points ? 'red' : 'green' }}>
+                              {user.score}
+                            </span>
+                            {" / "}
+                            <span>
+                              {r.points}
+                            </span>
+                        </span>
+                    </div>
+                    <div style={{textAlign: "center"}}>
+                        {r.claimed ? (
+                          <button className="btn" disabled={true}>Claimed</button>
+                        ) : (
+                          <button className="btn" onClick={() => handelClaim(r._id, r.points)}>Claim Reward</button>
+                        )}
+                    </div>
+                </div>
+              )
+            })}
+          </div>
       </div>
 
     </>

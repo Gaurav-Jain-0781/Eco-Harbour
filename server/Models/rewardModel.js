@@ -15,13 +15,16 @@ const rewardSchema = new mongoose.Schema({
         default: false
     }, 
     claimed_user: {
-        type: mongoose.Schema.Types.ObjectId(),
+        type: mongoose.Schema.Types.ObjectId,
         ref: "User"
+    }, 
+    image_url: {
+        type: String,
     }
 }, {
     timestamps :true
 })
 
-const Reward = mongoose.model("Rewards", rewardSchema)
+const Reward = mongoose.model("Reward", rewardSchema)
 
 export default Reward

@@ -125,6 +125,21 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     }   
 })
 
+const reduceScore = asyncHandler(async (req, res) => {
+    const { user_id, points } = req.body
+    const user = await Users.findById(user_id)
+
+    if(user){
+        user.score = user.score - points
+        const updatedUser = await user.save()
+        res.status(200)
+        res.json("Score Updated")
+    }
+    else{
+        res.status(401).json("No User Found")
+    }
+})
+
 const getUsers = asyncHandler(async (req, res) => {
     res.send("Get All Users")
 })
@@ -141,4 +156,4 @@ const updateUser = asyncHandler(async (req, res) => {
     res.send("Update User by Admin")
 })
 
-export { authUser, registerUser, logoutUser, getUserProfile, updateUserProfile, getUsers, getUserById, deleteUser, updateUser }
+export { authUser, registerUser, logoutUser, getUserProfile, updateUserProfile, reduceScore, getUsers, getUserById, deleteUser, updateUser }

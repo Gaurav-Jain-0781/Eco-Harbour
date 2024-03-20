@@ -251,3 +251,60 @@
     height: 50px;
     margin-bottom: 10px;
 }
+
+.reward-card {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.rcard {
+    width: 250px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    margin: 20px;
+}
+
+.rcard-image {
+    height: 100px;
+    width: 100%;
+}
+
+.rcard img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.rcard-content {
+    padding: 20px;
+}
+
+.rcard-content h2 {
+    padding: 10px;
+    font-size: 18px;
+    font-family: 'Source Serif 4';
+}
+
+.rcard-content p {
+    padding: 10px;
+    font-family: 'Popins';
+    font-size: 22px;
+}
+
+.points {
+    padding: 10px;
+    font-size: 20px;
+}
+
+.rcard-content span {
+    padding: 5px;
+}
+
+.rcard button{
+    margin: 15px 0px;
+    width: 60%;
+}
