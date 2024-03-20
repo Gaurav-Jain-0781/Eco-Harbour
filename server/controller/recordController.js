@@ -35,9 +35,21 @@ const getSails = aysncHandler(async (req, res) => {
 })
 
 const uploadImage = aysncHandler(async (req, res) => {
-    const { content } = req.body
-    console.log(content)
-    console.log("Upload Image")
+    const filePath = req.file.path
+    const { id } = req.body
+    const record = await CatchRecord.findById(id)
+
+    if(record){
+        record.image = filePath
+
+        const updatedRecord = await record.save()        
+        res.status(200)
+        res.json("Image Uploaded")
+    }
+    else{
+        res.status(401)
+        res.json("Uplaod failed")
+    }
 })
 
 const deleteRecord = aysncHandler(async (req, res) => {

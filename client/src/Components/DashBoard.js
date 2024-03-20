@@ -80,31 +80,22 @@ const DashBoard = () => {
     setImage(e.target.files[0])
   }
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async(e, recordId) => {
     e.preventDefault()
-    console.log("image", image)
+
     const formData = new FormData();
     formData.append('image', image);
-    
-    for (var key of formData.entries()) {
-        console.log(key[0] + ', ' + key[1]);
-    }
-
-    console.log(formData.get("image"))
-
-    const data = {
-      'content': formData.get("image")
-    }
-
-    console.log("image", data)
+    formData.append("id", recordId)
 
     try {
-      const response = await axios.post('/record/upload', data, {
+      await axios.post('/record/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
       });
-      console.log("response", response)
+      
+      const { data: sail } = await axios.get(`/record/${user._id}`);
+      setSail(sail);
       toast.success('Image uploaded successfully!');
     } catch (error) {
       console.error('Error uploading image:', error);
@@ -212,22 +203,24 @@ const DashBoard = () => {
               {sail.length > 0 ? (
                 <>
                   <table>
-                    <tr>
-                      <th>S.No</th>
-                      <th>Harbour</th>
-                      <th>Date</th>
-                      <th>Upload Proof</th>
-                      <th>Delete Record</th>
-                    </tr>
+                    <thead>
+                      <tr>
+                        <th>S.No</th>
+                        <th>Harbour</th>
+                        <th>Date</th>
+                        <th>Upload Proof</th>
+                        <th>Delete Record</th>
+                      </tr>
+                    </thead>
                     <tbody>
                       {sail.map((s) => {
                         return (
-                          <tr>
+                          <tr key={s._id}>
                             <td> # </td>
                             <td>Harbour Name</td>
                             <td>{s.updatedAt.slice(0, 10)}</td>
                             <td>{s.image === "" ? (
-                              <form onSubmit={handleSubmit}>
+                              <form onSubmit={(e) => handleSubmit(e, s._id)}>
                                 <div id="file">
                                   <input type="file" onChange={handleFileChange} name='image'/>
                                   <button type="submit" className='btn'>Upload Image <FaFileImage/></button>
