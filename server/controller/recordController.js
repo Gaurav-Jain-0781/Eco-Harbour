@@ -3,10 +3,11 @@ import CatchRecord from '../Models/recordsModel.js'
 import mongoose from 'mongoose'
 
 const uploadRecord = (aysncHandler(async (req, res) => {
-    const { user_id, longitude, latitude } = req.body
+    const { user_id, search, longitude, latitude } = req.body
 
     const newRecord = await CatchRecord.create({
         user_id, 
+        search,
         longitude, 
         latitude
     })

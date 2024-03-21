@@ -6,6 +6,10 @@ const recordSchema = new mongoose.Schema({
         required: true, 
         ref: "User"
     },  
+    search: {
+        type: String, 
+        reuired: true
+    },
     longitude: {
         type: Number, 
         required: true

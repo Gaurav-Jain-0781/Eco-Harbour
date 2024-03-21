@@ -55,9 +55,11 @@ const SingleFish = () => {
             const { data } = await axios.get('/user/profile')
             if(data._id) {
                 const user_id = data._id
+                const search = fish.local_name
                 try {
                     const response = await axios.post('/record/', {
                         user_id, 
+                        search,
                         longitude, 
                         latitude
                     })

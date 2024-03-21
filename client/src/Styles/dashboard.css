@@ -281,6 +281,7 @@
 
 .rcard-content {
     padding: 20px;
+    padding-bottom: 0px;
 }
 
 .rcard-content h2 {
@@ -305,6 +306,17 @@
 }
 
 .rcard button{
-    margin: 15px 0px;
+    margin: 0px 0px 10px 0px;
     width: 60%;
+}
+
+.claimed { 
+    border: 1px solid black;
+    border-radius: 25px;
+    width: 60%;
+    margin: 0px auto;
+    height: 30px;
+    font-size: 35px;
+    text-align: center;
+    padding-top: 5px;
 }

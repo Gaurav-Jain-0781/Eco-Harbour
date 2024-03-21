@@ -3,7 +3,7 @@ import axios from 'axios'
 import Spinner from './Spinner'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import { FaUser, FaGift, FaChartPie, FaStar, FaShip, FaCheckCircle, FaTrash } from 'react-icons/fa'
+import { FaUser, FaGift, FaChartPie, FaStar, FaShip, FaCheckCircle, FaTrash, FaAward } from 'react-icons/fa'
 import { MdLogout, MdDashboard  } from "react-icons/md";
 import { GoGoal } from 'react-icons/go'
 
@@ -59,7 +59,7 @@ const DashBoard = () => {
     const contact_no = document.forms['update'].contact_no.value
 
     try {
-      const response = await axios.put('/user/profile', {
+      await axios.put('/user/profile', {
         user_name, first_name, email, contact_no
       })      
       toast.success("Profile Updated Successfully")
@@ -109,7 +109,7 @@ const DashBoard = () => {
 
   const deleteSail = async (id) => {
     try{
-      const response = await axios.delete(`/record/delete/${id}`);
+      await axios.delete(`/record/delete/${id}`);
       toast.success("Sail Deleted")
 
       const { data: sail } = await axios.get(`/record/${user._id}`);
@@ -136,7 +136,7 @@ const DashBoard = () => {
         await axios.post('/reward/update', data)
         toast.success("Reward Claimed")
 
-        const response = await axios.post(`/user/reduceScore/${user_id}`, {
+        await axios.post(`/user/reduceScore/${user_id}`, {
           user_id,
           points
         })
@@ -149,20 +149,6 @@ const DashBoard = () => {
       }
     } catch (error) {
       console.log(error)
-    }
-  }
-
-  const getHarbour = async(sailId) => {
-    console.log(sailId)
-    const { data } = await axios.get(`/record/${sailId}`)
-    if( data ){
-      const longitude = data.longitude
-      const latitude = data.longitude
-
-      const { data: harbour } = await axios.post('/harbour/', {
-        longitude, 
-        latitude
-      })
     }
   }
 
@@ -256,7 +242,7 @@ const DashBoard = () => {
                     <thead>
                       <tr>
                         <th>S.No</th>
-                        <th>Harbour</th>
+                        <th>Searched</th>
                         <th>Date</th>
                         <th>Upload Proof</th>
                         <th>Delete Record</th>
@@ -267,7 +253,7 @@ const DashBoard = () => {
                         return (
                           <tr key={s._id}>
                             <td> {index + 1} </td>
-                            <td>Harbour Name</td>
+                            <td> {s.search} </td>
                             <td>{s.updatedAt.slice(0, 10)}</td>
                             <td>{s.image === "" ? (
                               <form onSubmit={(e) => handleSubmit(e, s._id)}>
@@ -375,7 +361,7 @@ const DashBoard = () => {
                     </div>
                     <div style={{textAlign: "center"}}>
                         {r.claimed ? (
-                          <button className="btn" disabled={true}>Claimed</button>
+                          <p className="claimed">Claimed <FaAward style={{fontSize : "24px"}}/></p>
                         ) : (
                           <button className="btn" onClick={() => handelClaim(r._id, r.points)}>Claim Reward</button>
                         )}
