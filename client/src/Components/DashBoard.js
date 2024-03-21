@@ -3,7 +3,7 @@ import axios from 'axios'
 import Spinner from './Spinner'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import { FaUser, FaGift, FaChartPie, FaStar, FaShip, FaCheckCircle, FaFileImage, FaTrash } from 'react-icons/fa'
+import { FaUser, FaGift, FaChartPie, FaStar, FaShip, FaCheckCircle, FaTrash } from 'react-icons/fa'
 import { MdLogout, MdDashboard  } from "react-icons/md";
 import { GoGoal } from 'react-icons/go'
 
@@ -152,6 +152,20 @@ const DashBoard = () => {
     }
   }
 
+  const getHarbour = async(sailId) => {
+    console.log(sailId)
+    const { data } = await axios.get(`/record/${sailId}`)
+    if( data ){
+      const longitude = data.longitude
+      const latitude = data.longitude
+
+      const { data: harbour } = await axios.post('/harbour/', {
+        longitude, 
+        latitude
+      })
+    }
+  }
+
   const handelEdit = () => {
     setEditable(true)
   }
@@ -249,17 +263,17 @@ const DashBoard = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {sail.map((s) => {
+                      {sail.map((s, index) => {
                         return (
                           <tr key={s._id}>
-                            <td> # </td>
+                            <td> {index + 1} </td>
                             <td>Harbour Name</td>
                             <td>{s.updatedAt.slice(0, 10)}</td>
                             <td>{s.image === "" ? (
                               <form onSubmit={(e) => handleSubmit(e, s._id)}>
                                 <div id="file">
                                   <input type="file" onChange={handleFileChange} name='image'/>
-                                  <button type="submit" className='btn'>Upload Image <FaFileImage/></button>
+                                  <button type="submit" className='btn'>Upload Image</button>
                                 </div>
                               </form>
                             ) : (
@@ -290,21 +304,21 @@ const DashBoard = () => {
           <div style={{display: 'flex'}}>
             <div id='labels'>
               <div className='input-label'>
-                <label> First Name : </label>
-              </div>
-              <div className='input-label'>
                 <label> User Name : </label>
               </div>
               <div className='input-label'>
-                <label> Password : </label>
+                <label> First Name : </label>
+              </div>
+              <div className='input-label'>
+                <label> Email : </label>
               </div>
               <div className='input-label'>
                 <label> Contact No : </label>
               </div>
             </div>
             <div id='fields'>
-              <input type='text' placeholder='User Name' value={user.user_name} disabled={!editable} name='user_name' onChange={handelChange}/>
-              <input type='text' placeholder='First Name' value={user.first_name} disabled={!editable} name='first_name' onChange={handelChange}/>
+              <input type='text' placeholder='User Name' value={user.first_name} disabled={!editable} name='user_name' onChange={handelChange}/>
+              <input type='text' placeholder='First Name' value={user.user_name} disabled={!editable} name='first_name' onChange={handelChange}/>
               <input type='email' placeholder='Email' value={user.email} disabled={!editable} name='email' onChange={handelChange}/>
               <input type='Contact No.' placeholder='Contact No.' value={user.contact_no} disabled={!editable} name='contact_no' onChange={handelChange}/>
             </div>

@@ -1,18 +1,35 @@
 import axios from 'axios'
-import React from 'react'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify'
 
 const SignUp = () => {
+  const navigate = useNavigate()
+  
   const handelClick = async () => {
     const email = document.getElementById('email').value
-
+    
     try {
-      const { response } = await axios.post('', email)
-      toast.success("Email Recorded Successfully")
+      const { data } = await axios.get('/user/profile')
+      if(data._id){
+        const { response } = await axios.post('', email)
+        toast.success("Email Recorded Successfully")
+      }
     } catch (error) {
-      console.log(error)
+      if(error.response.data.message === "Unauthorized User, No Token"){
+        toast.warning("Please Login Before Register")
+        navigate('/login')
+      }
+      if(error.response.data.message === "Not Found - /"){
+        toast.success("Email Recorded Successfully")
+      }
+      if(error.response.data.message === "Error in Sail"){
+        toast.error("Error in Sail")
+      }
+      else{
+        console.log(error)
+      }
     }
-
   }
 
   return (

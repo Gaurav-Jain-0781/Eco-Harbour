@@ -44,4 +44,11 @@ const getHarbourByState = asyncHandler(async (req, res) => {
     }
 })
 
-export { getHarbour, getHarbourById, getHarbourByName, getHarbourByState } 
+const getHarbourByCoordinates = asyncHandler(async (req, res) => {
+    const { longitude, latitude } = req.body
+    console.log(longitude)
+    console.log(latitude)
+    res.status(200).json("Coordinates")
+})
+
+export { getHarbour, getHarbourById, getHarbourByName, getHarbourByState, getHarbourByCoordinates } 

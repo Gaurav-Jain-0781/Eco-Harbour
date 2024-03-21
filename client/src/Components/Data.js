@@ -5,46 +5,36 @@ export const About = [
     {
         id : 1, 
         text: 'About Us', 
-        url: ''
-    },
-    {
-        id : 3, 
-        text: 'Privacy Policy', 
-        url: ''
+        url: '/about'
     },
     {
         id : 4, 
         text: 'Terms & Condition', 
-        url: ''
+        url: '/about'
     },
     {
         id : 5, 
         text: 'Contact', 
-        url: ''
+        url: '/about'
     },
 ] 
 
 export const Account = [
     {
         id: 1, 
-        text: 'Sign In',
-        url: '/login'
+        text: 'DashBoard',
+        url: '/dashboard'
     },
     {
         id: 2, 
         text: 'Catch Records',
-        url: ''
+        url: '/dashboard'
     },
     {
         id: 3, 
         text: 'Track Progress',
-        url: ''
+        url: '/dashboard#analyticsContent'
     },
-    {
-        id: 5, 
-        text: 'Help',
-        url: ''
-    }
 ]
 
 export const harbours = [
@@ -52,19 +42,25 @@ export const harbours = [
         id: 1,
         name: "West Coast",
         no_of_harbours: 30,
-        url: "/images/harbours/west-coast.jpg",
+        url: "/images/harbour/west-coast.jpg",
     },
     {
         id: 2,
         name: "East Coast",
         no_of_harbours: 30,
-        url: "/images/harbours/east-coast.jpg",
+        url: "/images/harbour/east-coast.jpg",
     },
     {
         id: 3,
         name: "Union Territories",
         no_of_harbours: 10,
-        url: "/images/harbours/union-teritory.jpg",
+        url: "/images/harbour/union-teritory.jpg",
+    },
+    {
+        id: 4, 
+        name: "Marine Protected Areas",
+        no_of_harbours: 21, 
+        url: "/images/harbour/mra.jpg"
     }
 ]
 
@@ -91,7 +87,7 @@ export const Services = [
         id: 4,
         name: 'Eco Perks',
         icon: <FaLeaf/>,
-        link: '/services',   
+        link: '/dashboard',   
     }
 ] 
 
@@ -182,21 +178,21 @@ export const founders = [
         "name": "Gaurav Jain", 
         "phone_no": "9610078190", 
         "email": "gauravjain0781@gmail.com" ,
-        "image_url": "", 
+        "image_url": "/images/founder/gauravjain.jpg", 
     }, 
     {
         "id": 2, 
         "name": "Greeshma Girish", 
         "phone_no": "9610078190", 
         "email": "greeshamgirish@gmail.com" ,
-        "image_url": "", 
+        "image_url": "/images/founder/greeshmagirish.jpg", 
     }, 
     {
         "id": 3, 
         "name": "Navaneeth Kishore", 
         "phone_no": "9610078190", 
         "email": "navaneeth23@gmail.com" ,
-        "image_url": "", 
+        "image_url": "/images/founder/navaneeth.jpg", 
     }
 ]
 

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { FaUser } from 'react-icons/fa'
 import axios from 'axios'
 
 const Navbar = ({login, tooglelogin}) => {
   const [loggedIn, setLoggedIn] = useState(false)
   const [user, setUser] = useState({})
+  const location = useLocation()
 
   const checkLogin = async () => {
     try {
@@ -37,10 +38,10 @@ const Navbar = ({login, tooglelogin}) => {
         </div>
         <div id='nav'>
           <ul>
-            <li><strong><Link to='/' className="active">Home</Link></strong></li>
-            <li><strong><Link to='/services'>Services</Link></strong></li>
-            <li><strong><Link to='/forum'>Forum</Link></strong></li>
-            <li><strong><Link to='/about'>Contact Us</Link></strong></li>
+            <li><strong><Link to='/' className={location.pathname === '/' ? "active" : ''}>Home</Link></strong></li>
+            <li><strong><Link to='/services' className={location.pathname === '/services' ? 'active' : ''}>Services</Link></strong></li>
+            <li><strong><Link to='/forum' className={location.pathname === '/forum' ? 'active' : ''}>Forum</Link></strong></li>
+            <li><strong><Link to='/about'className={location.pathname === '/about' ? 'active' : ''}>Contact Us</Link></strong></li>
             <li>
               <Link to={loggedIn ? '/dashboard' : '/login'}>
                 {loggedIn ? `${user.first_name.slice(0, 1).toUpperCase()}` : <FaUser onClick={tooglelogin}/>}

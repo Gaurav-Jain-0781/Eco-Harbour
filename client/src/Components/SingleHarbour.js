@@ -76,6 +76,10 @@ const SingleHarbour = () => {
         navigate('/login')
       }
     } catch (error) {
+      if(error.response.data.message === "Unauthorized User, No Token"){
+        toast.warning("Please Login Before Sail")
+        navigate('/login')
+      }
       if(error.response.data.message === "Error in Sail"){
         toast.error("Error in Sail")
       }

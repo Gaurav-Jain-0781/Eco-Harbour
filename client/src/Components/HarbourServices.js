@@ -189,7 +189,7 @@ export const ServiceHeader = () => {
       <section id='landing'>
           <img src="/images/service.png" alt='service-page'/>
           <div>
-              <h2>Welcome Onbaord</h2>
+              <h2>Welcome Onboard</h2>
               <p>We aim to Provide Value to our Users</p>
           </div>
       </section>
