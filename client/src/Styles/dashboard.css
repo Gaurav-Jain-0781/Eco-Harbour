@@ -233,6 +233,7 @@
 
 .analytics {
     display: flex;
+    width: 100%;
     flex-wrap: wrap;
 }
 
@@ -241,9 +242,8 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    margin-right: 20px;
-    margin-bottom: 20px;
-    width: calc(33.3333% - 20px);
+    margin: 20px;
+    width: 40%;
 }
 
 .analytics-card img {
@@ -267,7 +267,6 @@
 }
 
 .rcard-image {
-    height: 100px;
     width: 100%;
 }
 
@@ -280,8 +279,7 @@
 }
 
 .rcard-content {
-    padding: 20px;
-    padding-bottom: 0px;
+    padding: 0px 20px;
 }
 
 .rcard-content h2 {

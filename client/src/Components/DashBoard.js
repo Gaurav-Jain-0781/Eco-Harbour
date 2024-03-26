@@ -14,6 +14,7 @@ const DashBoard = () => {
   const [ sail, setSail ] = useState(0)
   const [ image, setImage ] = useState(null)
   const [ reward, setReward ] = useState([])
+  const [ monthlyData, setMonthlyData ] = useState({})
 
   const navigate = useNavigate()
   
@@ -150,6 +151,12 @@ const DashBoard = () => {
     } catch (error) {
       console.log(error)
     }
+  }
+
+  const SalesChart = async(userId) => {
+    const { data } = await axios.get(`/record/${userId}`)
+    console.log(data)
+    setMonthlyData(data)
   }
 
   const handelEdit = () => {
@@ -320,7 +327,6 @@ const DashBoard = () => {
         <h2>Analytics</h2>
         <div className="analytics">
           <div className="analytics-card">
-            <img src="fish.png" alt="Fish Icon"/>
             <h3>Fish Records</h3>
             <p>Total fish records: 500</p>
           </div>

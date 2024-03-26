@@ -11,6 +11,8 @@ import LoginPage from './Pages/LoginPage';
 import DashBoardPage from './Pages/DashBoardPage'
 import SingleHarbourPage from './Pages/SingleHarbourPage'
 import SingleFishPage from './Pages/SingleFishPage';
+
+import Admin from './Pages/AdminPage';
 import Error from './Components/Error';
 
 const App = () => {
@@ -33,6 +35,7 @@ const App = () => {
         <Route path='/dashboard' element={<DashBoardPage />}></Route>
         <Route path='/single-harbour/:id' element={<SingleHarbourPage/>}></Route>
         <Route path='/single-fish/:id' element={<SingleFishPage/>}></Route>
+        <Route path='/admin' element={<Admin/>}></Route>
         <Route path='*' element={<Error/>}></Route>
       </Routes>
     </Router>

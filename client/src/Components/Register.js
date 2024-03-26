@@ -36,7 +36,6 @@ const Register = () => {
 
         const user_name = document.forms["register"].name.value;
         const contact_no = document.forms["register"].phone.value;
-        console.log(contact_no)
         const password = document.forms["register"].password.value;
         const cpassword = document.forms["register"].cpassword.value;
      
