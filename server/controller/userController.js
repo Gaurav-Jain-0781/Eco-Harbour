@@ -14,7 +14,7 @@ const authUser = asyncHandler (async (req, res) => {
             _id: user._id,
             first_name : user.first_name, 
             user_name: user.user_name,
-            score: user.score
+            score: user.score,
         })
     } else {
         res.status(401)
@@ -140,6 +140,28 @@ const reduceScore = asyncHandler(async (req, res) => {
     }
 })
 
+const authAdmin = asyncHandler(async (req, res) => {
+    const { user_name, password } = req.body
+
+    const user = await Users.findOne({user_name})
+    console.log(user)
+
+    if(user && (await user.matchPassword(password))) {
+        generateToken(res, user._id);
+        
+        res.json({
+            _id: user._id,
+            first_name : user.first_name, 
+            user_name: user.user_name,
+            score: user.score, 
+            isAdmin: user.isAdmin
+        })
+    } else {
+        res.status(401)
+        throw new Error('Invalid Email or Password')
+    }
+})
+
 const getUsers = asyncHandler(async (req, res) => {
     res.send("Get All Users")
 })
@@ -156,4 +178,4 @@ const updateUser = asyncHandler(async (req, res) => {
     res.send("Update User by Admin")
 })
 
-export { authUser, registerUser, logoutUser, getUserProfile, updateUserProfile, reduceScore, getUsers, getUserById, deleteUser, updateUser }
+export { authUser, registerUser, logoutUser, getUserProfile, updateUserProfile, reduceScore, authAdmin, getUsers, getUserById, deleteUser, updateUser }

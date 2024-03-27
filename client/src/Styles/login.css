@@ -54,14 +54,14 @@ h1{
 
 p{
     margin: 3px 0px 0px -5px;
-    font-size: 22px;
+    font-size: 30px;
     font-family: 'Karule';
 }
 
 .input {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
     width: 70%;
     height: 30px;
     margin: 20px auto;
@@ -82,10 +82,15 @@ input:focus{
     outline: none;
 }
 
+input[type="radio"] {
+    width: 10%;
+    height: 14px;
+}
+
 #user {
     position: fixed;
     right: 20rem;
-    top: 41%;
+    top: 18.8rem;
     font-size: 17px;
     transform: translateY(50%);
 }
@@ -93,7 +98,7 @@ input:focus{
 #eye{
     position: fixed;
     right: 20rem;
-    top: 49%;
+    top: 21.8rem;
     font-size: 18px;
     transform: translateY(50%);
 }

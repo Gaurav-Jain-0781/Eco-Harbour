@@ -23,7 +23,7 @@ const protect = aysncHandler( async (req, res, next) => {
 })
 
 const admin = aysncHandler(async(req, res, next) => {
-    if(req.user && req.isAdmin){
+    if(req.user && req.user.isAdmin){
         next();
     } else{
         res.status(401);

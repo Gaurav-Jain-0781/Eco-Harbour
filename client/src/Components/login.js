@@ -9,27 +9,55 @@ const Login = ({ login, tooglelogin }) => {
     const [user_name, setUserName] = useState('');
     const [password, setPassword] = useState('');
     const [eye, setEye] = useState(false);
+    const [userType, setUserType] = useState()
 
     const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        try{
-            const response = await axios.post('user/auth', {
-                user_name, 
-                password
-            })
-            toast.success('Login Successful !')
-            navigate('/')
-        } catch (error){            
-            if(error.response.data.message === 'Invalid Email or Password'){
-                toast.error("Invalid Email or Password")
-            }
-            else {
-                toast.error("Login Failed")
-                console.log("Login Failed", error)
-            }
+        if(userType === "User"){
+            try{
+                const response = await axios.post('user/auth', {
+                    user_name, 
+                    password
+                })
+                toast.success('Login Successful !')
+                navigate('/')
+            } catch (error){            
+                if(error.response.data.message === 'Invalid Email or Password'){
+                    toast.error("Invalid Email or Password")
+                }
+                else {
+                    toast.error("Login Failed")
+                    console.log("Login Failed", error)
+                }
+            }    
+        }
+        else if (userType === "Admin") {
+            try{
+                const response = await axios.post('user/authAdmin', {
+                    user_name, 
+                    password
+                })
+                console.log(response)
+                toast.success('Login Successful !')
+                navigate('/admin')
+            } catch (error){            
+                if(error.response.data.message === 'Invalid Email or Password'){
+                    toast.error("Invalid Email or Password")
+                }
+                else if(error.response.data.message === 'Unauthorized Admin'){
+                    toast.error("Unauthorized Admin")
+                }
+                else {
+                    toast.error("Login Failed")
+                    console.log("Login Failed", error)
+                }
+            } 
+        }
+        else {
+            toast.warning("Please Select a User Type")
         }
     }
 
@@ -46,6 +74,11 @@ const Login = ({ login, tooglelogin }) => {
                 <div style={{width: '45%', height: '100%'}}>
                     <form onSubmit={handleSubmit} name="login">
                         <h1>Login</h1>
+                        <div className='input'>
+                            <p>Login as : </p>
+                            <input type="radio" name="userType" value="User" onChange={(e) => setUserType(e.target.value)}/><p>User</p>
+                            <input type="radio" name="userType" value="Admin" onChange={(e) => setUserType(e.target.value)}/><p>Admin</p>
+                        </div>
                         <div className="input">
                             <input type="text" placeholder="Username" onChange={(e) => setUserName(e.target.value)} value={user_name}/>
                             <i id="user"><FaUser/></i>

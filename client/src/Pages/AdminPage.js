@@ -1,12 +1,12 @@
 import React from 'react'
-import Navbar from '../Components/Navbar'
+import { AdminNavbar } from '../Components/Navbar'
 
 import '../Styles/admin.css'
 
 const AdminPage = () => {
   return (
     <div>
-      <Navbar/>
+      <AdminNavbar/>
     </div>
   )
 }

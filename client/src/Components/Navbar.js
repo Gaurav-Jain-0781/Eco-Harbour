@@ -60,7 +60,8 @@ export const AdminNavbar = () => {
 
   const checkAdminLogin = async () => {
     try {
-      const { data } = await axios.get('/user/profile')
+      const { data } = await axios.get('/user/authAdmin')
+      console.log(data)
       
       if(data._id){
         setLoggedIn(true)
@@ -68,11 +69,11 @@ export const AdminNavbar = () => {
       }
     } catch (error) {
       if (error.response && error.response.status === 404) {
-        console.log("No user found");
+        console.log("No admin found");
       } else if (error.message === "Request failed with status code 401") {
-        console.log("User not logged in");
+        console.log("Admin not logged in", error);
       } else {
-        console.error("Error fetching user profile:", error.message);
+        console.error("Error fetching admin profile:", error.message);
       }
     } 
   } 
@@ -89,8 +90,8 @@ export const AdminNavbar = () => {
         <div id='nav'>
           <ul>
             <li><strong><Link to='/' className={location.pathname === '/' ? "active" : ''}>Home</Link></strong></li>
-            <li><strong><Link to='/services' className={location.pathname === '/services' ? 'active' : ''}>Services</Link></strong></li>
-            <li><strong><Link to='/forum' className={location.pathname === '/forum' ? 'active' : ''}>Forum</Link></strong></li>
+            <li><strong><Link to='/services' className={location.pathname === '/services' ? 'active' : ''}>Users</Link></strong></li>
+            <li><strong><Link to='/forum' className={location.pathname === '/forum' ? 'active' : ''}>Rewards</Link></strong></li>
             <li><strong><Link to='/about'className={location.pathname === '/about' ? 'active' : ''}>Contact Us</Link></strong></li>
             <li>
               <Link to={loggedIn ? '/dashboard' : '/login'}>
