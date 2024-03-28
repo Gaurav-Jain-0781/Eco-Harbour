@@ -1,6 +1,6 @@
 import React from 'react'
 import Navbar from '../Components/Navbar'
-import DashBoard , { Sidebar } from '../Components/DashBoard'
+import DashBoard from '../Components/DashBoard'
 
 import '../Styles/dashboard.css'
 

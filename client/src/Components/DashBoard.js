@@ -179,7 +179,7 @@ const DashBoard = () => {
             </li>
             <li>
               <Link className={activeTab === 'userInfo' ? 'active' : ''} onClick={() => toogleTab('userInfo')}>
-                <FaUser/>User
+                <FaUser/>Profile
               </Link>
             </li>
             <li>

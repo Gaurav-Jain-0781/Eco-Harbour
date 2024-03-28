@@ -21,6 +21,14 @@ const recordSchema = new mongoose.Schema({
     image: {
         type: String, 
         default: ''
+    }, 
+    status: {
+        type: String,
+        default: 'Not Verified'
+    }, 
+    admin_id: {
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: "User"
     }
 }, {
     timestamps: true

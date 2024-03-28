@@ -2,6 +2,47 @@ import aysncHandler from '../middleware/asyncHandler.js'
 import CatchRecord from '../Models/recordsModel.js'
 import mongoose from 'mongoose'
 
+const getAllSails = aysncHandler(async (req, res) => {
+    const records = await CatchRecord.find({})
+
+    if(records) {
+        const data = records.filter((record) => record.status === "Not Verified")
+        
+        res.status(200)
+        res.json(data)
+    }
+    else{
+        res.status(401)
+        res.json("No Records found")
+    }
+})
+
+const getSailById = aysncHandler(async (req, res) => {
+    const record = await CatchRecord.findById(req.params.id)
+
+    if(record){
+        res.status(200)
+        res.json(record)
+    }
+    else{
+        res.status(401)
+        res.json("Record Not Found")
+    }
+})
+
+const getSailsByUserId = aysncHandler(async (req, res) => {
+    const record = await CatchRecord.find({user_id: req.params.id})
+
+    if(record){
+        res.status(200)
+        res.json(record)
+    }
+    else{
+        res.status(401)
+        throw new error("No Sail Found")
+    }
+})
+
 const uploadRecord = (aysncHandler(async (req, res) => {
     const { user_id, search, longitude, latitude } = req.body
 
@@ -22,16 +63,16 @@ const uploadRecord = (aysncHandler(async (req, res) => {
     }
 }))
 
-const getSails = aysncHandler(async (req, res) => {
-    const record = await CatchRecord.find({user_id: req.params.id})
-
-    if(record){
-        res.status(200)
-        res.json(record)
+const deleteRecord = aysncHandler(async (req, res) => {
+    const id = new mongoose.Types.ObjectId(req.params.id)
+    const status = await CatchRecord.deleteOne(id)
+    
+    if(status){
+        res.status(200).json(status)
     }
-    else{
+    else {
         res.status(401)
-        throw new error("No Sail Found")
+        res.json("Error in Sail Deletion")
     }
 })
 
@@ -53,17 +94,4 @@ const uploadImage = aysncHandler(async (req, res) => {
     }
 })
 
-const deleteRecord = aysncHandler(async (req, res) => {
-    const id = new mongoose.Types.ObjectId(req.params.id)
-    const status = await CatchRecord.deleteOne(id)
-    
-    if(status){
-        res.status(200).json(status)
-    }
-    else {
-        res.status(401)
-        res.json("Error in Sail Deletion")
-    }
-})
-
-export { uploadRecord, getSails, uploadImage, deleteRecord }
+export { getAllSails, getSailById, getSailsByUserId, uploadRecord, deleteRecord, uploadImage }

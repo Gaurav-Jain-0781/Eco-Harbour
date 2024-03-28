@@ -144,7 +144,6 @@ const authAdmin = asyncHandler(async (req, res) => {
     const { user_name, password } = req.body
 
     const user = await Users.findOne({user_name})
-    console.log(user)
 
     if(user && (await user.matchPassword(password))) {
         generateToken(res, user._id);
@@ -159,6 +158,42 @@ const authAdmin = asyncHandler(async (req, res) => {
     } else {
         res.status(401)
         throw new Error('Invalid Email or Password')
+    }
+})
+
+const countUser = asyncHandler(async (req, res) => {
+    const users = await Users.find({})
+
+    if(users){
+        const data = users.filter((user) =>  user.isAdmin === false)
+
+        res.status(200)
+        res.json(data)
+    }
+    else{
+        res.status(401)
+        res.json("No Users Found")
+    }
+})
+
+const getAdminProfile = asyncHandler(async (req, res) => {
+    const admin = await Users.findById(req.user._id)
+
+    if(admin) {
+        res.status(200)
+        res.json({
+            _id: admin._id, 
+            first_name: admin.first_name, 
+            user_name: admin.user_name,
+            email: admin.email,
+            password: admin.password, 
+            status: admin.status, 
+            contact_no: admin.contact_no, 
+        })
+    }
+    else {
+        res.status(401)
+        res.json("No Admin Found")
     }
 })
 
@@ -178,4 +213,4 @@ const updateUser = asyncHandler(async (req, res) => {
     res.send("Update User by Admin")
 })
 
-export { authUser, registerUser, logoutUser, getUserProfile, updateUserProfile, reduceScore, authAdmin, getUsers, getUserById, deleteUser, updateUser }
+export { authUser, registerUser, logoutUser, getUserProfile, updateUserProfile, reduceScore, authAdmin, countUser, getAdminProfile, getUsers, getUserById, deleteUser, updateUser }

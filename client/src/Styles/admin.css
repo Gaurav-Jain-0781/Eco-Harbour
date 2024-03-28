@@ -1,0 +1,154 @@
+.admin-sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 15%;
+    height: 100%;
+    background-color: #35967b;
+    color: #fff;
+    padding: 0px 15px;
+    box-sizing: border-box;
+}
+
+.admin-nav {
+    list-style: none;
+    padding: 0;
+    margin: 10px;
+    width: 100%;
+}
+
+.admin-nav li {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 10px;
+}
+
+.admin-nav a {
+    font-size: 18px;
+    font-family: 'Source Serif 4';
+    color: #fff;
+    text-decoration: none;
+}
+
+.admin-nav svg {
+    vertical-align: middle;
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.admin-nav li:hover {
+    color: #35967b;
+    background-color: #0b5d4b;
+}
+
+.admin-nav a.active {
+    text-decoration: underline;
+    background: none;
+}
+
+#logout {
+    position: fixed;
+    top: 85%;
+    left: 0;
+    right: 0;
+    width: 15%;
+}
+
+#logout button {
+    margin: 0px 40px;
+    font-size: 24px;
+    width: 60%;
+    height: 35px;
+}
+
+#logout svg {
+    vertical-align: middle;
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.admin-content, .verify-document {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 0px;
+    margin-left: 15%;
+    padding: 20px;
+}
+
+.admin-content h1, 
+.verify-document h1 {
+    margin: 15px;
+    font-size: 30px;
+}
+
+.admin-content svg {
+    vertical-align: middle;
+}
+
+.admin-box {
+    display: flex;
+    height: 100px;
+    width: 190px;
+    border-radius: 20px;
+    color: white;
+    text-align: center;
+    align-items: center;
+    font-size: 30px;
+}
+
+.view {
+    background-color: #007bff;
+    margin: 10px;
+    width: 60%;
+}
+
+.view svg {
+    font-size: 20px;
+    vertical-align: middle;
+}
+
+.approve {
+    background-color: #0b5d4b;
+    margin: 10px;
+    width: 40%;
+}
+
+.reject {
+    background-color: #fd2c2cdb;
+    margin: 10px;
+    width: 40%;
+}
+
+.approve svg, 
+.reject svg {
+    vertical-align: middle;
+    font-size: 20px;
+}
+
+.image-viewer {
+    background-color: white;
+    position: fixed;
+    top: 20rem;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    height: 20rem;
+    width: 30rem;
+}
+
+.image-viewer img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.image-viewer svg {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 25px;
+    cursor: pointer;
+}

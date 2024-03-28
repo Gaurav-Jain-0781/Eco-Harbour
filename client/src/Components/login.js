@@ -46,6 +46,7 @@ const Login = ({ login, tooglelogin }) => {
             } catch (error){            
                 if(error.response.data.message === 'Invalid Email or Password'){
                     toast.error("Invalid Email or Password")
+                    console.log(error)
                 }
                 else if(error.response.data.message === 'Unauthorized Admin'){
                     toast.error("Unauthorized Admin")
