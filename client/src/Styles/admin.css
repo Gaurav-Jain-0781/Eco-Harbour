@@ -36,13 +36,14 @@
     margin-right: 10px;
 }
 
-.admin-nav li:hover {
+.admin-nav li:hover, 
+.admin-nav li.active {
     color: #35967b;
     background-color: #0b5d4b;
 }
 
-.admin-nav a.active {
-    text-decoration: underline;
+.admin-nav a {
+    text-decoration: none;
     background: none;
 }
 

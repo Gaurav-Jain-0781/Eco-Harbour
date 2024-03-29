@@ -8,8 +8,8 @@ import { GrDocumentVerified } from "react-icons/gr";
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-
 const ImageViewer = ({ imageUrl, onClose }) => {
+    console.log(imageUrl)
     return (
         <div className="image-viewer">
             <IoIosCloseCircle onClick={onClose}/>
@@ -57,12 +57,13 @@ const Admin = () => {
     const viewProof = async(recordId) => {
         try {
             const { data } = await axios.get(`/record/id/${recordId}`)
-            console.log(data)
-            
+
             if (data && data.image){
-                const imageUrl = `file://${data.image.replace(/\\/g, '/')}`;
-                console.log(imageUrl)
-                setSelectedImage(imageUrl)
+                const imageUrl = `${data.image.replace(/\\/g, '/')}`;
+                let startIndex = imageUrl.indexOf('/images');
+                let resultPath = startIndex !== -1 ? imageUrl.substring(startIndex) : '';
+            
+                setSelectedImage(resultPath)
                 setImageViewerOpen(true)
             } else {
                 toast.error("Image Not found")
@@ -106,32 +107,32 @@ const Admin = () => {
                     </div>
                     <div>
                     <ul className="admin-nav">
-                        <li>
-                            <Link className={activeTab === 'dashboard' ? 'active' : ''} onClick={() => toogleTab('dashboard')}>
+                        <li className={activeTab === 'dashboard' ? 'active' : ''}>
+                            <Link onClick={() => toogleTab('dashboard')}>
                                 <MdDashboard/>
                                 DashBoard
                             </Link>
                         </li>
-                        <li>
-                            <Link className={activeTab === 'verify' ? 'active' : ''} onClick={() => toogleTab('verify')}>
+                        <li className={activeTab === 'verify' ? 'active' : ''}>
+                            <Link onClick={() => toogleTab('verify')}>
                                 <FaCheckCircle />
                                 Verify
                             </Link>
                         </li>
-                        <li>
-                            <Link className={activeTab === 'analytics' ? 'active' : ''} onClick={() => toogleTab('analytics')}>
+                        <li className={activeTab === 'analytics' ? 'active' : ''}>
+                            <Link onClick={() => toogleTab('analytics')}>
                                 <FaChartPie/>
                                 Analytics
                             </Link>
                         </li>
-                        <li>
-                            <Link className={activeTab === 'users' ? 'active' : ''}  onClick={() => toogleTab('users')}>
+                        <li className={activeTab === 'users' ? 'active' : ''}>
+                            <Link onClick={() => toogleTab('users')}>
                                 <FaUser/>
                                 Manage Users
                             </Link>
                         </li>
-                        <li>
-                            <Link className={activeTab === 'rewards' ? 'active' : ''}  onClick={() => toogleTab('rewards')}>
+                        <li className={activeTab === 'rewards' ? 'active' : ''}>
+                            <Link onClick={() => toogleTab('rewards')}>
                                 <FaGift/>
                                 Rewards 
                             </Link>
@@ -223,7 +224,11 @@ const Admin = () => {
                                     <td> {r.search} </td>
                                     <td> {r.updatedAt.slice(0, 10)} </td>
                                     <td> 
-                                        <button className='btn view' onClick={() => viewProof(r._id)}>View <FaImage/></button>
+                                        {r.image !== "" ? (
+                                            <button className='btn view' onClick={() => viewProof(r._id)}>View <FaImage/></button>
+                                        ) : (
+                                            <p>Proof Not Uploaded</p>
+                                        )}
                                     </td>
                                     <td>
                                         <button className="btn approve" onClick={() => rewardSail(r._id)}>Reward <FaCheckCircle/> </button>
