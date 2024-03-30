@@ -77,7 +77,6 @@ const dislikePost = aysncHandler( async (req, res) => {
 
 })
 
-
 const updateViews = aysncHandler( async(req, res) => {
     const { id, user_id } = req.body
     const post = await Forum.findById(id)

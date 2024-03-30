@@ -24,11 +24,11 @@ const DashBoard = () => {
         const { data } = await axios.get('/user/profile');
         setUser(data);
 
-        const { data: sail } = await axios.get(`/record/${data._id}`);
-        setSail(sail);
-
         const { data: rewardData} = await axios.get('/reward')
         setReward(rewardData)
+
+        const { data: sail } = await axios.get(`/record/user/${data._id}`);
+        setSail(sail);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -99,7 +99,7 @@ const DashBoard = () => {
         }
       });
       
-      const { data: sail } = await axios.get(`/record/${user._id}`);
+      const { data: sail } = await axios.get(`/record/user/${user._id}`);
       setSail(sail);
       toast.success('Image uploaded successfully!');
     } catch (error) {
@@ -253,6 +253,7 @@ const DashBoard = () => {
                         <th>Date</th>
                         <th>Upload Proof</th>
                         <th>Delete Record</th>
+                        <th>Status</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -261,7 +262,7 @@ const DashBoard = () => {
                           <tr key={s._id}>
                             <td> {index + 1} </td>
                             <td> {s.search} </td>
-                            <td>{s.updatedAt.slice(0, 10)}</td>
+                            <td>{s.createdAt.slice(0, 10)}</td>
                             <td>{s.image === "" ? (
                               <form onSubmit={(e) => handleSubmit(e, s._id)}>
                                 <div id="file">
@@ -275,6 +276,7 @@ const DashBoard = () => {
                             <td>
                               <button className="btn delete" onClick={() => deleteSail(s._id)}>Delete Sail <FaTrash/> </button>
                             </td>
+                            <td>{s.status}</td>
                           </tr>
                         )
                       })}

@@ -94,4 +94,66 @@ const uploadImage = aysncHandler(async (req, res) => {
     }
 })
 
-export { getAllSails, getSailById, getSailsByUserId, uploadRecord, deleteRecord, uploadImage }
+const updateRecord = aysncHandler(async (req, res) =>  {
+    const record = await CatchRecord.findById(req.params.id)
+    const { adminId } = req.body
+    
+    if(record){
+        record.status = "Verified"
+        record.admin_id = adminId
+        
+        const updatedRecord = record.save()
+        if(updatedRecord){
+            res.status(201)
+            res.json("Record Updated")
+        }
+        else{
+            res.status(401)
+            res.json("Record Updation Failed")
+        }
+    }
+    else{
+        res.status(401);
+        res.json("No Record Found")
+    }
+})
+
+
+const rejectRecord = aysncHandler(async (req, res) =>  {
+    const record = await CatchRecord.findById(req.params.id)
+    const { adminId } = req.body
+    
+    if(record){
+        record.status = "Rejected"
+        record.admin_id = adminId
+        
+        const updatedRecord = record.save()
+        if(updatedRecord){
+            res.status(201)
+            res.json("Sail Rejected")
+        }
+        else{
+            res.status(401)
+            res.json("Sail Rejection Failed")
+        }
+    }
+    else{
+        res.status(401);
+        res.json("No Record Found")
+    }
+})
+
+const getProofById = aysncHandler(async (req, res) => {
+    const records = await CatchRecord.find({ admin_id: req.params.id})
+
+    if(records){
+        res.status(200)
+        res.json(records.length)
+    }
+    else{
+        res.status(401)
+        res.json("Records Not Found")
+    }
+})
+
+export { getAllSails, getSailById, getSailsByUserId, uploadRecord, deleteRecord, uploadImage, updateRecord, rejectRecord, getProofById }

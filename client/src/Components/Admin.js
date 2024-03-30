@@ -21,7 +21,8 @@ const ImageViewer = ({ imageUrl, onClose }) => {
 const Admin = () => {
     const [activeTab, setActiveTab] = useState('dashboard')
     const [admin, setAdmin] = useState({})
-    const [users, setUsers] = useState()
+    const [userCount, setUserCount] = useState()
+    const [proof, setProof] = useState()
     const [record, setRecord] = useState([])
     const [imageViewerOpen, setImageViewerOpen] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
@@ -46,17 +47,102 @@ const Admin = () => {
         }
     }
 
-    const rewardSail = (recordId) => {
+    const rewardSail = async(recordId) => {
+        try{
+            const { data } = await axios.get(`/record/${recordId}`)
+            const user_id = data.user_id
 
+            const { data: userData } = await axios.get(`/user/${user_id}`)
+            const adminId = admin._id
+            
+            if(userData){
+                try{
+                    await axios.post(`/user/approve/${user_id}`)
+                    await axios.post(`/record/update/${recordId}`, {
+                        adminId
+                    })
+                    toast.success("Score Updated Successfully")
+                } catch (error){
+                    if(error.response.data.message === "No User Found"){
+                        toast.error("No User Found")
+                        console.log(error)
+                    } else if (error.response.data.message === "No Record Found") {
+                        toast.error("No Record Found")
+                        console.log(error)
+                    } else if (error.response.data.message === "User Updation Failed") {
+                        toast.error("Score Updation Failed")
+                        console.log(error)
+                    } else if (error.response.data.message === "Score Updation Failed") {
+                        toast.error("Record Updation Failed")
+                        console.log(error)
+                    } else {
+                        toast.error("Operation Failed")
+                        console.log(error)
+                    }
+                }
+            } else {
+                toast.error("Operation Failed")
+            }           
+        } catch (error) {
+            if(error.response.data.message === "No User Found"){
+                toast.error("No User Found")
+                console.log(error)
+            } else {
+                toast.error("Operation Failed")
+                console.log(error)
+            }
+        } finally {
+            const { data: recordData } = await axios.get('/record')
+            setRecord(recordData)
+        }
     }
 
-    const rejectSail = (recordId) => {
+    const rejectSail = async (recordId) => {
+        try{
+            const { data } = await axios.get(`/record/${recordId}`)
+            const user_id = data.user_id
 
+            const { data: userData } = await axios.get(`/user/${user_id}`) 
+            const adminId = admin._id
+            
+            if(userData){
+                try{
+                    await axios.post(`/record/reject/${recordId}`, {
+                        adminId
+                    })
+                    toast.success("Sail Rejected Successfully")
+                } catch (error){
+                    if(error.response.data.message === "No Record Found") {
+                        toast.error("No Record Found")
+                        console.log(error)
+                    } else if (error.response.data.message === "Sail Rejection Failed") {
+                        toast.error("Sail Rejection Failed")
+                        console.log(error)
+                    } else {
+                        toast.error("Operation Failed")
+                        console.log(error)
+                    }
+                }
+            } else {
+                toast.error("Operation Failed")
+            }
+        } catch (error) {
+            if(error.response.data.message === "No User Found"){
+                toast.error("No User Found")
+                console.log(error)
+            } else {
+                toast.error("Operation Failed")
+                console.log(error)
+            }
+        } finally {
+            const { data: recordData } = await axios.get('/record')
+            setRecord(recordData)
+        }
     }
 
     const viewProof = async(recordId) => {
         try {
-            const { data } = await axios.get(`/record/id/${recordId}`)
+            const { data } = await axios.get(`/record/${recordId}`)
 
             if (data && data.image){
                 const imageUrl = `${data.image.replace(/\\/g, '/')}`;
@@ -86,10 +172,15 @@ const Admin = () => {
                 setAdmin(adminRecord)
 
                 const { data: userRecord } =  await axios.get('/user/count')
-                setUsers(userRecord.length)
+                setUserCount(userRecord.length)
 
                 const { data: recordData } = await axios.get('/record')
                 setRecord(recordData)
+
+                const { data: proofRecord } = await axios.get(`/record/count/${adminRecord._id}`)
+                setProof(proofRecord)
+                console.log(proofRecord)
+                console.log(proof)
             } catch (error) {
                 console.log(error)
             }
@@ -158,7 +249,7 @@ const Admin = () => {
                                 <GrDocumentVerified/>
                             </div>
                             <div className='box-content'>
-                                <h2> 12 {} </h2>
+                                <h2> {proof} </h2>
                                 <p>Proof Verified</p>
                             </div>
                         </div>
@@ -176,7 +267,7 @@ const Admin = () => {
                                 <FaUser/>
                             </div>
                             <div className='box-content'>
-                                <h2> {users} </h2>
+                                <h2> {userCount} </h2>
                                 <p> User Count </p>
                             </div>
                         </div>
@@ -203,9 +294,9 @@ const Admin = () => {
             <div className="verify-document" id="verify" style={{ display: activeTab === 'verify' ? 'flex' : 'none' }}>
                 <h1>Verify Record Documents</h1>
                 <div id='sails'>
-                    <h2>Recent Records</h2>
                     {record.length > 0 ? (
                         <>
+                        <h2>Recent Records</h2>
                         <table>
                             <thead>
                             <tr>
@@ -241,7 +332,7 @@ const Admin = () => {
                         </table>
                         </>
                     ) : (
-                        <p>No recent activity.</p>
+                        <p>No Records Uploaded Recently </p>
                     )}
                 </div>
             </div>

@@ -143,6 +143,15 @@
     padding: 10px;
 }
 
+#sails h2{
+    font-size: 20px;
+    font-family: 'Popins';
+}
+
+#sails p {
+    margin: 5px;
+}
+
 #sails table {
     width: 100%;
 }

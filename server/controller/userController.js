@@ -1,3 +1,4 @@
+import aysncHandler from '../middleware/asyncHandler.js'
 import asyncHandler from '../middleware/asyncHandler.js'
 import Users from '../Models/userModel.js'
 import generateToken from '../utils/generateTokens.js'
@@ -161,21 +162,6 @@ const authAdmin = asyncHandler(async (req, res) => {
     }
 })
 
-const countUser = asyncHandler(async (req, res) => {
-    const users = await Users.find({})
-
-    if(users){
-        const data = users.filter((user) =>  user.isAdmin === false)
-
-        res.status(200)
-        res.json(data)
-    }
-    else{
-        res.status(401)
-        res.json("No Users Found")
-    }
-})
-
 const getAdminProfile = asyncHandler(async (req, res) => {
     const admin = await Users.findById(req.user._id)
 
@@ -197,12 +183,58 @@ const getAdminProfile = asyncHandler(async (req, res) => {
     }
 })
 
+const countUser = asyncHandler(async (req, res) => {
+    const users = await Users.find({})
+
+    if(users){
+        const data = users.filter((user) =>  user.isAdmin === false)
+
+        res.status(200)
+        res.json(data)
+    }
+    else{
+        res.status(401)
+        res.json("No Users Found")
+    }
+})
+
+const approveSail = aysncHandler(async (req, res) => {
+    const user = await Users.findById(req.params.id)
+
+    if(user){
+        user.score = user.score + 20
+        const updatedUser = user.save()
+
+        if(updatedUser){
+            res.status(200)
+            res.json("Score Updated Successfully")
+        }
+        else{
+            res.status(401)
+            res.json("Score Updation Failed")
+        }
+    }
+    else{
+        res.status(401)
+        res.json("No User Found")
+    }
+})
+
 const getUsers = asyncHandler(async (req, res) => {
     res.send("Get All Users")
 })
 
 const getUserById = asyncHandler(async (req, res) => {
-    res.send("Get User By ID")
+    const user = await Users.findById(req.params.id)
+
+    if(user){
+        res.status(200)
+        res.json(user)
+    }
+    else{
+        res.status(401)
+        res.json("No User Found")
+    }
 })
 
 const deleteUser = asyncHandler(async (req, res) => {
@@ -213,4 +245,4 @@ const updateUser = asyncHandler(async (req, res) => {
     res.send("Update User by Admin")
 })
 
-export { authUser, registerUser, logoutUser, getUserProfile, updateUserProfile, reduceScore, authAdmin, countUser, getAdminProfile, getUsers, getUserById, deleteUser, updateUser }
+export { authUser, registerUser, logoutUser, getUserProfile, updateUserProfile, reduceScore, authAdmin, countUser, approveSail, getAdminProfile, getUsers, getUserById, deleteUser, updateUser }
