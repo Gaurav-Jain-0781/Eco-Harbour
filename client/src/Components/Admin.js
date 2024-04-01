@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Spinner from './Spinner'
 import { Link, useNavigate } from 'react-router-dom'
-import { FaUser, FaGift, FaChartPie, FaCheckCircle, FaBan, FaImage } from 'react-icons/fa'
+import { FaUser, FaGift, FaCheckCircle, FaBan, FaImage, FaSearch } from 'react-icons/fa'
 import { IoIosCloseCircle } from "react-icons/io";
 import { MdLogout, MdDashboard  } from "react-icons/md";
 import { GrDocumentVerified } from "react-icons/gr";
@@ -22,10 +22,12 @@ const Admin = () => {
     const [activeTab, setActiveTab] = useState('dashboard')
     const [admin, setAdmin] = useState({})
     const [userCount, setUserCount] = useState()
+    const [users, setUsers] = useState({})
     const [proof, setProof] = useState()
     const [record, setRecord] = useState([])
     const [imageViewerOpen, setImageViewerOpen] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
+    const [userName, setUserName] = useState('')
 
     const navigate = useNavigate()
 
@@ -164,6 +166,69 @@ const Admin = () => {
         setSelectedImage(null);
     };
 
+    const handleSelect  = () => {
+        const checkboxes = document.querySelectorAll('.suspend:checked')
+        const selectedUserIds = Array.from(checkboxes).map(checkbox => checkbox.dataset.userId)
+        return selectedUserIds
+    } 
+
+    const handelSearch = async() => {
+        const { data: userRecord } =  await axios.get('/user/count')
+        setUsers(userRecord)
+
+        if(userName){
+            const user = users.filter((u) =>  u.user_name === userName)
+            setUsers(user)
+        }
+        else{
+            toast.error("Please Enter a User Name")
+        }
+    }
+
+    const handelSuspend = async () => {
+        const userIds = handleSelect()
+        try{
+            for (const id of userIds) {
+                await axios.put(`/user/${id}`);
+            }
+            toast.success("Users Suspended Successfully");
+        } catch (error) {
+            if(error.response.data.message === "No User Found"){
+                toast.error("No User Found")
+                console.log(error)
+            } else {
+                toast.error("Operation Failed")
+                console.log(error)
+            }
+        }
+    }
+
+    useEffect(() => {
+        const fetchUserRecords = async () => {
+        try {
+            const promises = users.map(async user => {
+                const id = user._id;
+                console.log("User Id", id)
+                const { data } = await axios.get(`/record/user/${id}`);
+                console.log(data)
+                const approvedSails = data.filter(record => record.status === "Verified").length;
+                const rejectedSails = data.filter(record => record.status === "Rejected").length;
+                
+                return {
+                    ...user,
+                    approvedSails,
+                    rejectedSails
+                };
+            });
+            const updatedUsersData = await Promise.all(promises);
+            setUsers(updatedUsersData);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    fetchUserRecords();
+    }, [users])
 
     useEffect(() => {
         const fetchData = async () => {
@@ -173,14 +238,13 @@ const Admin = () => {
 
                 const { data: userRecord } =  await axios.get('/user/count')
                 setUserCount(userRecord.length)
+                setUsers(userRecord)
 
                 const { data: recordData } = await axios.get('/record')
                 setRecord(recordData)
 
                 const { data: proofRecord } = await axios.get(`/record/count/${adminRecord._id}`)
                 setProof(proofRecord)
-                console.log(proofRecord)
-                console.log(proof)
             } catch (error) {
                 console.log(error)
             }
@@ -208,12 +272,6 @@ const Admin = () => {
                             <Link onClick={() => toogleTab('verify')}>
                                 <FaCheckCircle />
                                 Verify
-                            </Link>
-                        </li>
-                        <li className={activeTab === 'analytics' ? 'active' : ''}>
-                            <Link onClick={() => toogleTab('analytics')}>
-                                <FaChartPie/>
-                                Analytics
                             </Link>
                         </li>
                         <li className={activeTab === 'users' ? 'active' : ''}>
@@ -271,15 +329,6 @@ const Admin = () => {
                                 <p> User Count </p>
                             </div>
                         </div>
-                        {/* <div className='box' style={{backgroundColor: '#30f164cc'}}>
-                            <div className='box-icon'>
-                                <GoGoal/>
-                            </div>
-                            <div className='box-content'>
-                                <h2> {} </h2>
-                                <p> Rewards Claimed </p>
-                            </div>
-                        </div> */}
                     </div>
                 </>
                 ) : (
@@ -333,6 +382,49 @@ const Admin = () => {
                         </>
                     ) : (
                         <p>No Records Uploaded Recently </p>
+                    )}
+                </div>
+            </div>
+
+            <div className='manage-users' style={{display : activeTab === "users" ? 'flex' : 'none'}}>
+                <h1> Manage Users</h1>
+                <div className='actions'>
+                    <input type="text" className='search' placeholder='Search User' id="search" onChange={(e) => setUserName(e.target.value)}/>
+                    <button type='button' className='btn search-btn' onClick={handelSearch}>Search <FaSearch/></button>
+                    <button type='button' className='btn suspend-btn'onClick={handelSuspend}>Suspend Account</button>
+                </div>
+                <div id="users">
+                    {users.length > 0 ? (
+                        <>
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Select</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Contact No</th>
+                                <th>Approved</th>
+                                <th>Rejected</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {users.map((user) => {
+                                return (
+                                <tr key={user._id}>
+                                    <td><input className='suspend' type="checkbox" data-user-id={user._id} onChange={() => handleSelect (user._id)}/></td>
+                                    <td> {user.user_name} </td>
+                                    <td> {user.email ? user.email : " - "} </td>
+                                    <td> {user.contact_no}</td>
+                                    <td> {user.approvedSails} </td>
+                                    <td> {user.rejectedSails} </td>
+                                </tr>
+                                )
+                            })}
+                            </tbody>
+                        </table>
+                        </>
+                    ) : (
+                        <p>No User Found</p>
                     )}
                 </div>
             </div>

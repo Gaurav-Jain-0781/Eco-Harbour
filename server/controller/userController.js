@@ -3,24 +3,8 @@ import asyncHandler from '../middleware/asyncHandler.js'
 import Users from '../Models/userModel.js'
 import generateToken from '../utils/generateTokens.js'
 
-const authUser = asyncHandler (async (req, res) => {
-    const { user_name, password } = req.body
-
-    const user = await Users.findOne({user_name})
-
-    if(user && (await user.matchPassword(password))) {
-        generateToken(res, user._id)
-        
-        res.json({
-            _id: user._id,
-            first_name : user.first_name, 
-            user_name: user.user_name,
-            score: user.score,
-        })
-    } else {
-        res.status(401)
-        throw new Error('Invalid Email or Password')
-    }
+const getUsers = asyncHandler(async (req, res) => {
+    res.send("Get All Users")
 })
 
 const registerUser = asyncHandler(async (req, res) => {
@@ -71,59 +55,24 @@ const logoutUser = asyncHandler(async (req, res) => {
     })
 })
 
-const getUserProfile = asyncHandler(async (req, res) => {
-    const user = await Users.findById( req.user._id )
+const authUser = asyncHandler (async (req, res) => {
+    const { user_name, password } = req.body
 
-    if(user){
-        res.status(200)
+    const user = await Users.findOne({user_name})
+
+    if(user && (await user.matchPassword(password))) {
+        generateToken(res, user._id)
+        
         res.json({
-            _id: user._id, 
-            first_name: user.first_name, 
+            _id: user._id,
+            first_name : user.first_name, 
             user_name: user.user_name,
-            email: user.email,
-            password: user.password, 
-            status: user.status, 
-            contact_no: user.contact_no, 
-            score: user.score
-        })  
-    }
-    else{
-        res.status(404)
-        throw new Error("No User Found")
-    }
-})
-
-const updateUserProfile = asyncHandler(async (req, res) => {
-    const user = await Users.findById(req.user._id)
-
-    if(user) {
-        user.first_name = req.body.first_name || user.first_name
-        user.user_name = req.body.user_name || user.user_name
-        user.email = req.body.email || user.email
-        user.contact_no = req.body.contact_no || user.contact_no
-
-        if(req.body.password){
-            user.password = req.body.password
-        }
-
-        const updateUser = await user.save()
-
-        res.status(200)
-        res.json({
-            _id: user._id, 
-            first_name: user.first_name, 
-            user_name: user.user_name,
-            email: user.email,
-            password: user.password, 
-            status: user.status, 
-            contact_no: user.contact_no, 
-            score: user.score
+            score: user.score,
         })
+    } else {
+        res.status(401)
+        throw new Error('Invalid Email or Password')
     }
-    else{
-        res.status(400)
-        throw new Error("No User Found")
-    }   
 })
 
 const reduceScore = asyncHandler(async (req, res) => {
@@ -133,8 +82,15 @@ const reduceScore = asyncHandler(async (req, res) => {
     if(user){
         user.score = user.score - points
         const updatedUser = await user.save()
-        res.status(200)
-        res.json("Score Updated")
+
+        if(updatedUser){
+            res.status(200)
+            res.json("Score Updated")
+        }
+        else{
+            res.status(400)
+            res.json("Opeartion Failed")
+        }
     }
     else{
         res.status(401).json("No User Found")
@@ -220,8 +176,81 @@ const approveSail = aysncHandler(async (req, res) => {
     }
 })
 
-const getUsers = asyncHandler(async (req, res) => {
-    res.send("Get All Users")
+const getUserProfile = asyncHandler(async (req, res) => {
+    const user = await Users.findById( req.user._id )
+
+    if(user){
+        res.status(200)
+        res.json({
+            _id: user._id, 
+            first_name: user.first_name, 
+            user_name: user.user_name,
+            email: user.email,
+            password: user.password, 
+            status: user.status, 
+            contact_no: user.contact_no, 
+            score: user.score
+        })  
+    }
+    else{
+        res.status(404)
+        throw new Error("No User Found")
+    }
+})
+
+const updateUserProfile = asyncHandler(async (req, res) => {
+    const user = await Users.findById(req.user._id)
+
+    if(user) {
+        user.first_name = req.body.first_name || user.first_name
+        user.user_name = req.body.user_name || user.user_name
+        user.email = req.body.email || user.email
+        user.contact_no = req.body.contact_no || user.contact_no
+
+        if(req.body.password){
+            user.password = req.body.password
+        }
+
+        const updateUser = await user.save()
+
+        res.status(200)
+        res.json({
+            _id: user._id, 
+            first_name: user.first_name, 
+            user_name: user.user_name,
+            email: user.email,
+            password: user.password, 
+            status: user.status, 
+            contact_no: user.contact_no, 
+            score: user.score
+        })
+    }
+    else{
+        res.status(400)
+        throw new Error("No User Found")
+    }   
+})
+
+const suspendUser = asyncHandler(async (req, res) => {
+    const user = await Users.findById(req.params.id)
+
+    if(user){
+        user.status = "Suspended"
+        const updatedUser = user.save()
+
+        if(updatedUser){
+            res.status(200)
+            res.json("User Suspended")
+        }
+        else{
+            res.status(401)
+            res.json("Operation failed")
+        }
+    }
+    else{
+        res.status(401)
+        res.json("No User Found")
+    }
 })
 
 const getUserById = asyncHandler(async (req, res) => {
@@ -237,12 +266,4 @@ const getUserById = asyncHandler(async (req, res) => {
     }
 })
 
-const deleteUser = asyncHandler(async (req, res) => {
-    res.send("Delete User")
-})
-
-const updateUser = asyncHandler(async (req, res) => {
-    res.send("Update User by Admin")
-})
-
-export { authUser, registerUser, logoutUser, getUserProfile, updateUserProfile, reduceScore, authAdmin, countUser, approveSail, getAdminProfile, getUsers, getUserById, deleteUser, updateUser }
+export { authUser, registerUser, logoutUser, getUserProfile, updateUserProfile, reduceScore, authAdmin, countUser, approveSail, getAdminProfile, getUsers, getUserById, suspendUser }

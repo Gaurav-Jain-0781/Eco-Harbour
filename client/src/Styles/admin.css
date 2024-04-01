@@ -68,7 +68,9 @@
     margin-right: 10px;
 }
 
-.admin-content, .verify-document {
+.admin-content, 
+.verify-document, 
+.manage-users {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -79,7 +81,8 @@
 }
 
 .admin-content h1, 
-.verify-document h1 {
+.verify-document h1, 
+.manage-users h1 {
     margin: 15px;
     font-size: 30px;
 }
@@ -152,4 +155,78 @@
     right: 0px;
     font-size: 25px;
     cursor: pointer;
+}
+
+.actions {
+    padding: 10px;
+    width: 100%;
+}
+
+.search {
+    width: 30%;
+    height: 30px;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.search-btn {
+    margin: 5px 0px 0px 25px;
+    height: 35px;
+    width: 12%;
+    font-size: 30px;
+    padding: 5px;
+    background-color: #35967b;
+    border-radius: 10px;
+}
+
+.suspend-btn {
+    margin: 5px 0px 0px 25px;
+    height: 35px;
+    width: 15%;
+    font-size: 30px;
+    padding: 5px;
+    background-color: #e63d3d;
+    border-radius: 10px;
+}
+
+.search-btn svg{
+    font-size: 20px;
+    vertical-align: middle;
+    margin-left: 12px;
+}
+
+#users {
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+#users table {
+    width: 100%;
+}
+
+#users table tr {
+    font-size: 18px;
+    font-family: 'Source Serif 4';
+    border-bottom: 2px solid grey;
+    height: 60px;
+}
+
+#user table tr th,
+#user table tr td {
+    border-bottom: 1px solid #ddd;
+}
+
+#users table tr td {
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+}
+
+#users input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 0;
+    outline: none;
 }
