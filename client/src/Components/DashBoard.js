@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import axios from 'axios'
 import Spinner from './Spinner'
 import { Link, useNavigate } from 'react-router-dom'
@@ -6,6 +6,7 @@ import { toast } from 'react-toastify'
 import { FaUser, FaGift, FaChartPie, FaStar, FaShip, FaCheckCircle, FaTrash, FaAward } from 'react-icons/fa'
 import { MdLogout, MdDashboard  } from "react-icons/md";
 import { GoGoal } from 'react-icons/go'
+import Chart from 'chart.js/auto';
 
 const DashBoard = () => {
   const [ user, setUser ] = useState({})
@@ -14,10 +15,13 @@ const DashBoard = () => {
   const [ sail, setSail ] = useState(0)
   const [ image, setImage ] = useState(null)
   const [ reward, setReward ] = useState([])
-  const [ monthlyData, setMonthlyData ] = useState({})
 
   const navigate = useNavigate()
-  
+
+  const lineChartRef = useRef(null);
+  const barChartRef = useRef(null);
+  const pieChartRef = useRef(null);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -153,10 +157,77 @@ const DashBoard = () => {
     }
   }
 
-  const SalesChart = async(userId) => {
-    const { data } = await axios.get(`/record/${userId}`)
-    console.log(data)
-    setMonthlyData(data)
+  const handelAnalytics = () => {
+    toogleTab('analytics')
+
+    const lineCtx = lineChartRef.current.getContext('2d');
+    const barCtx = barChartRef.current.getContext('2d');
+    const pieCtx = pieChartRef.current.getContext('2d');
+
+    const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const backgroundColors = ['#f44336', '#9b59b6', '#2ecc71', '#ffc107', '#e74c3c', '#3498db', '#1abc9c', '#e67e22', '#95a5a6', '#34495e', '#8e44ad', '#d35400'];
+    
+    const lineData = {
+      labels: labels,
+      datasets: [{
+          label: 'Sail Data',
+          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          borderColor: 'rgba(255, 99, 132, 1)',
+          data: [0, 10, 2, 0, 0, 10, 0, 4, 0, 0, 0, 12],
+      }]
+    };
+
+    const barData = {
+      labels: labels,
+      datasets: [{
+          label: 'My Data',
+          backgroundColor: backgroundColors,
+          borderColor: 'rgba(255, 99, 132, 1)',
+          data: [0, 10, 2, 0, 0, 10, 0, 4, 0, 0, 0, 12],
+      }]
+    };
+
+    const pieData = {
+      labels: labels,
+      datasets: [{
+          data: [0, 10, 2, 0, 0, 10, 0, 4, 0, 0, 0, 12],
+          backgroundColor: backgroundColors,
+      }]
+    };
+
+    const lineChart = new Chart(lineCtx, {
+      type: 'line',
+      data: lineData,
+      responsive: true,
+      options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero: true
+                  }
+              }]
+          }
+      } 
+    });
+
+    const barChart = new Chart(barCtx, {
+      type: 'bar',
+      data: barData,
+      options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero: true
+                  }
+              }]
+          }
+      }
+    });
+
+    const pieChart = new Chart(pieCtx, {
+      type: 'pie',
+      data: pieData,
+    });
   }
 
   const handelEdit = () => {
@@ -183,7 +254,7 @@ const DashBoard = () => {
               </Link>
             </li>
             <li>
-              <Link className={activeTab === 'analytics' ? 'active' : ''} onClick={() => toogleTab('analytics')}>
+              <Link className={activeTab === 'analytics' ? 'active' : ''} onClick={handelAnalytics}>
                 <FaChartPie/>Analytics
               </Link>
             </li>
@@ -326,21 +397,16 @@ const DashBoard = () => {
       </div>
 
       <div className="content" id="analyticsContent" style={{ display: activeTab === 'analytics' ? 'flex' : 'none' }}>
-        <h2>Analytics</h2>
+        <h1>Analytics <FaChartPie/></h1>
         <div className="analytics">
-          <div className="analytics-card">
-            <h3>Fish Records</h3>
-            <p>Total fish records: 500</p>
+          <div className="analytics-card" id="lineChart">
+            <canvas id="lineChart" ref={lineChartRef}></canvas>
           </div>
-          <div className="analytics-card">
-            <img src="catches.png" alt="Catches Icon"/>
-            <h3>Catches</h3>
-            <p>Total catches: 200</p>
+          <div className="analytics-card" id="barChart">
+            <canvas id="barChart" ref={barChartRef}></canvas>
           </div>
-          <div className="analytics-card">
-            <img src="harbours.png" alt="Harbours Icon"/>
-            <h3>Visited Harbours</h3>
-            <p>Total harbours visited: 10</p>
+          <div className="analytics-card" id="pieChart">
+            <canvas id="pieChart" ref={pieChartRef}></canvas>
           </div>
         </div>
       </div>
