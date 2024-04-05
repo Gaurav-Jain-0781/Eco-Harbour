@@ -20,7 +20,6 @@ const DashBoard = () => {
 
   const lineChartRef = useRef(null);
   const barChartRef = useRef(null);
-  const pieChartRef = useRef(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -117,11 +116,10 @@ const DashBoard = () => {
       await axios.delete(`/record/delete/${id}`);
       toast.success("Sail Deleted")
 
-      const { data: sail } = await axios.get(`/record/${user._id}`);
+      const { data: sail } = await axios.get(`/record/user/${user._id}`);
       setSail(sail);
     } catch (error) {
       console.log(error)
-      toast.error("Error in Sail Deletion")
     }
   }
 
@@ -162,8 +160,7 @@ const DashBoard = () => {
 
     const lineCtx = lineChartRef.current.getContext('2d');
     const barCtx = barChartRef.current.getContext('2d');
-    const pieCtx = pieChartRef.current.getContext('2d');
-
+   
     const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     const backgroundColors = ['#f44336', '#9b59b6', '#2ecc71', '#ffc107', '#e74c3c', '#3498db', '#1abc9c', '#e67e22', '#95a5a6', '#34495e', '#8e44ad', '#d35400'];
     
@@ -173,7 +170,7 @@ const DashBoard = () => {
           label: 'Sail Data',
           backgroundColor: 'rgba(255, 99, 132, 0.2)',
           borderColor: 'rgba(255, 99, 132, 1)',
-          data: [0, 10, 2, 0, 0, 10, 0, 4, 0, 0, 0, 12],
+          data: [3, 3, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0],
       }]
     };
 
@@ -183,15 +180,7 @@ const DashBoard = () => {
           label: 'My Data',
           backgroundColor: backgroundColors,
           borderColor: 'rgba(255, 99, 132, 1)',
-          data: [0, 10, 2, 0, 0, 10, 0, 4, 0, 0, 0, 12],
-      }]
-    };
-
-    const pieData = {
-      labels: labels,
-      datasets: [{
-          data: [0, 10, 2, 0, 0, 10, 0, 4, 0, 0, 0, 12],
-          backgroundColor: backgroundColors,
+          data: [3, 3, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0],
       }]
     };
 
@@ -222,11 +211,6 @@ const DashBoard = () => {
               }]
           }
       }
-    });
-
-    const pieChart = new Chart(pieCtx, {
-      type: 'pie',
-      data: pieData,
     });
   }
 
@@ -334,7 +318,7 @@ const DashBoard = () => {
                             <td> {index + 1} </td>
                             <td> {s.search} </td>
                             <td>{s.createdAt.slice(0, 10)}</td>
-                            <td>{s.image === "" ? (
+                            <td style={{"width": "35%"}}>{s.image === "" ? (
                               <form onSubmit={(e) => handleSubmit(e, s._id)}>
                                 <div id="file">
                                   <input type="file" onChange={handleFileChange} name='image'/>
@@ -404,9 +388,6 @@ const DashBoard = () => {
           </div>
           <div className="analytics-card" id="barChart">
             <canvas id="barChart" ref={barChartRef}></canvas>
-          </div>
-          <div className="analytics-card" id="pieChart">
-            <canvas id="pieChart" ref={pieChartRef}></canvas>
           </div>
         </div>
       </div>

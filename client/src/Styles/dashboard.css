@@ -144,8 +144,9 @@
 }
 
 #sails h2{
-    font-size: 20px;
+    font-size: 30px;
     font-family: 'Popins';
+    padding-bottom: 10px;
 }
 
 #sails p {

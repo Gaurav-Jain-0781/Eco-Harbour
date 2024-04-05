@@ -88,9 +88,6 @@ const Login = ({ login, tooglelogin }) => {
                             <input type={eye ? "text" : "password"} placeholder="Password" onChange={(e) => setPassword(e.target.value)} value={password}/>
                             <i id="eye" onClick={() => setEye(!eye)}>{eye ? <FaEyeSlash/>: <FaEye/>}</i>
                         </div>
-                        <div className="remember">
-                            <a href="#">Forgot Password ?</a>
-                        </div>
                         <button type="submit" className="btn">Login</button>
                         <div className="register">
                             <p>Dont have an account ?<Link to="/regitration">Create One</Link></p>
